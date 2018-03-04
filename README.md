@@ -1,2 +1,4 @@
 # 「Thore͛gon」
-distributed computing platform for blockchains
+Distributed business operating system for blockchains.
+Blockhain as an arbiter.
+
