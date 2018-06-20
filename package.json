@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "lerna": "^2.11.0"
+  },
+  "name": "thoregon",
+  "description": "thoregon as one repository",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm -C ./packages/universe run start"
+  },
+  "keywords": [
+    "thoregon",
+    "blockchain",
+    "business operating system"
+  ],
+  "author": "Bernhard Lukassen",
+  "license": "MIT"
+}

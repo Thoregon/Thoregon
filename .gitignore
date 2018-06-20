@@ -1,0 +1,14 @@
+# IDE files
+.idea
+
+# do 'npm install' to install missing requirements
+node_modules/
+
+# generated JS (ES) docu
+jsdoc/
+
+# no tmp files in repo
+tmp/
+
+# no idea modules
+*.iml

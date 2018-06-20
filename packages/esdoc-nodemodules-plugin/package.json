@@ -1,0 +1,19 @@
+{
+  "name": "esdoc-nodemodules-plugin",
+  "version": "1.0.0",
+  "main": "src/Plugin.js",
+  "description": "A nodemodules plugin for ESDoc",
+  "devDependencies": {
+    "esdoc": "latest"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "esdoc",
+    "nodejs",
+    "plugin"
+  ],
+  "license": "MIT"
+}
