@@ -1,4 +1,3 @@
-eWINGZ Base Lib
-===============
+# Thore͛gon Base Lib
 
-Base classes for eWINGZ components.
+Base classes for Thoregon components.
