@@ -5,12 +5,12 @@
  * @author: blukassen
  */
 
-const setup = require("../src/setup");
-const config = require("../src/config")(setup.env);
-const universe = require("../src/universe");
-
 async function letThereBeLight() {
-    let logger = universe.logger;
+    const setup = require("../src/setup");
+    const config = require("../src/config")(setup.env);
+    const universe = require("../src/universe");
+    const logger = universe.logger;
+
     try {
         logger.debug("$$ letThereBeLight: start");
         // now inflate the universe

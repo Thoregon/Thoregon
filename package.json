@@ -3,7 +3,7 @@
     "lerna": "^2.11.0"
   },
   "name": "thoregon",
-  "description": "thoregon as one repository",
+  "description": "thoregon - business operating system. As one repository, comprised of lerna packages",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

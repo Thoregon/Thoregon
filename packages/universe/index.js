@@ -40,5 +40,5 @@ function crawl(lib, crawlpath, ns) {
 
 crawl(lib, libpath);
 
-console.log(lib);
+// console.log(lib);
 

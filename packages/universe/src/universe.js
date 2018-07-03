@@ -149,12 +149,8 @@ class Universe {
             try {
                 _(fns).each(f => {
                     let prom = f(this);
-                    // check if result is a Promise (there is no better way!)
-                    if (prom && typeof prom.then === 'function') {
-                        proms.push(prom);
-                    } else {
-                        proms.push(Promise.resolve(true));
-                    }
+                    // check if result is a Promise (there is no better way!), otherwise wrap the result with a Promise
+                    proms.push((prom && typeof prom.then === 'function') ? prom : Promise.resolve(prom));
                 });
             } catch (e) {
                 logger.error('%% universe: letThereBeLight: error at dawn hook: "%s"', e);
@@ -181,12 +177,8 @@ class Universe {
             try {
                 _(fns).each(f => {
                     let prom = f(this);
-                    // check if result is a Promise (there is no better way!)
-                    if (prom && typeof prom.then === 'function') {
-                        proms.push(prom);
-                    } else {
-                        proms.push(Promise.resolve(true));
-                    }
+                    // check if result is a Promise (there is no better way!), otherwise wrap the result with a Promise
+                    proms.push((prom && typeof prom.then === 'function') ? prom : Promise.resolve(prom));
                 });
             } catch (e) {
                 logger.error('%% universe: letThereBeLight: error at dusk hook: "%s"', e);
