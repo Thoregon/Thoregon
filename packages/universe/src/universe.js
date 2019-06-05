@@ -32,9 +32,7 @@ class Universe {
         this._env = process.env;
         // first register end of process to do the dusk
         /** @type {Function} stop listening on exit function. */
-        this._stopListenDusk = unload.add(() => {
-            that.freeze();
-        });
+        this._stopListenDusk = unload.add(() => this.freeze() );
         /** @type {Array<Function>} hooks */
         this._hooksDawn = [];
         /** @type {Array<Function>} hooks */
