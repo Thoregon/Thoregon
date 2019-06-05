@@ -5,7 +5,7 @@
  */
 
 // all exports from lib/ will be collected
-var lib = {};
+let lib = {};
 module.exports = lib;
 
 /* export universe */

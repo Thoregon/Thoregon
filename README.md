@@ -10,6 +10,3 @@ Blockhain as an arbiter. Uses Lightning Network for fast transactions.
     * editor wit hcode completion
     * graphical flow designer
    
-Usage:
-
-    require('thoregon').letThereBeLight().then( universe => { ... } );
