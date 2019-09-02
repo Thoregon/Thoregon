@@ -17,7 +17,7 @@ import { browserloader }    from '/evolux.universe';
          * initialize the component loader and load all
          */
         componentController.use(new LocationWatcher(universe.componentlocation));
-        export const components = componentController;
+        universe.components = componentController;
 
         /*
          * publish HTTP interface

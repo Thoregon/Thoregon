@@ -16,5 +16,8 @@
     "business operating system"
   ],
   "author": "Bernhard Lukassen",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "voca": "^1.4.0"
+  }
 }
