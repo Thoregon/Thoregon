@@ -18,6 +18,7 @@
   "author": "Bernhard Lukassen",
   "license": "MIT",
   "dependencies": {
+    "chokidar": "^3.2.2",
     "voca": "^1.4.0"
   }
 }

@@ -1,11 +1,14 @@
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
 /**
  *
  *
  * @author: blukassen
  */
 
-export default {
-    id:         'voca',
-    category:   'npmjs',
-    href:       '../node_modules/voca'
-}
+export default ComponentDescriptor({
+    id:             'voca',
+    displayName:    'voca',
+    category:       'util',
+    href:           '../node_modules/voca'
+});
