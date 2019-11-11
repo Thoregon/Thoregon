@@ -9,7 +9,33 @@ import letThereBeLight      from '/evolux.universe';
 
 (async () => {
     try {
-        const universe              = await letThereBeLight();
+        const universe      = await letThereBeLight();
+        const components    = universe.components;
+
+        components.on('started', (descriptor) => {
+            const matter    = universe.matter;
+
+            matter.on('addcollection', (event) => {
+                matter.on('additem', collection, (event) => {
+
+                        }
+                    );
+                matter.on('removeitem', collection, (event) => {
+
+                    }
+                );
+                matter.on('moveitem', collection, (event) => {
+
+                    }
+                );
+
+                //
+                }
+            );
+
+
+        });
+
     } catch (err) {
         console.log(err);
     }
