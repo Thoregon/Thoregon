@@ -13,13 +13,15 @@ import letThereBeLight      from '/evolux.universe';
         const components    = universe.components;
 
         components.on('started', (descriptor) => {
+            if (descriptor.id !== 'matter') return;
+
             const matter    = universe.matter;
 
             matter.on('addcollection', (event) => {
                 matter.on('additem', collection, (event) => {
 
-                        }
-                    );
+                    }
+                );
                 matter.on('removeitem', collection, (event) => {
 
                     }

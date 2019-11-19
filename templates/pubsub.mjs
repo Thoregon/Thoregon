@@ -7,8 +7,8 @@ import { ComponentDescriptor } from '/evolux.dyncomponents';
  */
 
 export default ComponentDescriptor({
-    id :            'matter',
-    displayName:    'Matter',
+    id :            'pubsub',
+    displayName:    'publish/subscribe',
     category :      'universe',
-    href :          '/evolux.matter',
+    href :          '/evolux.pubsub',
 });
