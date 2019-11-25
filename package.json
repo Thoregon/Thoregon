@@ -1,11 +1,12 @@
 {
   "devDependencies": {
-    "lerna": "^2.11.0"
+    "jest": "^24.8.0"
   },
   "name": "thoregon",
   "description": "thoregon - business operating system. As one repository, comprised of lerna packages",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "start": "npm -C ./packages/universe run start"
   },
@@ -15,5 +16,9 @@
     "business operating system"
   ],
   "author": "Bernhard Lukassen",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.2.2",
+    "voca": "^1.4.0"
+  }
 }
