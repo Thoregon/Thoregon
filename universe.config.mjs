@@ -6,7 +6,7 @@
 
 import Controller           from '/evolux.dyncomponents';
 import LocationWatcher      from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
-import { browserloader }    from '/evolux.universe';
+import { browserloader, myevolux }    from '/evolux.universe';
 
 /*
  * initialize the component loader and load all
@@ -15,12 +15,12 @@ import { browserloader }    from '/evolux.universe';
 protouniverse.atDawn(universe => {
     const componentLocation     = 'components';
     const componentController   = Controller.baseCwd('ThoregonComponentController');
-    universe.components = componentController;
+    myevolux().components = componentController;
     componentController.addPlugin(new LocationWatcher(componentLocation));
 });
 
 protouniverse.atDusk(async universe => {
-    await universe.components.exit();
+    await myevolux().components.exit();
 });
 
 /*

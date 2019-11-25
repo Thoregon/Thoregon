@@ -10,32 +10,30 @@ import letThereBeLight      from '/evolux.universe';
 (async () => {
     try {
         const universe      = await letThereBeLight();
-        const components    = universe.components;
+        const components    = universe.evolux.components;
 
-        components.on('started', (descriptor) => {
-            if (descriptor.id !== 'matter') return;
+        components.observe('matter', { started:  (descriptor) => {
+                const matter = universe.evolux.matter;
 
-            const matter    = universe.matter;
+/*
+                matter.on('addcollection', (event) => {
+                    matter.on('additem', collection, (event) => {
 
-            matter.on('addcollection', (event) => {
-                matter.on('additem', collection, (event) => {
+                        }
+                    );
+                    matter.on('removeitem', collection, (event) => {
 
-                    }
-                );
-                matter.on('removeitem', collection, (event) => {
+                        }
+                    );
+                    matter.on('moveitem', collection, (event) => {
 
-                    }
-                );
-                matter.on('moveitem', collection, (event) => {
+                        }
+                    );
 
-                    }
-                );
-
-                //
-                }
-            );
-
-
+                    //
+                });
+*/
+            }
         });
 
     } catch (err) {
