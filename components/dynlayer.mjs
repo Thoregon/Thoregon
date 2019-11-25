@@ -7,8 +7,8 @@ import { ComponentDescriptor } from '/evolux.dyncomponents';
  */
 
 export default ComponentDescriptor({
-    id :            'matter',
-    displayName:    'matter in the universe',
+    id :            'dynlayers',
+    displayName:    'dynamic layers',
     category :      'universe',
-    href :          '/evolux.matter',
+    href :          '/evolux.dynlayers',
 });

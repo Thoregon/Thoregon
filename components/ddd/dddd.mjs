@@ -7,8 +7,8 @@ import { ComponentDescriptor } from '/evolux.dyncomponents';
  */
 
 export default ComponentDescriptor({
-    id :            'matter',
-    displayName:    'matter in the universe',
+    id :            'tru4d',
+    displayName:    'true distributed domain driven design',
     category :      'universe',
-    href :          '/evolux.matter',
+    href :          '/evolux.tru4D',
 });

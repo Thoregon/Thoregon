@@ -14,6 +14,21 @@ import letThereBeLight      from '/evolux.universe';
 
         components.observe('matter', { started:  (descriptor) => {
                 const matter = universe.evolux.matter;
+                universe.logger.info("hook on matter");
+            }
+        });
+
+
+
+    } catch (err) {
+        console.log(err);
+    }
+})();
+
+setTimeout(() => {
+    const components    = universe.evolux.components;
+    universe.logger.info(components.list());
+}, 2000);
 
 /*
                 matter.on('addcollection', (event) => {
@@ -33,11 +48,3 @@ import letThereBeLight      from '/evolux.universe';
                     //
                 });
 */
-            }
-        });
-
-    } catch (err) {
-        console.log(err);
-    }
-})();
-
