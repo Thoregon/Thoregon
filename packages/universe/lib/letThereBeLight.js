@@ -18,7 +18,7 @@ async function letThereBeLight() {
         logger.debug("$$ letThereBeLight: end");
         return universe;
     } catch (e) {
-        logger.error("$$ letThereBeLight: error -> %s", e);
+        logger.error("$$ letThereBeLight: error", e);
         process.exit(1);
     }
 }
