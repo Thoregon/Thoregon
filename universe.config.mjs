@@ -4,9 +4,9 @@
  * @author: blukassen
  */
 
-import Controller           from '/evolux.dyncomponents';
-import LocationWatcher      from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
-import { browserloader, myevolux }    from '/evolux.universe';
+import Controller                   from '/evolux.dyncomponents';
+import LocationWatcher              from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
+import { browserloader, myevolux }  from '/evolux.universe';
 
 /*
  * initialize the component loader and load all
