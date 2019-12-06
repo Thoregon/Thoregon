@@ -1,0 +1,105 @@
+/**
+ * Standard Thore͛gon common styles to be used
+ *
+ * @author: blukassen
+ */
+
+/* Thore͛gon common */
+
+html, body {
+    color: rgba(0,0,0,0.75);
+    background-color: rgba(252, 255, 238, 0.20);
+    font-family: "Helvetica", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1.2;
+    border:             0;
+    margin:             0;
+    padding:            0;
+    width:              100%;
+    height:             100%;
+    display:            block;
+    overflow:           auto;
+}
+
+h1 { font-size: 1.4em; font-weight: 700; margin: 10px 0; }
+h2 { font-size: 1.3em; font-weight: 700; margin: 10px 0; }
+h3 { font-size: 1.2em; font-weight: 700; margin: 10px 0; }
+h4 { font-size: 1.1em; font-weight: 700; margin: 10px 0; }
+
+p { margin: 5px 0; }
+
+ul, ol { margin: 8px 0; list-style-position: outside; list-style-type: none; padding-inline-start: 0; }
+li { margin: 1px 0; }
+
+.badge {
+    font-size: 0.85em;
+    color: rgba(0,0,0,0.35);
+    font-weight: 100;
+    font-family: arial,arial,sans-serif;
+    border: 1px solid rgba(0,0,0,0.45);
+    border-radius: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    margin-right: 4px;
+    line-height: 16px;
+}
+
+.attention {
+    color: rgba(222, 208, 4, 0.98);
+}
+
+.hint {
+    color: rgba(63, 170, 82, 0.87);
+}
+
+.ref {
+    color: rgba(105, 145, 198, 0.89);
+}
+
+.note {
+    color: rgba(0,0,0,0.60);
+}
+
+a {
+    color: rgba(0,0,0,0.45);
+}
+
+.handle {
+    color: #ff5252;;
+}
+
+a:hover {
+    opacity: 0.55;
+    text-decoration: underline;
+}
+
+/* characters */
+
+.copyright:before { content: '©'; }
+
+.down:after { content: '\25BC'; }   /* \25BE */
+.up:after { content: '\25B2'; }     /* \25B4 */
+.right:after { content: '\25C4'; }  /* \25C2 */
+.left:after { content: '\25BA'; }   /* \25B8 */
+.stop:after { content: '\25A0'; }
+.bigdot:after { content: '\25CF'; }
+
+.thoregon:before { content: '\21AF'; }
+.hintarrow:after { content: '\290F'; }  /* \2911 \21E2 */
+.refarrow:after { content: '\2192'; }
+.docarrow:after { content: '\21E5'; }
+.brokenarrow:after { content: '\2947'; }
+.restrictedarrow:after { content: '\21F4'; }
+.attmark:after { content: '\25B0'; }
+
+.update:after { content: '\27F2'; }     /* \2940 */
+.undo:after { content: '\21B0'; }       /* \2B10 */
+.redo:after { content: '\21B1'; }       /* \2B0E */
+
+.burgermenu:after { content: '\2630'; }
+.dotsmenu:after { content: '\205E'; }
+.etcdots:after { content: '\2026'; }
+
+.x:after { content: ''; }
+.x:before { content: ''; }
