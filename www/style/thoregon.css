@@ -4,7 +4,7 @@
  * @author: blukassen
  */
 
-@import url('https://fonts.googleapis.com/css?family=Didact+Gothic|Rubik+Mono+One|Rubik:300,400,700|Source+Sans+Pro:200,300,400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Caveat:400,700|Didact+Gothic|IBM+Plex+Serif:200,400,600|Rubik+Mono+One|Rubik:300,400,500|Source+Sans+Pro:200,300,400,700,900&display=swap');
 
 /* Theme Thore͛gon 1 */
 .t1 {
@@ -32,4 +32,4 @@
     line-height: 1.2;
 }
 
-.t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; }
+.t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; }
