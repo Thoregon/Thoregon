@@ -8,11 +8,12 @@
 
 html, body {
     color: rgba(0,0,0,0.75);
-    background-color: rgba(253, 255, 248, 0.20);
-    font-family: "Helvetica", Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 1.2;
+    background-color:   rgba(253, 255, 248, 0.20);
+    font-family:        "Helvetica", Arial, sans-serif;
+    font-size:          16px;
+    font-weight:        300;
+    line-height:        1.2;
+    text-rendering:     optimizeLegibility;
     border:             0;
     margin:             0;
     padding:            0;
@@ -49,11 +50,11 @@ li { margin: 1px 0; }
 }
 
 .attention { color: rgba(222, 208, 4, 0.98); font-weight: 300; }
-.hint { color: rgba(63, 170, 82, 0.87); font-weight: 300; }
-.ref { color: rgba(105, 145, 198, 0.89); font-weight: 300; cursor: pointer; }
+.hint { color: rgba(17, 188, 58, 0.87); font-weight: 300; }
+.ref { color: rgba(12, 101, 198, 0.89); font-weight: 300; cursor: pointer; }
 .note { color: rgba(129, 144, 158, 0.6); }
 .handle { color: #ff5252; cursor: pointer; }
-.restricted { color: #b9444a; }
+.restricted { color: #b93d3b; }
 .broken { color: rgba(143, 158, 172, 0.6); }
 
 /* characters */
@@ -75,9 +76,9 @@ li { margin: 1px 0; }
 .restrictedarrow:after { content: '\21F4'; }
 
 .attmark:after { content: '\25B0'; cursor: pointer; }
-.refmark:after { content: '\25B0'; cursor: pointer; }
-.hintmark:after { content: '\25B0'; cursor: pointer; }
-.notemark:after { content: '\25B0'; cursor: pointer; }
+.refmark:after { content: '\25EC'; cursor: pointer; }
+.hintmark:after { content: '\25CA'; cursor: pointer; }
+.notemark:after { content: '\25FF'; cursor: pointer; }
 
 .update:after { content: '\27F2'; }     /* \2940 */
 .undo:after { content: '\21B0'; }       /* \2B10 */
