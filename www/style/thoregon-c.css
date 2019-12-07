@@ -26,10 +26,11 @@ html, body {
 a { color: rgba(0,0,0,0.45); }
 a:hover { opacity: 0.55; text-decoration: underline; }
 
-h1 { font-size: 1.4em; font-weight: 600; margin: 10px 0; }
-h2 { font-size: 1.3em; font-weight: 600; margin: 10px 0; }
-h3 { font-size: 1.2em; font-weight: 600; margin: 10px 0; }
-h4 { font-size: 1.1em; font-weight: 600; margin: 10px 0; }
+h1 { font-size: 1.4em; font-weight: 600; margin: 6px 0; }
+h2 { font-size: 1.3em; font-weight: 600; margin: 6px 0; }
+h3 { font-size: 1.2em; font-weight: 600; margin: 6px 0; }
+h4 { font-size: 1.1em; font-weight: 600; margin: 6px 0; }
+.headlike { font-size: 1em; font-weight: 600; margin: 3px 0; display: inline-block; }
 
 p { margin: 5px 0; }
 
@@ -56,6 +57,7 @@ li { margin: 1px 0; }
 .handle { color: #ff5252; cursor: pointer; }
 .restricted { color: #b93d3b; }
 .broken { color: rgba(143, 158, 172, 0.6); }
+.ref2 { color: rgba(33, 162, 195, 1); font-weight: 300; cursor: pointer; }
 
 /* characters */
 
@@ -76,9 +78,9 @@ li { margin: 1px 0; }
 .restrictedarrow:after { content: '\21F4'; }
 
 .attmark:after { content: '\25B0'; cursor: pointer; }
-.refmark:after { content: '\25EC'; cursor: pointer; }
-.hintmark:after { content: '\25CA'; cursor: pointer; }
-.notemark:after { content: '\25FF'; cursor: pointer; }
+.refmark:after { content: '\21C1'; cursor: pointer; }
+.hintmark:after { content: '\25EC'; cursor: pointer; }       /* \25CA */
+.notemark:after { content: '\25FF'; cursor: pointer; font-size: 0.7em; }
 
 .update:after { content: '\27F2'; }     /* \2940 */
 .undo:after { content: '\21B0'; }       /* \2B10 */

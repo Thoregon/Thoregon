@@ -13,8 +13,9 @@
     line-height: 1.2;
 }
 
-.t1 body, .t1 html {
-
+div.t1 {
+    background: white;
+    color: black;
 }
 
 /* Theme Thore͛gon 2 */
@@ -24,6 +25,8 @@
     line-height: 1.2;
 }
 .t2 h1,.t2 h2,.t2 h3,.t2 h4 { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; }
+.t2 h1 { font-weight: 600; }
+.t2 .headlike { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 0.9em; }
 
 /* Theme Thore͛gon 3 */
 .t3 {
@@ -33,3 +36,4 @@
 }
 
 .t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; }
+.t3 .headlike { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; font-size: 1em; }
