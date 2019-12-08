@@ -55,7 +55,7 @@ li { margin: 1px 0; }
 .ref { color: rgba(12, 101, 198, 0.89); font-weight: 300; cursor: pointer; }
 .note { color: rgba(129, 144, 158, 0.6); }
 .handle { color: #ff5252; cursor: pointer; }
-.restricted { color: #b93d3b; }
+.restricted { color: #b93d3b; text-decoration: underline dotted; }
 .broken { color: rgba(143, 158, 172, 0.6); }
 .ref2 { color: rgba(33, 162, 195, 1); font-weight: 300; cursor: pointer; }
 
