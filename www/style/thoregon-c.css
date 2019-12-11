@@ -10,7 +10,7 @@ html, body {
     color: rgba(0,0,0,0.75);
     background-color:   rgba(253, 255, 248, 0.20);
     font-family:        "Helvetica", Arial, sans-serif;
-    font-size:          16px;
+    font-size:          15px;
     font-weight:        300;
     line-height:        1.2;
     text-rendering:     optimizeLegibility;
@@ -38,16 +38,32 @@ ul, ol { margin: 8px 0; list-style-position: outside; list-style-type: none; pad
 li { margin: 1px 0; }
 
 .badge {
-    font-size: 0.85em;
-    color: rgba(0,0,0,0.35);
-    font-weight: 100;
-    font-family: arial,arial,sans-serif;
+    font-size: 0.82em;
+    font-family:      Helvetica, Arial, sans-serif;
+    color: rgba(0,0,0,0.75);
+    font-weight: 200;
     border: 1px solid rgba(0,0,0,0.45);
     border-radius: 2px;
     padding-right: 2px;
     padding-left: 2px;
     margin-right: 4px;
     line-height: 16px;
+}
+
+.attbadgebadge {
+    font-size: 0.82em;
+    font-family:    Helvetica, arial, sans-serif;
+    color: white;
+    background-color: #ff5252;
+    cursor: pointer;
+    font-weight: 200;
+    border: 1px solid rgba(0,0,0,0.45);
+    border-radius: 12px;
+    border-color: #ff5252;
+    padding-right: 3px;
+    padding-left: 2px;
+    margin-right: 4px;
+    line-height: 14px;
 }
 
 .attention { color: rgba(222, 208, 4, 0.98); font-weight: 300; }
