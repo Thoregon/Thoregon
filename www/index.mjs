@@ -7,9 +7,14 @@
 
 import letThereBeLight      from '/evolux.universe';
 
+// import { busy, ready, busySince, isBusy }   from '/evolux.universe';
+import { busy, ready }   from '/evolux.universe';
+
 (async () => {
     try {
-        const universe              = await letThereBeLight();
+        busy();
+        const universe = await letThereBeLight();
+        ready();
     } catch (err) {
         console.log(err);
     }

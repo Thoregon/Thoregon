@@ -1,0 +1,39 @@
+/**
+ * Standard Thore͛gon themes to be used
+ *
+ * @author: blukassen
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Caveat:400,700|Didact+Gothic|IBM+Plex+Serif:200,400,600|Rubik+Mono+One|Rubik:300,400,500|Source+Sans+Pro:200,300,400,700,900&display=swap');
+
+/* Theme Thore͛gon 1 */
+.t1 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 200;
+    line-height: 1.2;
+}
+
+div.t1 {
+    background: white;
+    color: black;
+}
+
+/* Theme Thore͛gon 2 */
+.t2 {
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+}
+.t2 h1,.t2 h2,.t2 h3,.t2 h4 { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; }
+.t2 h1 { font-weight: 600; }
+.t2 .headlike { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 0.9em; }
+
+/* Theme Thore͛gon 3 */
+.t3 {
+    font-family: "Didact Gothic", Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; }
+.t3 .headlike { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; font-size: 1em; }

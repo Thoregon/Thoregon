@@ -11,33 +11,14 @@ import letThereBeLight      from '/evolux.universe';
     try {
         const universe      = await letThereBeLight();
         const components    = universe.evolux.components;
-
-        components.observe('matter', { started:  (descriptor) => {
-                const matter = universe.evolux.matter;
-
-/*
-                matter.on('addcollection', (event) => {
-                    matter.on('additem', collection, (event) => {
-
-                        }
-                    );
-                    matter.on('removeitem', collection, (event) => {
-
-                        }
-                    );
-                    matter.on('moveitem', collection, (event) => {
-
-                        }
-                    );
-
-                    //
-                });
-*/
-            }
-        });
-
     } catch (err) {
         console.log(err);
     }
 })();
 
+/*
+setTimeout(() => {
+    const components    = universe.evolux.components;
+    universe.logger.info(components.list());
+}, 2000);
+*/
