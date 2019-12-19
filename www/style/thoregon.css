@@ -37,3 +37,20 @@ div.t1 {
 
 .t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; }
 .t3 .headlike { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; font-size: 1em; }
+
+/* Theme  Thore͛gon 1 Dark */
+
+div.tdark {
+    background: rgb(32,32,32);
+    color: rgb(188, 188, 188);
+}
+
+.tdark .badge { color: rgb(164, 164, 164); border-color: rgb(164, 164, 164); }
+.tdark .attention { color: rgb(251,199,95); }
+.tdark .hint { color: rgb(127, 194, 0); }
+.tdark .ref { color: rgb(64, 168, 252); }
+.tdark .note { color: rgb(128, 129, 128); }
+.tdark .handle { color: rgb(249, 117, 105); }
+.tdark .restricted { color: rgb(185, 95, 95); }
+.tdark .broken { color: rgb(107, 108, 107); }
+.tdark .ref2 { color: rgb(53,173,182); }
