@@ -4,12 +4,12 @@
  * @author: blukassen
  */
 
-import Controller                   from '/evolux.dyncomponents';
-import LocationWatcher              from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
-import { browserloader, myevolux }  from '/evolux.universe';
+import Controller, { ComponentDescriptor }  from '/evolux.dyncomponents';
+import LocationWatcher                      from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
+import { browserloader, myevolux }          from '/evolux.universe';
 
-import dsys                         from "./dsys.mjs";
-import dsysp                        from "./dsys.sovereign.mjs";
+import dsys                                 from "./dsys.mjs";
+import dsysp                                from "./dsys.sovereign.mjs";
 
 /*
  * initialize the component loader and load all
@@ -21,11 +21,11 @@ protouniverse.atDawn(async universe => {
     myevolux().components = componentController;
 
     // now setup the basic distributed system
+    await dsysp(universe);      // first the sovereign settings
     await dsys(universe);
-    await dsysp(universe);
 
     // now install all other components
-    componentController.addPlugin(new LocationWatcher(componentLocation));
+    // componentController.addPlugin(new LocationWatcher(componentLocation));
 });
 
 protouniverse.atDusk(async universe => {
