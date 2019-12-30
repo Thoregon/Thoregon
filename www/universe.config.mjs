@@ -6,7 +6,7 @@
 
 import Controller   from '/evolux.dyncomponents';
 
-import dsys         from "../dsys.mjs";
+import dsys         from "./dsys.mjs";
 import dsysp        from "./dsys.reliant.mjs";
 
 import { myevolux, mythoregon } from '/evolux.universe';

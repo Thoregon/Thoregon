@@ -1,0 +1,13 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bernhard Lukassen <bl@bernhard-lukassen.com> (http://www.bernhard-lukassen.com/)",
+  "license": "MIT"
+}

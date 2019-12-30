@@ -4,7 +4,7 @@
  * @author: Bernhard Lukassen
  */
 
-import matter from '/universe/evolux/matter';
+import { matter } from '/universe/evolux';
 
 console.log(matter);
 
