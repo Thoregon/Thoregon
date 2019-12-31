@@ -42,15 +42,23 @@ const dsys = async (universe) => {
 
     // install 'matter' to have fast queries available
     await components.install(matter);
+    await components.resolve(matter.id);
+    await components.start(matter.id);
 
     // install 'dynlayer'. provides an infrastructure for all other components
     await components.install(dynlayers);
+    await components.resolve(dynlayers.id);
+    await components.start(dynlayers.id);
 
     // install 'schema'. it is essential to have schema descriptions for DDDD available
     await components.install(schema);
+    await components.resolve(schema.id);
+    await components.start(schema.id);
 
     // install 'tru4D'. it is essential to have transactions and the eventstore available
     await components.install(tru4D);
+    await components.resolve(tru4D.id);
+    await components.start(tru4D.id);
 
     // query layer components
 

@@ -23,7 +23,7 @@ import { busy, ready }   from '/evolux.universe';
             id :            'testapp',
             displayName:    'app for testing thoregon (new) features',
             category :      'test',
-            href :          '/lib/testapp',
+            href :          './lib/testapp',
         });
 
         await components.install(test);
