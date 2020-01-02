@@ -15,6 +15,12 @@ const dsys = async (universe) => {
     /*
      * Components
      */
+    const gun =       ComponentDescriptor({
+        id:             'gun',
+        displayName:    'distributed DB from universe',
+        category:       'universe',
+        href:           '/terra.gun',
+    });
     const matter =    ComponentDescriptor({
         id:             'matter',
         displayName:    'matter in the universe',
@@ -27,7 +33,7 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/evolux.dynlayers',
     });
-    const schema =     ComponentDescriptor({
+    const schema =    ComponentDescriptor({
         id:             'schema',
         displayName:    'schema for apps and contexts',
         category:       'universe',
@@ -39,6 +45,11 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/evolux.tru4D',
     });
+
+    // install 'gun' to have synced distributed DB available
+    await components.install(gun);
+    await components.resolve(gun.id);
+    await components.start(gun.id);
 
     // install 'matter' to have fast queries available
     await components.install(matter);

@@ -11,6 +11,8 @@ import { browserloader, myevolux }          from '/evolux.universe';
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
 
+protouniverse.gunpeers = ['https://service.broadcast.green:8765/gun'];
+
 /*
  * initialize the component loader and load all
  */
