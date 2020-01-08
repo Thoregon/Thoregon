@@ -15,6 +15,12 @@ const dsys = async (universe) => {
     /*
      * Components
      */
+    const pubsub =       ComponentDescriptor({
+        id:             'pubsub',
+        displayName:    'publish/subscribe infrastructure in the universe',
+        category:       'universe',
+        href:           '/evolux.pubsub',
+    });
     const gun =       ComponentDescriptor({
         id:             'gun',
         displayName:    'distributed DB from universe',
@@ -45,6 +51,11 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/evolux.tru4D',
     });
+
+    // install 'gun' to have synced distributed DB available
+    await components.install(pubsub);
+    await components.resolve(pubsub.id);
+    await components.start(pubsub.id);
 
     // install 'gun' to have synced distributed DB available
     await components.install(gun);
