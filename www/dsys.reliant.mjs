@@ -6,8 +6,8 @@
  */
 
 const dsysp = async (universe) => {
-    const evolux                = universe.evolux;
-    const components            = evolux.components;
+    const services              = universe.services;
+    const components            = services.components;
     const ComponentDescriptor   = components.ComponentDescriptor;
 
     // DB components

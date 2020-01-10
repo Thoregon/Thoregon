@@ -11,8 +11,8 @@ import letThereBeLight      from '/evolux.universe';
     try {
         const universe              = await letThereBeLight();
 
-        const evolux                = universe.evolux;
-        const components            = evolux.components;
+        const services              = universe.services;
+        const components            = services.components;
         const ComponentDescriptor   = components.ComponentDescriptor;
 
         const test = ComponentDescriptor({
@@ -30,7 +30,7 @@ import letThereBeLight      from '/evolux.universe';
 
 /*
 setTimeout(() => {
-    const components    = universe.evolux.components;
+    const components    = universe.services.components;
     universe.logger.info(components.list());
 }, 2000);
 */

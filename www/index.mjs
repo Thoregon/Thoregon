@@ -15,8 +15,8 @@ import { busy, ready }   from '/evolux.universe';
         busy();
         const universe              = await letThereBeLight();
 
-        const evolux                = universe.evolux;
-        const components            = evolux.components;
+        const services              = universe.services;
+        const components            = services.components;
         const ComponentDescriptor   = components.ComponentDescriptor;
 
         const test = ComponentDescriptor({

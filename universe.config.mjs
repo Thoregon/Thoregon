@@ -6,7 +6,7 @@
 
 import Controller, { ComponentDescriptor }  from '/evolux.dyncomponents';
 import LocationWatcher                      from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
-import { browserloader, myevolux }          from '/evolux.universe';
+import { browserloader, tservices }          from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
@@ -22,7 +22,7 @@ protouniverse.scope =       'ck4zzeen30000sj0og45h6wtk';
 protouniverse.atDawn(async universe => {
     const componentLocation     = 'components';
     const componentController   = Controller.baseCwd('ThoregonComponentController');
-    myevolux().components = componentController;
+    tservices().components = componentController;
 
     // now setup the basic distributed system
     await dsysp(universe);      // first the sovereign settings
@@ -34,7 +34,7 @@ protouniverse.atDawn(async universe => {
 });
 
 protouniverse.atDusk(async universe => {
-    await myevolux().components.exit();
+    await tservices().components.exit();
 });
 
 /*

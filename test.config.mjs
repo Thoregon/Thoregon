@@ -5,8 +5,8 @@
  */
 
 export default async () => {
-    const evolux                = universe.evolux;
-    const components            = evolux.components;
+    const services              = universe.services;
+    const components            = services.components;
     const ComponentDescriptor   = components.ComponentDescriptor;
 
     universe.logger.info("test.config");

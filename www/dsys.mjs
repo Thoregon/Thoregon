@@ -8,8 +8,8 @@
 
 
 const dsys = async (universe) => {
-    const evolux                = universe.evolux;
-    const components            = evolux.components;
+    const services              = universe.services;
+    const components            = services.components;
     const ComponentDescriptor   = components.ComponentDescriptor;
 
     /*
@@ -88,7 +88,7 @@ const dsys = async (universe) => {
      * Layers
      */
 
-    const layers = evolux.layers;
+    const layers = services.layers;
 
     //
 
