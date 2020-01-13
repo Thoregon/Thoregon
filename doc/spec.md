@@ -19,7 +19,12 @@ define the stage for the node.
     - matter        ... persistent entities
     - schema        ... schemas for entities
     - dddd          ... bounded contexts
+    - user          ... the current authenticated user (if so)
     
+- matter 
+    - components    ... component descriptors which will be installed/uninstalled interactive
+    - 
+
 Interfaces available on universe
 
     universe.logger

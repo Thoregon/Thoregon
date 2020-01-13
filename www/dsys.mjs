@@ -88,9 +88,15 @@ const dsys = async (universe) => {
      * Layers
      */
 
+    const exports = universe.components;
+
     const layers = services.layers;
 
-    //
+    const monitor = new exports.dynlayers.MonitorLayer("Gun LayerMonitor");
+    const gunlayer = new exports.gun.GunLayer();
+    gunlayer.insert(monitor);
+
+    layers.addStack('persistence', monitor);
 
 };
 
