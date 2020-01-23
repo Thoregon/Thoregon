@@ -11,15 +11,17 @@ export default async () => {
 
     universe.logger.info("test.config");
 
-    const subscriberlist = ComponentDescriptor({
-        id:             'subscriberlist',
-        displayName:    'broadcast.green subscriberlist',
-        category:       'broadcast.green',
-        href:           './lib/subscriberlist',
+    const channel = ComponentDescriptor({
+        id :            'channel',
+        displayName:    'channel from broadcast green',
+        category :      'test',
+        href :          './lib/channel',
     });
 
+    await components.install(channel);
+
     // install 'gun' to have synced distributed DB available
-    await components.install(subscriberlist);
-    await components.resolve(subscriberlist.id);
+    await components.install(channel);
+    await components.resolve(channel.id);
 };
 

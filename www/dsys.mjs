@@ -3,9 +3,6 @@
  *
  * @author: Bernhard Lukassen
  */
-// import { ComponentDescriptor } from '/evolux.dyncomponents';
-
-
 
 const dsys = async (universe) => {
     const services              = universe.services;
@@ -33,12 +30,14 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/evolux.matter',
     });
+/*
     const dynlayers = ComponentDescriptor({
         id:             'dynlayers',
         displayName:    'dynamic layers',
         category:       'universe',
         href:           '/evolux.dynlayers',
     });
+*/
     const schema =    ComponentDescriptor({
         id:             'schema',
         displayName:    'schema for apps and contexts',
@@ -68,9 +67,11 @@ const dsys = async (universe) => {
     await components.start(matter.id);
 
     // install 'dynlayer'. provides an infrastructure for all other components
+/*
     await components.install(dynlayers);
     await components.resolve(dynlayers.id);
     await components.start(dynlayers.id);
+*/
 
     // install 'schema'. it is essential to have schema descriptions for DDDD available
     await components.install(schema);
@@ -88,16 +89,20 @@ const dsys = async (universe) => {
      * Layers
      */
 
-    const exports = universe.components;
+/*
+    const persitenceStack   = 'gunpersistence';
 
-    const layers = services.layers;
+    const exports           = universe.components;
+    const s_layers          = services.layers;
+    const s_matter          = services.matter;
 
-    const monitor = new exports.dynlayers.MonitorLayer("Gun LayerMonitor");
-    const gunlayer = new exports.gun.GunLayer();
+    const monitor           = new exports.dynlayers.MonitorLayer("Gun LayerMonitor");
+    const gunlayer          = new exports.gun.GunLayer();
     gunlayer.insert(monitor);
 
-    layers.addStack('persistence', monitor);
-
+    s_layers.addStack(persitenceStack, monitor, (payload, res) => s_matter.changed(payload, res));
+    s_matter.persistence = persitenceStack;
+*/
 };
 
 export default dsys;

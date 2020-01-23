@@ -12,8 +12,8 @@ import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
 import testcfg                              from "./test.config.mjs";
 
-protouniverse.gunpeers =    ['https://service.broadcast.green:8765/gun'];
-protouniverse.scope =       'ck4zzeen30000sj0og45h6wtk';
+export const gunpeers =    ['https://service.broadcast.green:8765/gun'];
+export const scope =       'ck4zzeen30000sj0og45h6wtk';
 
 /*
  * initialize the component loader and load all
@@ -30,7 +30,7 @@ protouniverse.atDawn(async universe => {
 
     // now install all other components
     // componentController.addPlugin(new LocationWatcher(componentLocation));
-    await testcfg();
+    // await testcfg();
 });
 
 protouniverse.atDusk(async universe => {

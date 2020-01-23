@@ -11,8 +11,8 @@ import dsysp        from "./dsys.reliant.mjs";
 
 import { tservices, mythoregon } from '/evolux.universe';
 
-protouniverse.gunpeers =    ['https://service.broadcast.green:8765/gun'];
-protouniverse.scope =       'ck4zzeen30000sj0og45h6wtk';
+export const gunpeers =    ['https://service.broadcast.green:8765/gun'];
+export const scope =       'ck4zzeen30000sj0og45h6wtk';
 
 protouniverse.atDawn(async universe => {
     const componentController = Controller.baseCwd('ThoregonComponentController');
