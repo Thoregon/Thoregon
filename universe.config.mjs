@@ -4,9 +4,9 @@
  * @author: blukassen
  */
 
-import Controller, { ComponentDescriptor }  from '/evolux.dyncomponents';
-import LocationWatcher                      from '/evolux.dyncomponents/lib/controller/locationwatcher.mjs';
-import { browserloader, tservices }          from '/evolux.universe';
+import Controller, { ComponentDescriptor, ComponentsWatcher }  from '/evolux.dyncomponents';
+
+import { browserloader, tservices }         from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
@@ -29,7 +29,7 @@ protouniverse.atDawn(async universe => {
     await dsys(universe);
 
     // now install all other components
-    // componentController.addPlugin(new LocationWatcher(componentLocation));
+    componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // await testcfg();
 });
 

@@ -10,7 +10,7 @@ import letThereBeLight      from '/evolux.universe';
 (async () => {
     try {
         const universe              = await letThereBeLight();
-
+/*
         const services              = universe.services;
         const components            = services.components;
         const ComponentDescriptor   = components.ComponentDescriptor;
@@ -23,6 +23,7 @@ import letThereBeLight      from '/evolux.universe';
         });
 
         await components.install(test);
+*/
     } catch (err) {
         console.log(err);
     }
