@@ -41,7 +41,8 @@ protouniverse.atDusk(async universe => {
  * publish HTTP interface
  */
 browserloader.serve({
-    root: 'www/',
-    index: 'index.mjs',
+    // root: 'www/',        --> default
+    // common: './',        --> default
+    // index: 'index.mjs',  --> default
     port: 8071
 });
