@@ -15,6 +15,7 @@ import { busy, ready }   from '/evolux.universe';
         busy();
         const universe              = await letThereBeLight();
 
+/*
         const services              = universe.services;
         const components            = services.components;
         const ComponentDescriptor   = components.ComponentDescriptor;
@@ -27,6 +28,7 @@ import { busy, ready }   from '/evolux.universe';
         });
 
         await components.install(test);
+*/
 
         ready();
     } catch (err) {

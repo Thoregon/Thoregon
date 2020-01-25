@@ -4,7 +4,7 @@
  * @author: blukassen
  */
 
-import Controller, { ComponentDescriptor, ComponentsWatcher }  from '/evolux.dyncomponents';
+import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
 
 import { browserloader, tservices }         from '/evolux.universe';
 
