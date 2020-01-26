@@ -7,6 +7,9 @@ desktop.ini
 .idea
 *.iml
 
+# gun db
+radata/
+
 # webpack build
 build/
 
