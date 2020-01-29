@@ -18,12 +18,20 @@ define the stage for the node.
     - components    ... directory for all components (it may also be available in services)
     - matter        ... persistent entities
     - schema        ... schemas for entities
-    - dddd          ... bounded contexts
+    - dddd          ... tru4D specs 
+        - ctx       ... bounded contexts
+        - events
+        - commands
+        - actions
+        - aggregates
     - user          ... the current authenticated user (if so)
     
 - matter 
     - components    ... component descriptors which will be installed/uninstalled interactive
-    - 
+    - dddd          ... command & event store
+        - events
+        - commands
+    - collections from bounded context gets a top level entry
 
 Interfaces available on universe
 
