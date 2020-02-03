@@ -3,6 +3,9 @@ tmp/
 .ssh/
 desktop.ini
 
+# Thore͛gon
+.thoregon/
+
 # IDE files
 .idea
 *.iml

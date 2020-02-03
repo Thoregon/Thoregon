@@ -31,7 +31,7 @@ define the stage for the node.
     - dddd          ... command & event store
         - events
         - commands
-    - collections from bounded context gets a top level entry
+    - ${collection}s from bounded context gets a top level entry
 
 Interfaces available on universe
 

@@ -37,6 +37,8 @@ protouniverse.atDawn(async universe => {
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // todo: Refactor LocationWatcher to use 'matter.components'
+
+    testcfg();
 });
 
 protouniverse.atDusk(async universe => {
