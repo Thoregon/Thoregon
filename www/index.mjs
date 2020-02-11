@@ -12,7 +12,7 @@ import { busy, ready }   from '/evolux.universe';
 
 (async () => {
     try {
-        busy();
+        // busy();
         const universe              = await letThereBeLight();
 
 /*
@@ -30,7 +30,7 @@ import { busy, ready }   from '/evolux.universe';
         await components.install(test);
 */
 
-        ready();
+        // ready();
     } catch (err) {
         console.log(err);
     }
