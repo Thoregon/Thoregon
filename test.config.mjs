@@ -23,5 +23,7 @@ export default async () => {
     // install 'gun' to have synced distributed DB available
     await components.install(channel);
     await components.resolve(channel.id);
+
+    universe.logger.info(await await universe.matter.broadcast.green.channels.full);
 };
 
