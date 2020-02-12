@@ -8,7 +8,7 @@
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "start": "npm -C ./packages/universe run start"
+    "start": "node --loader /Entw/Projects/ThoregonUniverse/evolux.modules/evolux.universe/bootloader.mjs index.mjs"
   },
   "keywords": [
     "thoregon",
@@ -17,8 +17,5 @@
   ],
   "author": "Bernhard Lukassen",
   "license": "MIT",
-  "dependencies": {
-    "chokidar": "^3.2.2",
-    "voca": "^1.4.0"
-  }
+  "dependencies": {}
 }

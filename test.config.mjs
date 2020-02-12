@@ -24,6 +24,11 @@ export default async () => {
     await components.install(channel);
     await components.resolve(channel.id);
 
-    universe.logger.info(await await universe.matter.broadcast.green.channels.full);
+/*
+    let channels = await universe.matter.broadcast.green.channels.val;
+    let mirror = channels.mirror;
+
+    universe.logger.info(mirror);
+*/
 };
 
