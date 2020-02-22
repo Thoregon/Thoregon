@@ -2,7 +2,7 @@ Thore͛gon
 ========
 
 Thore͛gon shows its flamboyance on account of his claim to be a world computer. 
-It provides full featured nodes, which can be used to install bounded contexts.
+It provides full featured peers (nodes), which can be used to install bounded contexts.
 It runs as a sovereign node which allows reliant nodes to attach.
 
 Installable context/app server. Can be installed globally or a dev dependency.
@@ -11,7 +11,7 @@ The cli first looks if the current working dir has thoregon installed as a dev d
 Because Thore͛gon is a distributed system, there can not exists a composition service, because it is a single point of failure
 and can't handle different parts of the network.
 
-Therefore, Thore͛gon uses choreography to setup its components and relations. Components use the Name Service and Descovery 
+Therefore, Thore͛gon uses choreography to setup its components and relations. Components use the Name Service and Discovery 
 to find its counterparts. 
 --> [orchestration vs choreography](https://stackoverflow.com/questions/4127241/orchestration-vs-choreography)
 

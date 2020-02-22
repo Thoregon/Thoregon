@@ -11,17 +11,18 @@ export default async () => {
 
     universe.logger.info("test.config");
 
-    const channel = ComponentDescriptor({
-        id :            'channel',
-        displayName:    'channel from broadcast green',
+    const component = ComponentDescriptor({
+        id :            'Karte',
+        displayName:    'Karte - Browser for the universe',
         category :      'test',
-        href :          './lib/channel',
+        href :          '/thoregon.karte',
     });
 
-    await components.install(channel);
+    await components.install(component);
 
     // install 'gun' to have synced distributed DB available
-    await components.install(channel);
-    await components.resolve(channel.id);
+    await components.install(component);
+    await components.resolve(component.id);
+    await components.start(component.id);
 };
 
