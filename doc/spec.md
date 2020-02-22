@@ -27,6 +27,8 @@ define the stage for the node.
     - components    ... directory for all components (it may also be available in services)
     - matter        ... persistent entities
     - schema        ... schemas for entities
+    - handles       ... unique named objects handles in the universe: namespace.name -> one object
+    - tags          ... tags on (multiple) objects: namespace.tag -> set of objects   
     - dddd          ... tru4D specs 
         - ctx       ... bounded contexts
         - events
