@@ -13,12 +13,12 @@ import dsysp                                from "./dsys.sovereign.mjs";
 import testcfg                              from "./test.config.mjs";
 
 export const gunpeers           = ['https://service.broadcast.green:8765/gun'];
-export const scope              = 'ck4zzeen30000sj0og45h6wtk';
+export const scope              = 'ck738tmg30002tj0o7rxzdtol';
 
 // todo: move to seperate config e.g. 'tru4d.config.mjs'
 export const responsibilities   = {
-    'broadcast.green.publisher.service' : 'ck5z99pvr00004v0oc9bl6k3m',
-    'broadcast.green.provider.service'  : 'ck5za1mpm00007a0offuyd7kp',
+    'broadcast.green.publisher.service' : 'ck738tmg30003tj0o1nnr9m0e',
+    'broadcast.green.provider.service'  : 'ck738tmg30004tj0of4qjdhfb',
 };
 
 /*

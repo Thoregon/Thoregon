@@ -26,6 +26,9 @@ div.t1 {
     line-height: 1.2;
     padding: 10px 10px;
 }
+div.t2 {
+    background-color: rgb(248, 253, 255)
+}
 .t2 h1,.t2 h2,.t2 h3,.t2 h4 { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; }
 .t2 h1 { font-weight: 600; }
 .t2 .headlike { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 0.9em; }
@@ -37,6 +40,9 @@ div.t1 {
     line-height: 1.2;
     padding: 10px 10px;
 }
+div.t3 {
+    background-color: rgb(248, 253, 255)
+}
 
 .t3 h1,.t3 h2,.t3 h3,.t3 h4 { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; }
 .t3 .headlike { font-family: "IBM Plex Serif", Arial, sans-serif; text-transform: lowercase; font-weight: 600; font-size: 1em; }
@@ -44,8 +50,17 @@ div.t1 {
 /* Theme  Thore͛gon 1 Dark */
 
 div.tdark {
-    background: rgb(32,32,32);
     color: rgb(211, 211, 211);
+}
+
+div.tdark1 {
+    background: rgb(32,32,32);
+}
+div.tdark2 {
+    background: rgb(32,32,32);
+}
+div.tdark3 {
+    background: rgb(20,22,30);
 }
 
 .tdark .badge { color: rgb(164, 164, 164); border-color: rgb(164, 164, 164); }

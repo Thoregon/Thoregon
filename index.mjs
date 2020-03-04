@@ -4,12 +4,14 @@
  * @author: blukassen
  */
 
-
 import letThereBeLight      from '/evolux.universe';
+import components           from './@components';
 
 (async () => {
     try {
         const universe              = await letThereBeLight();
+
+        universe.addComponents(components);
     } catch (err) {
         console.log(err);
     }

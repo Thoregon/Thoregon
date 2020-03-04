@@ -5,6 +5,7 @@
  */
 
 import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
+import { serviceWorkerSetup }               from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.reliant.mjs";
@@ -35,6 +36,8 @@ protouniverse.atDawn(async universe => {
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
 
     testcfg();
+
+    serviceWorkerSetup();
 });
 
 protouniverse.atDusk(async universe => {

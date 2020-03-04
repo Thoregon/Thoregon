@@ -6,6 +6,8 @@
 
 
 import letThereBeLight      from '/evolux.universe';
+import components           from './@components';
+
 // import { loadIframe }    from '/evolux.universe';
 // import { busy, ready }   from '/evolux.universe';
 
@@ -13,11 +15,25 @@ import letThereBeLight      from '/evolux.universe';
     try {
         // busy();
         const universe              = await letThereBeLight();
-        let $done = document.createElement('p');
+
+        universe.addComponents(components);
+
+        /*
+         * basic DOM elements
+         */
+        let $head = document.getElementsByTagName('head')[0];
         let $body = document.getElementsByTagName('body')[0];
+
+        /*
+         * show ready message
+         */
+        let $done = document.createElement('p');
         $done.innerText = ">> universe inflated, dark age overcome";
         $body.appendChild($done);
-       // loadIframe('app.html');
+
+        console.log("components", components);
+
+        // loadIframe('app.html');
         // ready();
     } catch (err) {
         console.log(err);
