@@ -31,12 +31,12 @@ div.t2 {
 }
 .t2 h1,.t2 h2,.t2 h3,.t2 h4 { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; }
 .t2 h1 { font-weight: 600; }
-.t2 .headlike { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 0.9em; }
+.t2 .headlike { font-family: Rubik, Arial, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 1em; }
 
 /* Theme Thore͛gon 3 */
 .t3 {
     font-family: "Didact Gothic", Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     line-height: 1.2;
     padding: 10px 10px;
 }
@@ -54,13 +54,13 @@ div.tdark {
 }
 
 div.tdark1 {
-    background: rgb(32,32,32);
+    background: rgb(20,22,30);
 }
 div.tdark2 {
     background: rgb(32,32,32);
 }
 div.tdark3 {
-    background: rgb(20,22,30);
+    background: rgb(34,36,40);
 }
 
 .tdark .badge { color: rgb(164, 164, 164); border-color: rgb(164, 164, 164); }
