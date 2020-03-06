@@ -16,7 +16,7 @@ import components           from './@components';
         // busy();
         const universe              = await letThereBeLight();
 
-        universe.addComponents(components);
+        universe.addComponents(components);     // todo: automatize
 
         /*
          * basic DOM elements
