@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'web',
+    displayName:    'simple webservice connection to components',
+    category:       'universe',
+    href:           '/evolux.web',
+})
