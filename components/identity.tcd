@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'identity',
+    displayName:    'thoregon distributed identites',
+    category:       'thoregon',
+    href:           '/thoregon.identity',
+})

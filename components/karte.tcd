@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'KARTE',
+    displayName:    'thoregon universe KARTE',
+    category:       'thoregon',
+    href:           '/thoregon.karte',
+})
