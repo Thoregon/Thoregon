@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'UI',
+    displayName:    'evolux UI components',
+    category:       'evolux',
+    href:           '/evolux.ui',
+})
