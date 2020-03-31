@@ -20,6 +20,8 @@ cd evolux.matter
 npm install
 git clone https://github.com/Thoregon/evolux.dyncomponents.git
 cd evolux.dyncomponents
+git clone https://github.com/Thoregon/evolux.dynlayers.git
+cd evolux.dynlayers
 npm install
 git clone https://github.com/Thoregon/evolux.schema.git
 cd evolux.schema

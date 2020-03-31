@@ -27,6 +27,11 @@ git pull
 npm install
 npm audit fix
 cd ..
+cd evolux.dynlayers
+git pull
+npm install
+npm audit fix
+cd ..
 cd evolux.schema
 git pull
 npm install
