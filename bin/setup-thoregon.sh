@@ -9,35 +9,42 @@ cd evolux.modules
 git clone https://github.com/Thoregon/evolux.universe.git
 cd evolux.universe
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.util.git
 cd evolux.util
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.supervise.git
 cd evolux.supervise
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.matter.git
 cd evolux.matter
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.dyncomponents.git
 cd evolux.dyncomponents
+cd ..
 git clone https://github.com/Thoregon/evolux.dynlayers.git
 cd evolux.dynlayers
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.schema.git
 cd evolux.schema
 npm install
-git clone https://github.com/Thoregon/thoregon.tru4D.git
-cd thoregon.tru4D
-npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.everblack.git
 cd evolux.everblack
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.pubsub.git
 cd evolux.pubsub
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.ui.git
 cd evolux.ui
 npm install
+cd ..
 git clone https://github.com/Thoregon/evolux.web.git
 cd evolux.web
 npm install
@@ -49,15 +56,23 @@ cd thoregon.modules
 git clone https://github.com/Thoregon/thoregon.identity.git
 cd thoregon.identity
 npm install
+cd ..
 git clone https://github.com/Thoregon/thoregon.karte.git
 cd thoregon.karte
 npm install
+cd ..
+git clone https://github.com/Thoregon/thoregon.tru4D.git
+cd thoregon.tru4D
+npm install
+cd ..
 git clone https://github.com/Thoregon/thoregon.heliots.git
 cd thoregon.heliots
 npm install
+cd ..
 git clone https://github.com/Thoregon/thoregon.conversation.git
 cd thoregon.conversation
 npm install
+cd ..
 git clone https://github.com/Thoregon/thoregon.truCloud.git
 cd thoregon.truCloud
 npm install

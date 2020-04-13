@@ -37,11 +37,6 @@ git pull
 npm install
 npm audit fix
 cd ..
-cd thoregon.tru4D
-git pull
-npm install
-npm audit fix
-cd ..
 cd evolux.everblack
 git pull
 npm install
@@ -72,6 +67,11 @@ npm install
 npm audit fix
 cd ..
 cd thoregon.karte
+git pull
+npm install
+npm audit fix
+cd ..
+cd thoregon.tru4D
 git pull
 npm install
 npm audit fix
