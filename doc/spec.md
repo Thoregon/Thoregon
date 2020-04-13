@@ -1,7 +1,7 @@
 Thore͛gon
 ========
 
-Thore͛gon shows its flamboyance on account of his claim to be a world computer. 
+Thore͛gon shows its flamboyance on account of its claim to be a world computer. 
 It provides full featured peers (nodes), which can be used to install bounded contexts.
 It runs as a sovereign node which allows reliant nodes to attach.
 
@@ -35,16 +35,18 @@ define the stage for the node.
         - commands
         - actions
         - aggregates
-    - user          ... the current authenticated user (if so)
+    - identity       ... the identity of the currently authenticated user (if so)
     
 - matter 
     - components    ... component descriptors which will be installed/uninstalled interactive
     - dddd          ... command & event store
-        - events
-        - commands
-            - current   ... current command has a chain with property 'prev' which contains the previous command
-    - ${ctxid}.${collection} from bounded context gets a top level entry
-    - [responsibilities]    for each responsibility a separate store is installed
+        - ctx       ... encoded and signed key pair from bounded context
+            - events
+            - commands
+                - current   ... current command has a chain with property 'prev' which contains the previous command
+            - [responsibilities]    for each responsibility a separate store is installed
+            - ${collection} from bounded context gets a top level entry
+            - ${owner}.${collection} from bounded context gets a top level entry
 
 Interfaces available on universe
 

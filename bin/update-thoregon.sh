@@ -37,7 +37,7 @@ git pull
 npm install
 npm audit fix
 cd ..
-cd evolux.tru4D
+cd thoregon.tru4D
 git pull
 npm install
 npm audit fix

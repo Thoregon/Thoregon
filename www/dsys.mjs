@@ -30,6 +30,18 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/evolux.matter',
     });
+    const karte =    ComponentDescriptor({
+        id:             'KARTE',
+        displayName:    'thoregon universe KARTE',
+        category:       'thoregon',
+        href:           '/evolux.matter',
+    });
+    const identity  = ComponentDescriptor({
+        id:             'identity',
+        displayName:    'thoregon distributed identites',
+        category:       'thoregon',
+        href:           '/thoregon.identity',
+    });
 /*
     const dynlayers = ComponentDescriptor({
         id:             'dynlayers',
@@ -48,7 +60,7 @@ const dsys = async (universe) => {
         id:             'tru4D',
         displayName:    'true distributed domain driven design',
         category:       'universe',
-        href:           '/evolux.tru4D',
+        href:           '/thoregon.tru4D',
     });
 
     // install 'gun' to have synced distributed DB available
@@ -72,6 +84,16 @@ const dsys = async (universe) => {
     await components.resolve(dynlayers.id);
     await components.start(dynlayers.id);
 */
+
+    // install 'KARTE'. it is essential to have name and discovery service for DDDD available
+    await components.install(karte);
+    await components.resolve(karte.id);
+    await components.start(karte.id);
+
+    // install 'identity'. it is essential to have identities for DDDD available
+    await components.install(identity);
+    await components.resolve(identity.id);
+    await components.start(identity.id);
 
     // install 'schema'. it is essential to have schema descriptions for DDDD available
     await components.install(schema);

@@ -10,5 +10,5 @@ export default ComponentDescriptor({
     id :            'tru4d',
     displayName:    'true distributed domain driven design',
     category :      'universe',
-    href :          '/evolux.tru4D',
+    href :          '/thoregon.tru4D',
 });

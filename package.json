@@ -2,10 +2,10 @@
   "name": "thoregon",
   "description": "thoregon - business operating system.",
   "version": "1.0.0",
-  "main": "index.mjs",
+  "main": "thoregon.mjs",
   "type": "module",
   "scripts": {
-    "start": "node --loader /Entw/Projects/ThoregonUniverse/evolux.modules/evolux.universe/bootloader.mjs index.mjs"
+    "start": "node --loader /Entw/Projects/ThoregonUniverse/evolux.modules/evolux.universe/bootloader.mjs thoregon.mjs"
   },
   "keywords": [
     "thoregon",

@@ -26,8 +26,8 @@ npm install
 git clone https://github.com/Thoregon/evolux.schema.git
 cd evolux.schema
 npm install
-git clone https://github.com/Thoregon/evolux.tru4D.git
-cd evolux.tru4D
+git clone https://github.com/Thoregon/thoregon.tru4D.git
+cd thoregon.tru4D
 npm install
 git clone https://github.com/Thoregon/evolux.everblack.git
 cd evolux.everblack

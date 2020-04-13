@@ -28,35 +28,64 @@ const encdec = async () => {
 const shared = async () => {
 // now let's share private data with someone:
     let alice = await SEA.pair();
-    let apub = { pub: alice.pub, epub: alice.epub };
     let bob = await SEA.pair();
-    let bpub = { pub: bob.pub, epub: bob.epub };
-    let shared1 =  await SEA.secret(bpub.epub, alice);
+    let shared1 =  await SEA.secret(bob.epub, alice);
     let enc = await SEA.encrypt('This can only be read by alice & bob', shared1);
-    let shared2 = await SEA.secret(apub.epub, bob);
+    let shared2 = await SEA.secret(alice.epub, bob);
     let dec = await SEA.decrypt(enc, shared2);
     universe.logger.info('[everblack]',dec);
 };
 
 const securestore = async () => {
 // encrypt passphrase to be stored in public universe
-    let pp = rnd(64);
-    let responsiblity = { id: 'broadcast.green.publisher', path: rnd(64), passphrase: pp, pair: await SEA.pair()};
+    let pp = 'passphrase';
+    let responsiblity = { id: 'broadcast.green.publisher', path: 'path.to', passphrase: pp, pair: await SEA.pair()};
     let salt = rnd(64);
     let proof1 = await SEA.work(pp, salt);
     let enc = await SEA.encrypt(responsiblity, proof1);
     let eresponsobility = JSON.stringify({ enc: enc, salt: salt});
     universe.logger.info('[everblack]',eresponsobility);
-// now decode it again
+
+// on another process/device: now decode it again
     let proof2 = await SEA.work(pp, salt);
     let r = JSON.parse(eresponsobility);
     let dresponsibility = await SEA.decrypt(r.enc, proof2);
     universe.logger.info('[everblack]',dresponsibility);
 };
 
+
+const signedsecurestore = async () => {
+// encrypt passphrase to be stored in public universe
+    let alice = await SEA.pair();
+    let bob = await SEA.pair();
+
+    let alicepub = alice.pub;
+    let bobpub = bob.pub;
+
+    let pp = 'passphrase';
+    let responsiblity = { id: 'broadcast.green.publisher', path: 'path.to', passphrase: pp, pair: await SEA.pair()};
+    let salt = rnd(64);
+    let proof1 = await SEA.work(pp, salt);
+    let enc = await SEA.encrypt(responsiblity, proof1);
+    let data = await SEA.sign(enc, alice);
+    let encresponsobility = JSON.stringify({ data, salt });
+    universe.logger.info('[everblack]',encresponsobility);
+
+// on another process/device: now decode it again
+    let proof2 = await SEA.work(pp, salt);
+    let r = JSON.parse(encresponsobility);
+    let msg = await SEA.verify(r.data, alicepub);
+    let decresponsibility = await SEA.decrypt(msg, proof2);
+
+    universe.logger.info('[everblack]',decresponsibility);
+};
+
+
+
 (async () => {
-    await encdec();
-    await shared();
-    await securestore();
+    // await encdec();
+    // await shared();
+    // await securestore();
+    await signedsecurestore();
 })();
 
