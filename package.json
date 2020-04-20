@@ -14,5 +14,7 @@
   ],
   "author": "Bernhard Lukassen",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "yargs": "^15.3.1"
+  }
 }

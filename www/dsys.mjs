@@ -24,6 +24,12 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/terra.gun',
     });
+    const everblack = ComponentDescriptor({
+        id:             'everblack',
+        displayName:    'encryption & security for thoregon',
+        category:       'thoregon',
+        href:           '/evolux.everblack',
+    });
     const matter =    ComponentDescriptor({
         id:             'matter',
         displayName:    'matter in the universe',

@@ -17,7 +17,7 @@ to find its counterparts.
 
 
 ## Boot
-create a realm for each user and a scope for each node (installation). 
+create a realm for each user and maybe a scope for each node (installation). 
 define the stage for the node.
 
 ##Universe Directory Struct
@@ -25,28 +25,31 @@ define the stage for the node.
 - universe
     - services      ... directory for all services
     - components    ... directory for all components (it may also be available in services)
+    - Matter        ... static methods for matter
     - matter        ... persistent entities
     - schema        ... schemas for entities
     - handles       ... unique named objects handles in the universe: namespace.name -> one object
     - tags          ... tags on (multiple) objects: namespace.tag -> set of objects   
     - dddd          ... tru4D specs 
-        - ctx       ... bounded contexts
-        - events
-        - commands
-        - actions
-        - aggregates
-    - identity       ... the identity of the currently authenticated user (if so)
+        - meta      ... meta bounded contexts
+            - events
+            - commands
+            - actions
+            - aggregates
+        - ctx       ... bounded context instances, persistent in matter
+            - events
+            - identities
+                - {identity}
+                    - {collection}
+            - responsibilities    for each responsibility a separate store is installed
+                - commands
+                    - current   ... current command has a chain with property 'prev' which contains the previous command
+            - {collection} from bounded context gets a top level entry
+    - Identity      ... the identity controller, use to create, authenticate and drop identities
+    - identity      ... the identity of the currently authenticated user (if so)
     
 - matter 
     - components    ... component descriptors which will be installed/uninstalled interactive
-    - dddd          ... command & event store
-        - ctx       ... encoded and signed key pair from bounded context
-            - events
-            - commands
-                - current   ... current command has a chain with property 'prev' which contains the previous command
-            - [responsibilities]    for each responsibility a separate store is installed
-            - ${collection} from bounded context gets a top level entry
-            - ${owner}.${collection} from bounded context gets a top level entry
 
 Interfaces available on universe
 

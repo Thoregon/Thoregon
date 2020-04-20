@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+TH="`cd "$PWD/..";pwd`"
+
+echo "
+# Thoregon
+export THOREGON_HOME=$TH
+export THOREGON=\"$TH/Thoregon\"
+export PATH=\"$THOREGON/bin:$PATH\"
+" >> ~/.profile

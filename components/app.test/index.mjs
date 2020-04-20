@@ -11,7 +11,7 @@ export default {
 const rnd = universe.Gun.text.random;
 const SEA = universe.Gun.SEA;
 
-const encdec = async () => {
+const pubpriv = async () => {
     let pair = await SEA.pair();
     // either
     let enc = await SEA.encrypt('hello world', pair);
@@ -80,12 +80,19 @@ const signedsecurestore = async () => {
     universe.logger.info('[everblack]',decresponsibility);
 };
 
+const signon = async () => {
+    universe.logger.info('Auth', await universe.Identity.auth('bgtest1', 'bgtest1'));
+    universe.logger.info('Is', await universe.identity.is);
+};
+
 
 
 (async () => {
-    // await encdec();
+    // await pubpriv();
     // await shared();
-    // await securestore();
-    await signedsecurestore();
+    await securestore();
+    // await signedsecurestore();
+
+    // await signon();
 })();
 
