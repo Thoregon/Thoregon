@@ -5,7 +5,9 @@
  */
 
 import yargs        from "/yargs";
-import { Gun }      from "/terra.gun";
+// import { Gun }      from "/terra.gun";
+
+const Gun = globalThis.Gun;
 
 export default async () => {
     let argv = yargs

@@ -79,6 +79,11 @@ const dsys = async (universe) => {
     await components.resolve(gun.id);
     await components.start(gun.id);
 
+    // install 'everblack' to have secure end2end encryption within the distributed DB
+    await components.install(everblack);
+    await components.resolve(everblack.id);
+    await components.start(everblack.id);
+
     // install 'matter' to have fast queries available
     await components.install(matter);
     await components.resolve(matter.id);
