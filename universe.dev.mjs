@@ -4,5 +4,5 @@
  * @author: blukassen
  */
 
-export const DEBUG = false;
+export const DEBUG = true;
 export const GUNDEBUG = false;
