@@ -1,6 +1,9 @@
 /**
  * This is the CLI for thoregon to manage this thoregon node
  *
+ * Usage:
+ *  $ vault
+ *
  * @author: Bernhard Lukassen
  */
 
