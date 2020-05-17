@@ -56,3 +56,7 @@ Interfaces available on universe
     universe.logger
     universe.DEBUG
     (universe.scope)
+
+# Hostservice for Components
+commercial infrastructure to host components and bounded context (parts)
+
