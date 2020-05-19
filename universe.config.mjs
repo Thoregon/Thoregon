@@ -16,8 +16,11 @@ export const gunpeers           = ['https://service.broadcast.green:8765/gun'];
 
 // todo: move to seperate config e.g. 'tru4d.config.mjs'
 export const responsibilities   = [
-    'thoregon.service'
+    'thoregon.service',
+    'identity.services.provider'
 ];
+
+export { default as smtpcredentials }       from "./smtp.json";
 
 /*
  * initialize the component loader and load all

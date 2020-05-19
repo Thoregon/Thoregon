@@ -60,3 +60,7 @@ Interfaces available on universe
 # Hostservice for Components
 commercial infrastructure to host components and bounded context (parts)
 
+# Dev
+
+Hot reload by default only for Browser UI. Other components may not work when reloaded on every change.
+ 
