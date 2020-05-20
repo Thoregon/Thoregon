@@ -23,6 +23,7 @@ define the stage for the node.
 ##Universe Directory Struct
 
 - universe
+    - now           ... get current date/time, if online network synced
     - services      ... directory for all services
     - components    ... directory for all components (it may also be available in services)
     - Matter        ... static methods for matter
