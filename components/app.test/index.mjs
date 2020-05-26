@@ -90,7 +90,7 @@ const signon = async () => {
 (async () => {
     // await pubpriv();
     // await shared();
-    await securestore();
+    // await securestore();
     // await signedsecurestore();
 
     // await signon();

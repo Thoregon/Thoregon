@@ -1,0 +1,28 @@
+ToDo Next
+
+- Collection
+    - items as DB nodes
+    - refactor init/missing/find
+- Command
+    - return result listener (Promise)
+    - easy API to get new objects
+    - collect results, pass to next action
+    - if one result, pass it to listener
+        - define which result from which action should be used
+        - pass result array to listener
+        - specify collect function, pass fn result to listener
+- (Meta) Bounded Context
+    - store in Matter
+    - easy API
+- truCloud
+    - own network (nodes/peers)
+    - manage
+        - install/deinstall components/bounded contexts
+    - check bounded context as component (dyncomponents)
+    - include
+        - IPFS
+        - Blockchains
+            - Tendermint for secure transactions
+            - Ethereum/Bitcoin/litecoin  for secure financial transactions
+            - Lightning Network
+        - ...

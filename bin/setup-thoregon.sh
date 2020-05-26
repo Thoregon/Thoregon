@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # create the thoregon root dir
-mkdir thoregon
-cd thoregon
+# mkdir Thoregon
+# cd Thoregon
 
 # now the evolux.modules
 mkdir evolux.modules
