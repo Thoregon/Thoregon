@@ -5,6 +5,6 @@ TH="`cd "$PWD/..";pwd`"
 echo "
 # Thoregon
 export THOREGON_HOME=$TH
-export THOREGON=\"$TH/Thoregon\"
+export THOREGON=\"$TH/thoregon\"
 export PATH=\"$THOREGON/bin:$PATH\"
 " >> ~/.profile
