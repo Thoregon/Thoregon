@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
+#
+# exec this script here in the /bin folder!
+# $ ./add2bashprofile
+#
 
 TH="`cd "$PWD/..";pwd`"
 
 echo "
 # Thoregon
-export THOREGON_HOME=$TH
-export THOREGON=\"$TH/thoregon\"
-export PATH=\"$THOREGON/bin:$PATH\"
+export THOREGON_HOME=\"$TH\"
+export PATH=\"$TH/bin:$PATH\"
 " >> ~/.profile
+
+# update profile
+. ~/.profile

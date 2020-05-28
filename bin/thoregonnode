@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# exec this script here in the /bin folder!
+# $ ./add2bashprofile
+#
+
+node --loader $THOREGON_HOME/evolux.modules/evolux.universe/bootloader.mjs $THOREGON_HOME/Thoregon/thoregon.mjs

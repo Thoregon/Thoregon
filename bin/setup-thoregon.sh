@@ -1,4 +1,5 @@
 #!/bin/sh
+# exec this script in the THOREGON_HOME directory
 
 # create the thoregon root dir
 # mkdir Thoregon
@@ -62,6 +63,7 @@ git clone https://github.com/Thoregon/evolux.web.git
 cd evolux.web
 npm install
 npm audit fix
+cd ..
 
 # now thoregon.modules
 cd ..
@@ -97,6 +99,7 @@ git clone https://github.com/Thoregon/thoregon.truCloud.git
 cd thoregon.truCloud
 npm install
 npm audit fix
+cd ..
 
 # now terra.modules
 cd ..
@@ -119,3 +122,14 @@ npm audit fix
 
 cd ..
 cd ..        // should be the thoregon root dir
+
+#
+# generate node id and keypair
+#
+
+
+
+# ask user for passphrase
+# todo [OPEN]:
+#  - BIP39: Mnemonic code for generating deterministic keys
+#  -

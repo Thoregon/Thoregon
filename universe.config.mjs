@@ -45,13 +45,3 @@ protouniverse.atDawn(async universe => {
 protouniverse.atDusk(async universe => {
     await tservices().components.exit();
 });
-
-/*
- * publish HTTP interface
- */
-browserloader.serve({
-    // root: 'www/',        --> default
-    // common: './',        --> default
-    // index: 'index.mjs',  --> default
-    port: 8070
-});

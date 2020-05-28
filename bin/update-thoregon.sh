@@ -1,4 +1,5 @@
 #!/bin/sh
+# exec this script in the THOREGON_HOME directory
 
 cd evolux.modules
 
@@ -102,7 +103,7 @@ npm audit fix
 cd ..
 
 cd ..
-cd ..       // sollte wieder im Hauptverzeichnis sein
+cd ..       // THOREGON_HOME
 
 cd Thoregon
 git pull
