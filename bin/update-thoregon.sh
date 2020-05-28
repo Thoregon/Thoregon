@@ -103,10 +103,10 @@ npm audit fix
 cd ..
 
 cd ..
-cd ..       // THOREGON_HOME
 
 cd Thoregon
 git pull
 npm install
 npm audit fix
 cd ..
+cd ..       // THOREGON_HOME
