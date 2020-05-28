@@ -4,6 +4,8 @@
  * @author: blukassen
  */
 
+import { browserloader }            from '/evolux.universe';
+
 // don't change this settings unless you have a really good reason
 export const DEBUG = false;
 export const GUNDEBUG = false;
