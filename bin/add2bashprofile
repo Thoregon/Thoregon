@@ -14,3 +14,5 @@ export PATH=\"$TH/bin:$PATH\"
 
 # update profile
 . ~/.profile
+
+echo "Add the following line to ~~.prfile with the right STAGE: export THOREGON_STAGE=\"prod\""
