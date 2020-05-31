@@ -58,6 +58,14 @@ Interfaces available on universe
     universe.DEBUG
     (universe.scope)
 
+# Nameservice
+
+Define your galaxy in the universe. Names can now be defined hierarchically.
+Use to identify your bounded contexts (meta and instances).
+
+# Thoregon Events
+Since a Thoregon peer is comprised of components and bounded contexts, there are a number of thoregon events
+
 # Hostservice for Components
 commercial infrastructure to host components and bounded context (parts)
 

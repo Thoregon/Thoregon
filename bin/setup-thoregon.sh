@@ -5,6 +5,9 @@
 # mkdir Thoregon
 # cd Thoregon
 
+# first install the CLI
+npm install -g thoregon-cli
+
 # now the evolux.modules
 mkdir evolux.modules
 cd evolux.modules

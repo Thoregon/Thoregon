@@ -1,6 +1,10 @@
 #!/bin/sh
 # exec this script in the THOREGON_HOME directory
 
+# update CLI
+npm install -g thoregon-cli
+
+# now update modules
 cd evolux.modules
 
 cd evolux.universe
