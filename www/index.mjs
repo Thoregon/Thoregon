@@ -35,6 +35,8 @@ import components           from './@components';
 
         // loadIframe('app.html');
         // ready();
+
+        document.dispatchEvent(new CustomEvent('universe', { detail: universe }));
     } catch (err) {
         console.log(err);
     }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Embedded Test</title>
+    <style>
+        * {
+            border:             0;
+            margin:             0;
+            padding:            0;
+        }
+
+        html, body {
+            line-height:            1.2;
+            text-rendering:         optimizeLegibility;
+            font-family:            "Helvetica Neue", Arial, sans-serif;
+            font-weight:            200;
+            font-size:              15px;
+            color:                  #0a0a0a;
+            min-height:             100% !important;
+            width:                  100%;
+            height:                 100%;
+            overflow:               auto;
+        }
+
+        body {
+            background:             white;  /*linear-gradient(111deg, #fffaf0, #fff9e9);*/
+        }
+
+        body > div {
+            margin: 8px 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div>
+    <p>Embedded Thoregon in another HTML</p>
+</div>
+        <script type="module" src="http://localhost:8070/embedded"></script>
+        <script type="module">
+            document.addEventListener('universe', (evt) => {
+                let elem = document.querySelector('body>div');
+                if (elem) {
+                    let msg = document.createElement('p');
+                    msg.innerText = `Universe inflated!`;
+                    elem.appendChild(msg);
+                }
+            });
+        </script>
+</body>
+</html>
