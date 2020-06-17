@@ -1,0 +1,14 @@
+[Unit]
+Description=Thoregon Peer
+After=network.target
+
+[Service]
+Environment=STAGE=DEV
+Type=simple
+User=thoregon
+WorkingDirectory=/opt/thoregon/Thoregon
+ExecStart=/usr/bin/node thoregon.mjs
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

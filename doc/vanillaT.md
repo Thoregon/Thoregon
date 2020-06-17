@@ -8,6 +8,13 @@ vani͛llaT - Standard library of Thore͛gon
 ## Paradigm
 
 Since thoregon is a true distributed system, the programming model differs from cloud apps you are used to.
+A distributed system is not an evolution of a decentralized system, it something completely different.
+
+Thoregon is not a single package which you run an any machine. 
+There will also no packagers be use to create an app. Compose your app by referencing components (and bounded contexts).
+Components can have other components as dependencies
+Yes, if you want, you can name it a package. But it is not really packaged, it is referenced in the universe. 
+Of course you can also use a packager to build a component.
 
 ### Universe
 
@@ -29,7 +36,7 @@ We apply encriptions anywhere that you
 
 Everything in your local DB is encrypted.
 
-### Components
+## Components
 
 Thoregon follows a choreography model rather than an orchestration model.
 [orchestration vs choreography](https://stackoverflow.com/questions/4127241/orchestration-vs-choreography)
@@ -79,7 +86,10 @@ The devlopment trinity:
 - implementation    ... do what you want, but be careful.
 Apply in this order: Use convention, if not sutable configure it, if not possible implement it.
 
-### Storage
+BoundedContexts consequently follows an imutablility paradigm. Any entity can not be modified directly (well technically you can, but you shoud not).
+To create or modify entities Commands must be used (this is simmilar to Flux Actions).
+
+## Storage
 The storage is __eventually consistent__ and __offline first__ by design. But in the real world with terra 
 bit networks, partition situations are very rare you can assume that the storage it is consistent. 
 We cannot overcome the CAP theorem, but todays networks mitigate at least the partitions.
@@ -122,7 +132,10 @@ Reduce it to one operation. Don't store the account balance at each account, sto
 ```
   well, this is a very simple example, you can store other (meta) data about your transaction. 
   The second variant enables you to safely purge old transaction if you don't need them anymore, because
-  they store the current state of the entity.  
+  they store the current state of the entity. 
+  
+  But isn't there still a conflict possible? Yes in a partition situation. If there is the need of guaranteed transaction 
+  sequences use one of the integrated blockchains. 
 
 Another possibility is to use a CRDT counter to maintain the balance on both accounts. This is an eventually 
 consistent design, but at the end it will be consistent. 
@@ -141,7 +154,34 @@ Define the sequence you need
 - none, you get the order from your local DB
 - gun state, the sequence at which state data arrives  
 
-### Patterns & Templates 
+## Patterns & Templates 
 
 For many requirements there are prefabricated component templates. Browse the thoregon repository
 to find components to use as starting point. Often you don't need to start from scratch. 
+
+
+## import 
+
+The specification for the ES5 'import' statement requires (in browser environments) urls must start with either "/", "./", or "../"
+Therefore modules written for node which imports node modules with just their name e.g.
+
+    import fs   from 'fs';
+
+can not be used in browser modules. 
+
+Thoregon mittigates that by providing loaders. 
+- Browserloader: redirects references for '/<module>' to the correct location
+- Bootloader: implements the loader hook (see https://nodejs.org/api/esm.html)
+
+Modules can be referenced by a leading '/' e.g.  
+
+    import fs   from '/fs';
+
+This will work in browser and in node environments 
+
+
+
+
+
+
+

@@ -40,7 +40,7 @@ const dsys = async (universe) => {
         id:             'KARTE',
         displayName:    'thoregon universe KARTE',
         category:       'thoregon',
-        href:           '/evolux.matter',
+        href:           '/thoregon.karte',
     });
     const identity  = ComponentDescriptor({
         id:             'identity',

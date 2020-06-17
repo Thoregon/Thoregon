@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'thatsme.auth',
+    displayName:    'thatsme authentication components',
+    category:       'thatsme',
+    href:           '../../b-coop/thatsme/thoregon/thatsme.modules/thatsme.auth',
+})

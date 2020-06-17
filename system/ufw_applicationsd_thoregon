@@ -1,0 +1,17 @@
+# move this file to /etc/ufw/applications.d/thoregon
+# remove the comments
+# see https://wiki.ubuntuusers.de/ufw/
+[Thoregon HTTP]
+title=Thoregon (HTTP)
+description=Thoregon Node - Distributed system peer
+ports=80/tcp
+
+[Thoregon HTTPS]
+title=Thoregon (HTTPS)
+description=Thoregon Node - Distributed system peer
+ports=443/tcp
+
+[Thoregon]
+title=Thoregon (HTTP + HTTPS)
+description=Thoregon Node - Distributed system peer
+ports=80,443/tcp
