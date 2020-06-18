@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'Aurora',
+    displayName:    'Thoregon Aurora UI components',
+    category:       'thoregon',
+    href:           '/thoregon.aurora',
+})

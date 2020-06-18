@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # exec this script in the THOREGON_HOME directory
 
 # create the thoregon root dir
