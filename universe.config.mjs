@@ -10,7 +10,6 @@ import { browserloader, tservices }         from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
-import testcfg                              from "./test.config.mjs";
 
 export const gunpeers           = ['https://service.broadcast.green:8765/gun'];
 
@@ -38,8 +37,6 @@ protouniverse.atDawn(async universe => {
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // todo: Refactor LocationWatcher to use 'matter.components'
-
-    testcfg();
 });
 
 protouniverse.atDusk(async universe => {
