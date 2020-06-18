@@ -103,6 +103,11 @@ cd thoregon.truCloud
 npm install
 npm audit fix
 cd ..
+git clone https://github.com/Thoregon/thoregon.aurora.git
+cd thoregon.truCloud
+npm install
+npm audit fix
+cd ..
 
 # now terra.modules
 cd ..

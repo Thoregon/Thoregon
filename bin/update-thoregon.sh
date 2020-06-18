@@ -96,6 +96,11 @@ git pull
 npm install
 npm audit fix
 cd ..
+cd thoregon.aurora
+git pull
+npm install
+npm audit fix
+cd ..
 
 cd ..
 cd terra.modules
