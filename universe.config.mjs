@@ -19,7 +19,7 @@ export const responsibilities   = [
     'identity.services.provider'
 ];
 
-export { default as smtpcredentials }       from "./smtp.json";
+// export { default as smtpcredentials }       from "./smtp.json";
 
 /*
  * initialize the component loader and load all
