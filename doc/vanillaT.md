@@ -26,6 +26,8 @@ on your local computer.
 
 ### truServerless
 
+is the development paradim and method to develop software for the truCloud 
+
 ## Encryption
 
 Why is there encryption everywhere? You also use doors for your house or flat to give you some privacy. 
@@ -88,6 +90,13 @@ Apply in this order: Use convention, if not sutable configure it, if not possibl
 
 BoundedContexts consequently follows an imutablility paradigm. Any entity can not be modified directly (well technically you can, but you shoud not).
 To create or modify entities Commands must be used (this is simmilar to Flux Actions).
+
+## Versions
+In the universe, there is not a version installed, all versions are available at once.
+Since you don't package a universe, you need to express which version your comonents are using.
+The Version Management 
+
+To provide the right versions for your components locally [pnpm](https://pnpm.js.org/) is used to save disk space 
 
 ## Storage
 The storage is __eventually consistent__ and __offline first__ by design. But in the real world with terra 

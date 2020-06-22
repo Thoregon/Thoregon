@@ -10,8 +10,6 @@ import { serviceWorkerSetup }               from '/evolux.universe';
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.reliant.mjs";
 
-import testcfg                              from "./test.config.mjs";
-
 import { tservices, mythoregon }            from '/evolux.universe';
 
 export const gunpeers =    ['https://service.broadcast.green:8765/gun'];
@@ -33,9 +31,7 @@ protouniverse.atDawn(async universe => {
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
 
-    testcfg();
-
-    serviceWorkerSetup();
+    // serviceWorkerSetup();
 });
 
 protouniverse.atDusk(async universe => {

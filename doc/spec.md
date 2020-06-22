@@ -58,6 +58,12 @@ Interfaces available on universe
     universe.DEBUG
     (universe.scope)
 
+# Galaxies
+
+owner
+
+Thoregon adds functions to ipfs. Now you can publish your apps over ipfs
+
 # Nameservice
 
 Define your galaxy in the universe. Names can now be defined hierarchically.
@@ -73,3 +79,10 @@ commercial infrastructure to host components and bounded context (parts)
 
 Hot reload by default only for Browser UI. Other components may not work when reloaded on every change.
  
+# Firewall
+In a distributed system every peer is vulnerable to DDNS attack. A firewall needs to prevent
+this situations, but also needs to maintain consistency. 
+
+1 The firewall prevents graphs from being overwritten by a put which is not allowed
+
+2 For ever write permission there will be a max writes per period (second, ...)
