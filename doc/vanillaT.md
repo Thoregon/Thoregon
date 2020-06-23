@@ -16,6 +16,10 @@ Components can have other components as dependencies
 Yes, if you want, you can name it a package. But it is not really packaged, it is referenced in the universe. 
 Of course you can also use a packager to build a component.
 
+As we are used to blockchain systems like ethereum, components (whatever kind of component) needs to be deployed
+to thoregon to become available and active.
+A hot reload (deploy) for testing is avialable. This does not apply to the global universe, only on test thoregons.
+
 ### Universe
 
 In the universe is the place where all thoregon peers reside. It is public accessible for everyone.
