@@ -20,6 +20,8 @@ As we are used to blockchain systems like ethereum, components (whatever kind of
 to thoregon to become available and active.
 A hot reload (deploy) for testing is avialable. This does not apply to the global universe, only on test thoregons.
 
+The Universe, Galaxies, Components, BoundedContexts, Schemas and Documents enables a generic navigation like Hypermedia (HATEOS) 
+
 ### Universe
 
 In the universe is the place where all thoregon peers reside. It is public accessible for everyone.
@@ -39,6 +41,8 @@ We apply encriptions anywhere that you
 - don't forget to use it
 - that you don't regret not using it
 - can retrive all your data even if you lose your computer 
+
+In the ancient times of the internet, the lack of security was the worst mistake. 
 
 Everything in your local DB is encrypted.
 
