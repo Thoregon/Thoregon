@@ -31,6 +31,11 @@
     document.addEventListener('aurora-inputtext-added', (evt) => {
         console.log('aurora-inputtext-added', evt.detail);
     });
+
+    let aurorainputtext = document.getElementsByTagName('aurora-inputtext')[0];
+    aurorainputtext.addEventListener('fieldtextloaded', (evt) => {
+        console.log('aurora-inputtext -> fieldtextloaded', evt.detail);
+    })
 </script>
 </body>
 </html>
