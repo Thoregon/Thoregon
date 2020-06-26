@@ -13,8 +13,8 @@
 <aurora-inputtext
         name="first_name"
         label="Vorname"
-        leading_icon="myicon"
-        trailing_icon="anotherIcon"
+        _leading_icon="myicon"
+        _trailing_icon="anotherIcon"
         placeholder="xyz"
         stack_label >
 </aurora-inputtext>
@@ -25,11 +25,13 @@
     });
 
     document.addEventListener('aurora-element-added', (evt) => {
-        console.log('aurora-element-added', evt.detail);
+ //       console.log('aurora-element-added', evt.detail);
     });
 
     document.addEventListener('aurora-inputtext-added', (evt) => {
         console.log('aurora-inputtext-added', evt.detail);
+        console.log(evt.detail);
+        console.log( evt.detail.getElementsByClassName("aurora-text-field") );
     });
 
     let aurorainputtext = document.getElementsByTagName('aurora-inputtext')[0];
