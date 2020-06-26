@@ -20,5 +20,17 @@
 </aurora-inputtext>
 <script type="module" src="http://localhost:8070/embedded"></script>
 
+<script type="module">
+    document.addEventListener('universe', () => {
+    });
+
+    document.addEventListener('aurora-element-added', (evt) => {
+        console.log('aurora-element-added', evt.detail);
+    });
+
+    document.addEventListener('aurora-inputtext-added', (evt) => {
+        console.log('aurora-inputtext-added', evt.detail);
+    });
+</script>
 </body>
 </html>
