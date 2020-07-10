@@ -10,8 +10,10 @@
       rel="stylesheet">
 
 <p>Servas, sag was:</p>
+
 <aurora-inputtext
         name="first_name"
+        aurora-name="first_name"
         label="Vorname"
         leading_icon="favorite"
         trailing_icon="fingerprint"
@@ -22,28 +24,46 @@
         _readonly
 >
 </aurora-inputtext>
+
 <script type="module" src="http://localhost:8070/embedded"></script>
 
 <script type="module">
-    document.addEventListener('universe', () => {
+    window.franzi = {};
+
+    document.addEventListener('universe.aurora', () => {
+        franzi = universe.observe({ firstname: 'Franzi', lastname: 'Kwapil' });
+
+        let vm = new universe.aurora.ViewModel();
+        vm.view = document.getElementsByTagName('aurora-inputtext')[0];
+        vm.model = franzi;
+
+        // simulate a modification from somewhere
+        setTimeout(() => franzi.firstname = 'Mizzi', 5000);
+/*
+        let builder = new universe.aurora.ViewModelBuilder();
+        builder
+            .use(document.getElementsByTagName('aurora-inputtext')[0])
+            // .addProperty('firstname', 'first_name')
+            .observe(franzi);
+*/
     });
 
+/* possibilities to listen on aurora elements
     document.addEventListener('aurora-element-added', (evt) => {
- //       console.log('aurora-element-added', evt.detail);
+        console.log('aurora-element-added', evt.detail);
     });
 
     document.addEventListener('aurora-inputtext-added', (evt) => {
-        /*
         console.log('aurora-inputtext-added', evt.detail);
         console.log(evt.detail);
         console.log( evt.detail.getElementsByClassName("aurora-text-field") );
-         */
     });
 
     let aurorainputtext = document.getElementsByTagName('aurora-inputtext')[0];
     aurorainputtext.addEventListener('fieldtextloaded', (evt) => {
         console.log('aurora-inputtext -> fieldtextloaded', evt.detail);
     })
+ */
 </script>
 </body>
 </html>

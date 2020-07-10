@@ -14,7 +14,8 @@ import components               from './@components';
         await universe.addComponents(components);     // todo: automatize
 
         await timeout(300);
-        document.dispatchEvent(new CustomEvent('universe', { detail: universe }));
+        // todo [REFACTOR]: switch to global object 'thoregon'
+        globalThis.dispatchEvent(new CustomEvent('universe', { detail: universe }));
     } catch (err) {
         console.log(err);
     }
