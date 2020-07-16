@@ -10,6 +10,7 @@
       rel="stylesheet">
 
 <p>Servas, sag was:</p>
+<aurora-button>Martin</aurora-button>
 
 <aurora-inputtext
         name="first_name"
@@ -24,7 +25,6 @@
         _readonly
 >
 </aurora-inputtext>
-
 <script type="module" src="http://localhost:8070/embedded"></script>
 
 <script type="module">
@@ -39,13 +39,6 @@
 
         // simulate a modification from somewhere
         setTimeout(() => franzi.firstname = 'Mizzi', 5000);
-/*
-        let builder = new universe.aurora.ViewModelBuilder();
-        builder
-            .use(document.getElementsByTagName('aurora-inputtext')[0])
-            // .addProperty('firstname', 'first_name')
-            .observe(franzi);
-*/
     });
 
 /* possibilities to listen on aurora elements
