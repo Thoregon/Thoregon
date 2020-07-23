@@ -9,7 +9,7 @@ export default {
 };
 
 const rnd = universe.Gun.text.random;
-const SEA = universe.Gun.SEA;
+        const SEA = universe.Gun.SEA;
 
 const pubpriv = async () => {
     let pair = await SEA.pair();
@@ -79,6 +79,34 @@ const signedsecurestore = async () => {
 
     universe.logger.info('[everblack]',decresponsibility);
 };
+
+
+const signedsharedsecurestore = async () => {
+// encrypt passphrase to be stored in public universe
+    let alice = await SEA.pair();
+    let bob = await SEA.pair();
+
+    let alicepub = alice.pub;
+    let bobpub = bob.pub;
+
+    let pp = 'passphrase';
+    let responsiblity = { id: 'broadcast.green.publisher', path: 'path.to', passphrase: pp, pair: await SEA.pair()};
+    let salt = rnd(64);
+    let proof1 = await SEA.work(pp, salt);
+    let enc = await SEA.encrypt(responsiblity, proof1);
+    let data = await SEA.sign(enc, alice);
+    let encresponsobility = JSON.stringify({ data, salt });
+    universe.logger.info('[everblack]',encresponsobility);
+
+// on another process/device: now decode it again
+    let proof2 = await SEA.work(pp, salt);
+    let r = JSON.parse(encresponsobility);
+    let msg = await SEA.verify(r.data, alicepub);
+    let decresponsibility = await SEA.decrypt(msg, proof2);
+
+    universe.logger.info('[everblack]',decresponsibility);
+};
+
 
 const signon = async () => {
     universe.logger.info('Auth', await universe.Identity.auth('bgtest1', 'bgtest1'));

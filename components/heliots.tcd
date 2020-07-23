@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'HELIOTS',
+    displayName:    'thoregon messenger, includes browser notification',
+    category:       'communication',
+    href:           '/thoregon.heliots',
+})
