@@ -10,7 +10,7 @@ export default {
     app: 'Test'
 };
 
-const rootlocation = 'HmzixZUROc0EqSdsFKyU7eq11';
+const rootlocation = 'KVqUQIjHRjdWhTzXbys0tpWJ';
 const mychannel    = 'channels.mytestchatgroup';
 const location     = `${rootlocation}.${mychannel}`;
 
@@ -24,13 +24,13 @@ const alice = async () => {
     let channel = await Channel
         .at(location)
         .createIfMissing();  // current user is admin
+    universe.mychannel = channel;
 
     await channel.invite('bobB');
 
-    // channel.onMessage((msg) => console.log('alice>', msg));               // show arriving messages including all previous
-    // await channel.send("message 1");
+    channel.onMessage((msg) => console.log('alice>', msg));               // show arriving messages including all previous
+    await channel.send("message 1 from aliceA");
 
-    await universe.identity.leave();
     universe.logger.info("Test Everblack Alice END");
 }
 
@@ -43,9 +43,9 @@ const bob = async () => {
     let channel = await Channel
         .at(location)
         .join();
-    // channel.onMessage((msg) => console.log('bob>', msg));               // show arriving messages including all previous
+    channel.onMessage((msg) => console.log('bob>', msg));               // show arriving messages including all previous
 
-//    await channel.send("message 2");
+    await channel.send("message 2 from bobB");
 
     // await universe.identity.leave();
     universe.logger.info("Test Everblack Bob END");
@@ -54,6 +54,7 @@ const bob = async () => {
 (async () => {
     await alice();
     await timeout(500);
+    await universe.identity.leave();
     await bob();
 })();
 
