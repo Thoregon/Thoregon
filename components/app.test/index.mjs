@@ -52,9 +52,11 @@ const bob = async () => {
 }
 
 (async () => {
+/*
     await alice();
     await timeout(500);
     await universe.identity.leave();
     await bob();
+*/
 })();
 

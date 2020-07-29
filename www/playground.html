@@ -33,10 +33,67 @@
         _readonly
 >
 </aurora-inputtext>
+
+<div>
+    <p>Channel: 'KVqUQIjHRjdWhTzXbys0tpWJ.channels.mytestchatgroup'</p>
+    <aurora-inputtext
+            id="inp-alias"
+            name="alias"
+            aurora-name="alias"
+            label="Alias"
+            placeholder="Alias"
+            stack_label
+            requered
+    >
+    </aurora-inputtext>
+    <aurora-inputtext
+            id="inp-pwd"
+            name="pwd"
+            aurora-name="pwd"
+            label="Password"
+            placeholder="Password"
+            stack_label
+            requered
+    >
+    </aurora-inputtext>
+    <aurora-button
+            id="btn-auth"
+            name="signon"
+            label="auth"
+    >
+    </aurora-button>
+
+    <p>Messages:</p>
+    <div
+            id="messages">
+    </div>
+</div>
 <script type="module" src="http://localhost:8070/embedded"></script>
 
 <script type="module">
     window.franzi = {};
+    window.channel = {};
+
+    const setupMessages = () => {
+        let $alias = document.getElementById('inp-alias');
+        let $pwd   = document.getElementById('inp-pwd');
+        let $auth  = document.getElementById('btn-auth');
+
+        $auth.addEventListener('click', async () => {
+            let alias = $alias.value;
+            let pwd   = $pwd.value;
+            if (!alias || !pwd) alert("alias und passwort eingeben");
+            await universe.Identity.auth(alias, pwd);
+            await universe.doAsync();
+            channel = await universe.everblack.Channel.at('KVqUQIjHRjdWhTzXbys0tpWJ.channels.mytestchatgroup').join();
+            if (channel) channel.onMessage((msg) => {
+                let $list = document.getElementById('messages');
+                let $item = document.createElement('p');
+                $item.innerText = `${msg.alias} > ${msg.message}`;
+                $list.appendChild($item);
+            })
+        })
+    }
 
     document.addEventListener('universe.aurora', () => {
         franzi = universe.observe({ firstname: 'Franzi', lastname: 'Kwapil' });
@@ -47,6 +104,8 @@
 
         // simulate a modification from somewhere
         setTimeout(() => franzi.firstname = 'Mizzi', 5000);
+
+        setupMessages();
     });
 
 /* possibilities to listen on aurora elements
