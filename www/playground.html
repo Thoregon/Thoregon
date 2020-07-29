@@ -36,7 +36,8 @@
 
 <div>
     <p>Channel: 'KVqUQIjHRjdWhTzXbys0tpWJ.channels.mytestchatgroup'</p>
-    <aurora-inputtext
+    <div>
+        <aurora-inputtext
             id="inp-alias"
             name="alias"
             aurora-name="alias"
@@ -44,24 +45,49 @@
             placeholder="Alias"
             stack_label
             requered
-    >
-    </aurora-inputtext>
-    <aurora-inputtext
-            id="inp-pwd"
-            name="pwd"
-            aurora-name="pwd"
-            label="Password"
-            placeholder="Password"
-            stack_label
-            requered
-    >
-    </aurora-inputtext>
-    <aurora-button
-            id="btn-auth"
-            name="signon"
-            label="auth"
-    >
-    </aurora-button>
+            style="display: inline-block"
+        >
+        </aurora-inputtext>
+        <aurora-inputtext
+                id="inp-pwd"
+                name="pwd"
+                aurora-name="pwd"
+                label="Password"
+                placeholder="Password"
+                stack_label
+                requered
+                style="display: inline-block"
+        >
+        </aurora-inputtext>
+        <aurora-button
+                id="btn-auth"
+                name="signon"
+                label="Auth"
+                style="display: inline-block; vertical-align: middle"
+        >
+        </aurora-button>
+    </div>
+
+    <div>
+        <aurora-inputtext
+                id="inp-message"
+                name="message"
+                aurora-name="message"
+                label="message"
+                placeholder="message"
+                stack_label
+                requered
+                style="display: inline-block"
+        >
+        </aurora-inputtext>
+        <aurora-button
+                id="btn-send"
+                name="signon"
+                label="Send"
+                style="display: inline-block; vertical-align: middle"
+        >
+        </aurora-button>
+    </div>
 
     <p>Messages:</p>
     <div
@@ -78,6 +104,8 @@
         let $alias = document.getElementById('inp-alias');
         let $pwd   = document.getElementById('inp-pwd');
         let $auth  = document.getElementById('btn-auth');
+        let $msg   = document.getElementById('inp-message');
+        let $send  = document.getElementById('btn-send');
 
         $auth.addEventListener('click', async () => {
             let alias = $alias.value;
@@ -92,6 +120,13 @@
                 $item.innerText = `${msg.alias} > ${msg.message}`;
                 $list.appendChild($item);
             })
+        })
+
+        $send.addEventListener('click', async () => {
+            if (!universe.Identity.is) alert('signon!');
+            let msg = $msg.value;
+            if (!msg) return;
+            channel.send(msg);
         })
     }
 
