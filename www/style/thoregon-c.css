@@ -4,108 +4,205 @@
  * @author: blukassen
  */
 
+@font-face {
+    font-family   : T;
+    font-style    : normal;
+    font-weight   : 400;
+    font-display  : swap;
+    src           : url(fonts/400-normal.woff) format("woff");
+    unicode-range : U+0020-212F, U+25F0-FB0F
+}
+
+@font-face {
+    font-family   : T;
+    font-style    : normal;
+    font-weight   : 500;
+    font-display  : swap;
+    src           :  url(fonts/500-normal.woff) format("woff");
+    unicode-range : U+0020-212F, U+25F0-FB0F
+}
+
+@font-face {
+    font-family   : T;
+    font-style    : italic;
+    font-weight   : 700;
+    font-display  : swap;
+    src           : url(fonts/700-italic.woff) format("woff");
+    unicode-range : U+0020-212F, U+25F0-FB0F
+}
+
+@font-face {
+    font-family   : T;
+    font-style    : italic;
+    font-weight   : 400;
+    font-display  : swap;
+    src           : url(fonts/400-italic.woff) format("woff");
+    unicode-range : U+0020-212F, U+25F0-FB0F
+}
+
+@font-face {
+    font-family   : T;
+    font-style    : normal;
+    font-weight   : 700;
+    font-display  : swap;
+    src           : url(fonts/700-normal.woff) format("woff");
+    unicode-range : U+0020-007B, U+007D-212F, U+25F0-FB0F
+}
+
+
 /* Thore͛gon common */
 
 html, body {
-    color:              rgba(0,0,0,0.75);
-    background-color:   #b9b3a6;
-    font-family:        "Helvetica", Arial, sans-serif;
-    font-size:          15px;
-    font-weight:        300;
-    line-height:        1.2;
-    text-rendering:     optimizeLegibility;
-    border:             0;
-    margin:             0;
-    padding:            0;
-    width:              100%;
-    height:             100%;
-    display:            block;
-    overflow:           auto;
+    color            : rgba(0, 0, 0, 0.75);
+    background-color : #b9b3a6;
+    font-family      : "Helvetica", Arial, sans-serif;
+    font-size        : 15px;
+    font-weight      : 300;
+    line-height      : 1.2;
+    text-rendering   : optimizeLegibility;
+    border           : 0;
+    margin           : 0;
+    padding          : 0;
+    width            : 100%;
+    height           : 100%;
+    display          : block;
+    overflow         : auto;
 }
 
-a { color: rgba(0,0,0,0.45); }
-a:hover { opacity: 0.55; text-decoration: underline; }
+a { color : rgba(0, 0, 0, 0.45); }
 
-h1 { font-size: 1.4em; font-weight: 600; margin: 6px 0; }
-h2 { font-size: 1.3em; font-weight: 600; margin: 6px 0; }
-h3 { font-size: 1.2em; font-weight: 600; margin: 6px 0; }
-h4 { font-size: 1.1em; font-weight: 600; margin: 6px 0; }
-.headlike { font-size: 1em; font-weight: 600; margin: 3px 0; display: inline-block; }
+a:hover { opacity : 0.55; text-decoration : underline; }
 
-p { margin: 5px 0; }
+h1 { font-size : 1.4em; font-weight : 600; margin : 6px 0; }
 
-ul, ol { margin: 8px 0; list-style-position: outside; list-style-type: none; padding-inline-start: 0; }
-li { margin: 1px 0; }
+h2 { font-size : 1.3em; font-weight : 600; margin : 6px 0; }
+
+h3 { font-size : 1.2em; font-weight : 600; margin : 6px 0; }
+
+h4 { font-size : 1.1em; font-weight : 600; margin : 6px 0; }
+
+.headlike { font-size : 1em; font-weight : 600; margin : 3px 0; display : inline-block; }
+
+p { margin : 5px 0; }
+
+ul, ol { margin : 8px 0; list-style-position : outside; list-style-type : none; padding-inline-start : 0; }
+
+li { margin : 1px 0; }
 
 .badge {
-    font-size: 0.82em;
-    font-family:      Helvetica, Arial, sans-serif;
-    color: rgba(0,0,0,0.75);
-    font-weight: 200;
-    border: 1px solid rgba(0,0,0,0.45);
-    border-radius: 2px;
-    padding-right: 2px;
-    padding-left: 2px;
-    margin-right: 4px;
-    line-height: 16px;
+    font-size     : 0.82em;
+    font-family   : Helvetica, Arial, sans-serif;
+    color         : rgba(0, 0, 0, 0.75);
+    font-weight   : 200;
+    border        : 1px solid rgba(0, 0, 0, 0.45);
+    border-radius : 2px;
+    padding-right : 2px;
+    padding-left  : 2px;
+    margin-right  : 4px;
+    line-height   : 16px;
 }
 
 .attbadgebadge {
-    font-size: 0.82em;
-    font-family:    Helvetica, arial, sans-serif;
-    color: white;
-    background-color: #ff5252;
-    cursor: pointer;
-    font-weight: 200;
-    border: 1px solid rgba(0,0,0,0.45);
-    border-radius: 12px;
-    border-color: #ff5252;
-    padding-right: 3px;
-    padding-left: 2px;
-    margin-right: 4px;
-    line-height: 14px;
+    font-size        : 0.82em;
+    font-family      : Helvetica, arial, sans-serif;
+    color            : white;
+    background-color : #ff5252;
+    cursor           : pointer;
+    font-weight      : 200;
+    border           : 1px solid rgba(0, 0, 0, 0.45);
+    border-radius    : 12px;
+    border-color     : #ff5252;
+    padding-right    : 3px;
+    padding-left     : 2px;
+    margin-right     : 4px;
+    line-height      : 14px;
 }
 
-.attention { color: rgba(222, 208, 4, 0.98); font-weight: 300; }
-.hint { color: rgba(17, 188, 58, 0.87); font-weight: 300; }
-.ref { color: rgba(12, 101, 198, 0.89); font-weight: 300; cursor: pointer; }
-.note { color: rgba(129, 144, 158, 0.6); }
-.handle { color: #ff5252; cursor: pointer; }
-.restricted { color: #b93d3b; text-decoration: underline dotted; }
-.broken { color: rgba(143, 158, 172, 0.6); }
-.ref2 { color: rgba(33, 162, 195, 1); font-weight: 300; cursor: pointer; }
+.attention { color : rgba(222, 208, 4, 0.98); font-weight : 300; }
+
+.hint { color : rgba(17, 188, 58, 0.87); font-weight : 300; }
+
+.ref { color : rgba(12, 101, 198, 0.89); font-weight : 300; cursor : pointer; }
+
+.note { color : rgba(129, 144, 158, 0.6); }
+
+.handle { color : #ff5252; cursor : pointer; }
+
+.restricted { color : #b93d3b; text-decoration : underline dotted; }
+
+.broken { color : rgba(143, 158, 172, 0.6); }
+
+.ref2 { color : rgba(33, 162, 195, 1); font-weight : 300; cursor : pointer; }
 
 /* characters */
 
-.copyright:before { content: '©'; }
+.copyright:before { content : '©'; }
 
-.down:after { content: '\25BC'; cursor: pointer; }   /* \25BE */
-.up:after { content: '\25B2'; cursor: pointer; }     /* \25B4 */
-.right:after { content: '\25C4'; cursor: pointer; }  /* \25C2 */
-.left:after { content: '\25BA'; cursor: pointer; }   /* \25B8 */
-.stop:after { content: '\25A0'; cursor: pointer; }
-.bigdot:after { content: '\25CF'; cursor: pointer; }
+.down:after { content : '\25BC'; cursor : pointer; }
 
-.thoregon:before { content: '\21AF'; }
-.hintarrow:after { content: '\290F'; cursor: pointer; }  /* \2911 \21E2 */
-.refarrow:after { content: '\2192'; cursor: pointer; }
-.docarrow:after { content: '\21E5'; cursor: pointer; }
-.brokenarrow:after { content: '\2947'; }
-.restrictedarrow:after { content: '\21F4'; }
+/* \25BE */
+.up:after { content : '\25B2'; cursor : pointer; }
 
-.attmark:after { content: '\25B0'; cursor: pointer; }
-.refmark:after { content: '\21C1'; cursor: pointer; }
-.hintmark:after { content: '\25EC'; cursor: pointer; }       /* \25CA */
-.notemark:after { content: '\25FF'; cursor: pointer; font-size: 0.7em; }
+/* \25B4 */
+.right:after { content : '\25C4'; cursor : pointer; }
 
-.update:after { content: '\27F2'; }     /* \2940 */
-.undo:after { content: '\21B0'; }       /* \2B10 */
-.redo:after { content: '\21B1'; }       /* \2B0E */
+/* \25C2 */
+.left:after { content : '\25BA'; cursor : pointer; }
 
-.burgermenu:after { content: '\2630'; cursor: pointer; }
-.dotsmenu:after { content: '\205E'; cursor: pointer; }
-.etcdots:after { content: '\2026'; cursor: pointer; }
-.home:before { content: '\21f1'; cursor: pointer; }
+/* \25B8 */
+.stop:after { content : '\25A0'; cursor : pointer; }
 
-.x:after { content: ''; }
-.x:before { content: ''; }
+.bigdot:after { content : '\25CF'; cursor : pointer; }
+
+.thoregon:before { content : '\21AF'; }
+
+.hintarrow:after { content : '\290F'; cursor : pointer; }
+
+/* \2911 \21E2 */
+.refarrow:after { content : '\2192'; cursor : pointer; }
+
+.docarrow:after { content : '\21E5'; cursor : pointer; }
+
+.brokenarrow:after { content : '\2947'; }
+
+.restrictedarrow:after { content : '\21F4'; }
+
+.attmark:after { content : '\25B0'; cursor : pointer; }
+
+.refmark:after { content : '\21C1'; cursor : pointer; }
+
+.hintmark:after { content : '\25EC'; cursor : pointer; }
+
+/* \25CA */
+.notemark:after { content : '\25FF'; cursor : pointer; font-size : 0.7em; }
+
+.update:after { content : '\27F2'; }
+
+/* \2940 */
+.undo:after { content : '\21B0'; }
+
+/* \2B10 */
+.redo:after { content : '\21B1'; }
+
+/* \2B0E */
+
+.burgermenu:after { content : '\2630'; cursor : pointer; }
+
+.dotsmenu:after { content : '\205E'; cursor : pointer; }
+
+.etcdots:after { content : '\2026'; cursor : pointer; }
+
+.home:before { content : '\21f1'; cursor : pointer; }
+
+.division::before {
+    overflow   : hidden;
+    width      : 75px;
+    height     : 8px;
+    background : #333;
+    display    : block;
+    content    : '–';
+}
+
+.x:after { content : ''; }
+
+.x:before { content : ''; }

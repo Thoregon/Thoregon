@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="referrer" content="unsafe-url">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta name="referrer" content="origin" -->
+    <title>thatsme.plus</title>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<p>Thatsme</p>
+<aurora-button
+        name="my_button"
+        label="click me"
+        leading_icon="favorite"
+        disabled
+>
+</aurora-button>
+
+<aurora-inputtext
+        name="first_name"
+        aurora-name="first_name"
+        label="Vorname"
+        leading_icon="favorite"
+        trailing_icon="fingerprint"
+        placeholder="xyz"
+        stack_label
+        requered
+        _disabled
+        _readonly
+>
+</aurora-inputtext>
+
+<script type="module" src="/embedded"></script>
+
+<script type="module">
+
+    document.addEventListener('universe.aurora', () => {
+    });
+
+</script>
+</body>
+</html>
