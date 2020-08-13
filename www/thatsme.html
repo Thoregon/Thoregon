@@ -11,7 +11,51 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-<p>Thatsme</p>
+
+<style>
+    body {
+        background-color: #0075A2;
+    }
+    #thatsme-register-page {
+        width: 550px;
+        text-align: center;
+        border-radius: 6px;
+        background-color: #fff;
+        padding: 2em;
+        margin-left: auto;
+        margin-right: auto; }
+
+    .thatsme-logo-wrapper img { width: 70%; }
+
+</style>
+
+
+<div id="thatsme-register-page">
+<div class="thatsme-logo-wrapper">
+    <img src="../img/thats-me-logo.svg">
+</div>
+ <h1>Register your self sovereign identity</h1>
+
+<aurora-inputtext
+        name="user_identity"
+        aurora-name="user_identity"
+        label="User ID"
+        leading_icon="perm_identity"
+        stack_label
+        requered
+>
+</aurora-inputtext>
+
+<aurora-inputtext
+        name="user_password"
+        aurora-name="user_password"
+        label="Password"
+        leading_icon="fingerprint"
+        stack_label
+        requered
+>
+</aurora-inputtext>
+
 <aurora-button
         name="my_button"
         label="click me"
@@ -19,21 +63,7 @@
         disabled
 >
 </aurora-button>
-
-<aurora-inputtext
-        name="first_name"
-        aurora-name="first_name"
-        label="Vorname"
-        leading_icon="favorite"
-        trailing_icon="fingerprint"
-        placeholder="xyz"
-        stack_label
-        requered
-        _disabled
-        _readonly
->
-</aurora-inputtext>
-
+</div>
 <script type="module" src="/embedded"></script>
 
 <script type="module">
