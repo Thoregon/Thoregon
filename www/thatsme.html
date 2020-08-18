@@ -46,15 +46,15 @@
     }
 
     #thatsme-register-page {
-        width: 550px;
+        max-width: 550px;
         text-align: center;
         border-radius: 6px;
         background-color: #fff;
-        padding: 2em;
+        padding: 4em;
         margin-left: auto;
         margin-right: auto; }
 
-    .thatsme-logo-wrapper img { width: 70%; }
+    .thatsme-logo-wrapper img { width: 60%; }
 
 </style>
 
@@ -69,9 +69,11 @@
         name="user_identity"
         aurora-name="user_identity"
         label="User ID"
+        hint="Diese UserId ist nur für Dich einsehbar!"
         leading_icon="perm_identity"
         stack_label
         requered
+        fullwidth
 >
 </aurora-inputtext>
 
@@ -82,14 +84,15 @@
         leading_icon="fingerprint"
         stack_label
         requered
+        fullwidth
 >
 </aurora-inputtext>
 
 <aurora-button
         name="my_button"
-        label="click me"
+        label="Register your self sovereign identity"
         leading_icon="favorite"
-        disabled
+        fullwidth
 >
 </aurora-button>
 </div>
