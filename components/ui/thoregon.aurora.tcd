@@ -4,6 +4,7 @@
  * @author: Bernhard Lukassen
  */
 
+/*
 import { ComponentDescriptor } from '/evolux.dyncomponents';
 
 export default ComponentDescriptor({
@@ -11,4 +12,6 @@ export default ComponentDescriptor({
     displayName:    'Thoregon Aurora UI components',
     category:       'thoregon',
     href:           '/thoregon.aurora',
-})
+})*/
+
+export default {};

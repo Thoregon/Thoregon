@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta name="referrer" content="unsafe-url">
+<meta name="referrer" content="origin">
 <head>
     <meta charset="UTF-8">
     <!-- meta name="referrer" content="origin" -->
@@ -12,6 +12,24 @@
             font-weight   : 400;
             font-display  : swap;
             src           : url(style/fonts/400-normal.woff) format("woff");
+            unicode-range : U+0020-212F, U+25F0-FB0F
+        }
+
+        @font-face {
+            font-family   : T;
+            font-style    : normal;
+            font-weight   : 500;
+            font-display  : swap;
+            src           : url(style/fonts/500-normal.woff) format("woff");
+            unicode-range : U+0020-212F, U+25F0-FB0F
+        }
+
+        @font-face {
+            font-family   : T;
+            font-style    : normal;
+            font-weight   : 700;
+            font-display  : swap;
+            src           : url(style/fonts/700-normal.woff) format("woff");
             unicode-range : U+0020-212F, U+25F0-FB0F
         }
 
@@ -108,9 +126,9 @@
             id="messages">
     </div>
 </div>
-<script type="module" src="/embedded"></script>
+<script type="module" src="/embedded" referrerpolicy="same-origin"></script>
 
-<script type="module">
+<script type="module" referrerpolicy="same-origin">
     window.franzi = {};
     window.channel = {};
 

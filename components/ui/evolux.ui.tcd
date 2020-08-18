@@ -3,6 +3,7 @@
  *
  * @author: Bernhard Lukassen
  */
+/*
 
 import { ComponentDescriptor } from '/evolux.dyncomponents';
 
@@ -12,3 +13,6 @@ export default ComponentDescriptor({
     category:       'evolux',
     href:           '/evolux.ui',
 })
+*/
+
+export default {};

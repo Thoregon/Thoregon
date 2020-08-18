@@ -13,9 +13,38 @@
 
 
 <style>
-    body {
-        background-color: #0075A2;
+    @font-face {
+        font-family   : T;
+        font-style    : normal;
+        font-weight   : 400;
+        font-display  : swap;
+        src           : url(style/fonts/400-normal.woff) format("woff");
+        unicode-range : U+0020-212F, U+25F0-FB0F
     }
+
+    @font-face {
+        font-family   : T;
+        font-style    : normal;
+        font-weight   : 500;
+        font-display  : swap;
+        src           : url(style/fonts/500-normal.woff) format("woff");
+        unicode-range : U+0020-212F, U+25F0-FB0F
+    }
+
+    @font-face {
+        font-family   : T;
+        font-style    : normal;
+        font-weight   : 700;
+        font-display  : swap;
+        src           : url(style/fonts/700-normal.woff) format("woff");
+        unicode-range : U+0020-212F, U+25F0-FB0F
+    }
+
+    body {
+        font-family      : T, sans-serif;
+        background-color : #0075A2;
+    }
+
     #thatsme-register-page {
         width: 550px;
         text-align: center;
@@ -34,7 +63,7 @@
 <div class="thatsme-logo-wrapper">
     <img src="../img/thats-me-logo.svg">
 </div>
- <h1>Register your self sovereign identity</h1>
+ <h1>Create your self sovereign identity</h1>
 
 <aurora-inputtext
         name="user_identity"
@@ -64,11 +93,32 @@
 >
 </aurora-button>
 </div>
+
+<div id="thatsme-scan-page">
+    <aurora-qrscanner onqrcode="console.log('QRcode: ', this.qrcode);" active="false"></aurora-qrscanner>
+    <p id="status">Waiting...</p>
+    <button id="stop" value="stop">stop</button>
+</div>
+
 <script type="module" src="/embedded"></script>
 
 <script type="module">
 
     document.addEventListener('universe.aurora', () => {
+        //  thatsme interface
+        let $qrscanner  = document.getElementsByTagName('aurora-qrscanner')[0];
+        let $status     = document.getElementById('status');
+        let $stop       = document.getElementById('stop');
+
+        $qrscanner.addEventListener('qrcode',           (evt) => {
+            $status.innerText = `QR: ${evt.detail}`;
+            $qrscanner.stop();
+        });
+        $qrscanner.addEventListener('qrerror',          (evt) => $status.innerText = `ERROR: ${evt.detail}`);
+        $qrscanner.addEventListener('qrvideoerror',    (evt) => $status.innerText = `VIDEO: ${evt.detail}`);
+
+        $status.innerText = '';
+        $stop.onclick = () => $qrscanner.stop();
     });
 
 </script>

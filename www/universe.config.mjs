@@ -9,6 +9,7 @@ import { serviceWorkerSetup }               from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.reliant.mjs";
+import dsysx                                from "./dsys_x.mjs";
 
 import { tservices, mythoregon }            from '/evolux.universe';
 
@@ -26,12 +27,13 @@ protouniverse.atDawn(async universe => {
 
     // now setup the basic distributed system
     await dsysp(universe);      // first the reliant peer setup
-    await dsys(universe);
+    await dsys(universe);       // basic system
+    await dsysx(universe);      // extended system
 
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
 
-    // serviceWorkerSetup();
+    serviceWorkerSetup();
 });
 
 protouniverse.atDusk(async universe => {
