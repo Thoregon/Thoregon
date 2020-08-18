@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="referrer" content="unsafe-url">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
     <meta charset="UTF-8">
     <!-- meta name="referrer" content="origin" -->
@@ -89,15 +90,16 @@
 </aurora-inputtext>
 
 <aurora-button
-        name="my_button"
-        label="Register your self sovereign identity"
+        name="create"
+        aurora-name="create"
+        label="Create your self sovereign identity"
         leading_icon="favorite"
         fullwidth
 >
 </aurora-button>
 </div>
 
-<div id="thatsme-scan-page">
+<div id="thatsme-scan-page" style="display: none;">
     <aurora-qrscanner onqrcode="console.log('QRcode: ', this.qrcode);" active="false"></aurora-qrscanner>
     <p id="status">Waiting...</p>
     <button id="stop" value="stop">stop</button>
@@ -106,6 +108,20 @@
 <script type="module" src="/embedded"></script>
 
 <script type="module">
+
+    document.addEventListener('universe.thatsmeapp', () => {
+        let app     = universe.thatsmeapp;
+        let identity = universe.observe({
+            useridentity: '',
+            userpassword: '',
+            create: function () {
+                app.register(this.useridentity, this.userpassword);
+            }
+        });
+        let vm = new universe.aurora.ViewModel();
+        vm.view = document.getElementById('thatsme-register-page');
+        vm.model = identity;
+    });
 
     document.addEventListener('universe.aurora', () => {
         //  thatsme interface
