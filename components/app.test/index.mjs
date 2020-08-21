@@ -10,8 +10,8 @@ export default {
     app: 'Test'
 };
 
-const rootlocation = 'KVqUQIjHRjdWhTzXbys0tpWJ';
-const mychannel    = 'channels.mytestchatgroup';
+const rootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUP7';
+const mychannel    = 'mytestchatgroup';
 const location     = `${rootlocation}.${mychannel}`;
 
 const alice = async () => {
@@ -27,6 +27,7 @@ const alice = async () => {
     universe.mychannel = channel;
 
     await channel.invite('bobB');
+    await channel.grantWrite('bobB');
 
     channel.onMessage((msg) => console.log('alice>', msg));               // show arriving messages including all previous
     await channel.send("message 1 from aliceA");
@@ -52,11 +53,11 @@ const bob = async () => {
 }
 
 (async () => {
-/*
-    await alice();
-    await timeout(500);
-    await universe.identity.leave();
+    /*
+        await alice();
+        await timeout(500);
+        await universe.identity.leave();
+    */
     await bob();
-*/
 })();
 
