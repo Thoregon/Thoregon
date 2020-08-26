@@ -14,10 +14,10 @@ const rootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUP7';
 const mychannel    = 'mytestchatgroup';
 const clocation    = `${rootlocation}.${mychannel}`;
 
-const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ2';
+const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ9';
 const myqueue       = 'queue';
 const qlocation     = `${qrootlocation}.${myqueue}`;
-const pqlocation    = `${qrootlocation}.p${myqueue}`;
+const pqlocation    = `p${qrootlocation}.p${myqueue}`;
 
 const servicepair = {
     pub  : "tbf4_XSzaAcYqqN_DTwQh-TWKdKHpg4O1V8fQa-P-z8.2tiwh3UaUpxDgXqNBt_7adeZDndfh1aor-sdAxrQkgA",
@@ -34,6 +34,7 @@ const clientpair  = {
 
 const service = async () => {
     universe.logger.info("Test Everblack Service");
+
     let Queue = universe.everblack.Queue;
 
     let queue = await Queue
@@ -44,6 +45,7 @@ const service = async () => {
     queue.handle((request, response) => {
         universe.logger.info('Queue Request', request);
         response.payload = request.payload;
+        response.payload.s = "S";
         response.send();
     })
 
@@ -52,12 +54,18 @@ const service = async () => {
 
 const client = async () => {
     universe.logger.info("Test Everblack Client");
+    let i = 1;
+
     let Queue = universe.everblack.Queue;
 
     let queue = await Queue.at(qlocation);
 
-    let response = await queue.request({ test: 'Test XY' }, 100);
-    universe.logger.info('Queue Response', response);
+    try {
+        let response = await queue.request({ test: 'Test' });
+        universe.logger.info('Queue Response', response);
+    } catch (e) {
+        universe.logger.error('Queue Response Error', e);
+    }
 
     universe.logger.info("Test Everblack Client END");
 }
@@ -77,6 +85,7 @@ const privservice = async () => {
     queue.handle((request, response) => {
         universe.logger.info('Private Queue Request', request);
         response.payload = request.payload;
+        response.payload.s = "S";
     })
 
     universe.logger.info("Test Everblack Service END");
@@ -88,7 +97,7 @@ const privclient = async () => {
 
     let queue = Queue
         .at(clocation)
-        .signon(clientpair);
+        .join(clientpair);
 
     let response = await queue.request({ test: 'Test' });
     universe.logger.info('Private Queue Response', response);
@@ -143,7 +152,7 @@ const bob = async () => {
 */
 
     await service();
-    // await timeout(300);
+    await timeout(300);
     await client();
 })();
 
