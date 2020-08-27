@@ -14,7 +14,7 @@ const rootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUP7';
 const mychannel    = 'mytestchatgroup';
 const clocation    = `${rootlocation}.${mychannel}`;
 
-const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ9';
+const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ10';
 const myqueue       = 'queue';
 const qlocation     = `${qrootlocation}.${myqueue}`;
 const pqlocation    = `p${qrootlocation}.p${myqueue}`;
@@ -80,12 +80,13 @@ const privservice = async () => {
         .signon(servicepair)    // owner of servicepair is admin
         .createIfMissing();
 
-    await queue.invite(clientpair.pub);
+    // await queue.invite({ pub: clientpair.pub, epub: clientpair.epub });
 
     queue.handle((request, response) => {
         universe.logger.info('Private Queue Request', request);
         response.payload = request.payload;
-        response.payload.s = "S";
+        response.payload.s = "PS";
+        response.send();
     })
 
     universe.logger.info("Test Everblack Service END");
@@ -93,10 +94,10 @@ const privservice = async () => {
 
 const privclient = async () => {
     universe.logger.info("Test Everblack Client");
-    let Queue = universe.everblack.PrivateQueue;
+    let Queue = universe.everblack.Queue;
 
-    let queue = Queue
-        .at(clocation)
+    let queue = await Queue
+        .at(pqlocation)
         .join(clientpair);
 
     let response = await queue.request({ test: 'Test' });
@@ -151,8 +152,14 @@ const bob = async () => {
     await bob();
 */
 
+/*
     await service();
     await timeout(300);
     await client();
+*/
+
+    await privservice();
+    await timeout(300);
+    await privclient();
 })();
 

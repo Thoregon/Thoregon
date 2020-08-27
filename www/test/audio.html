@@ -16,9 +16,11 @@
 
 <script>
 
+    let streamurl = 'http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de';
     let streams = [
         // metal
         'http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de',
+        'http://bob.hoerradar.de/radiobob-metal-mp3-hq?sABC=5s461p0s%230%231659r16s160q1on94pr7qn00oq3093ro%23fgernzf.enqvbobo.qr&1598430223426=&amsparams=playerid:streams.radiobob.de;skey:1598430223',
         'https://stream.rockantenne.de/heavy-metal/stream/aacp',
 
         // rock
@@ -26,25 +28,34 @@
         'https://stream.rockantenne.de/alternative/stream/aacp',
 
         // chillout
-        'http://listen.radionomy.com/costa-del-mar.m3u',
+        'http://listen.radionomy.com/costa-del-mar',
         'http://digital.lounge.fm/',
     ]
 
-    function play() {
+    async function play() {
         var player = document.getElementById('bob_metal');
 
         // var div = document.getElementsByClassName('playlist_container')[0];
 
         if (player.paused) {
             // Cachen eines streams vermeiden: (nur, wenn die JavaScript Funktionalität verwendet wird, und nicht, wenn die nativen audio-controls benutzt werden)
-            url = streams[0];
+            url = streamurl;    // streams[0];
             var de1 = url  + "?" + new Date().getTime();
             player.src = de1;
 
             // aktiven Sender mit einem Button kennzeichnen:
             // div.getElementsByTagName('p')[e-1].style.background="url('/images/button_12.png') no-repeat 2px 2px / 12px";
 
-            player.play();
+            try {
+                let status = await player.play();
+                player.onended = () => {      // switch visibility
+                };
+                player.onerror = (err) => {   // todo
+                    console.log(err);
+                };
+            } catch (err) {   // todo
+                console.log(err);
+            }
             // player.style.display="block";
 /*
             de.onended = function (){
