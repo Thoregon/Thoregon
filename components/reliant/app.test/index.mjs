@@ -10,6 +10,9 @@ export default {
     app: 'Test'
 };
 
+const T = universe.T;     // meta data property name
+
+
 const rootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUP7';
 const mychannel    = 'mytestchatgroup';
 const clocation    = `${rootlocation}.${mychannel}`;
@@ -17,7 +20,7 @@ const clocation    = `${rootlocation}.${mychannel}`;
 const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ10';
 const myqueue       = 'queue';
 const qlocation     = `${qrootlocation}.${myqueue}`;
-const pqlocation    = `p${qrootlocation}.p${myqueue}`;
+const pqlocation    = `${T}${qrootlocation}.${T}${myqueue}`;
 
 const servicepair = {
     pub  : "tbf4_XSzaAcYqqN_DTwQh-TWKdKHpg4O1V8fQa-P-z8.2tiwh3UaUpxDgXqNBt_7adeZDndfh1aor-sdAxrQkgA",
@@ -31,6 +34,55 @@ const clientpair  = {
     epub : "7s8xc1QqAAkrYJL6mMhwLnLA8ambhRhcgewJgsDIOJI.5j0DH4elS0IbgmmVkM9IvB_LUpCjn43BIZG21gfUBD4",
     epriv: "NwEANRzlBSywtX8ySWJw84CtrQWIT0q8AjG7cSlS1Ik"
 };
+
+const kvlocation ='8SCk0k5QdwB8pyHtBBGaTsD8';
+
+const kvalice = async () => {
+    universe.logger.info("Test Everblack KV Alice");
+
+    await universe.Identity.auth('aliceA', 'aliceA1');
+    let KVStore = universe.everblack.KeyValueStore;
+
+    let kv = await KVStore
+        .at(kvlocation)
+        .createIfMissing();
+
+    // await kv.invite('bobB');
+    // await kv.grantWrite('bobB');
+
+    kv.onChange((item, key) => {
+        let value = item ? JSON.stringify(item) : 'null';
+        universe.logger.info(`KV '${key}' => ${value}`);
+    });
+
+    kv.on('b', (item) => {
+        let value = item ? JSON.stringify(item) : 'null';
+        universe.logger.info(`KV Listener for Key 'b' => ${value}`);
+    })
+
+    universe.logger.info("Test Everblack KV Alice END");
+}
+
+const kvbob = async () => {
+    universe.logger.info("Test Everblack KV Bob");
+
+    await universe.Identity.auth('bobB', 'bobB1');
+
+    let KVStore = universe.everblack.KeyValueStore;
+
+    let kv = await KVStore
+        .at(kvlocation)
+        .join();
+
+    await kv.put('a', 'A2');
+    await timeout(1000);
+    await kv.put('b', { b: 'B2' });
+    await timeout(1000);
+    let obj = await kv.get('b');
+    universe.logger.info(`Got 'b' -> ${JSON.stringify(obj)}`);
+
+    universe.logger.info("Test Everblack KV Bob END");
+}
 
 const service = async () => {
     universe.logger.info("Test Everblack Service");
@@ -158,8 +210,14 @@ const bob = async () => {
     await client();
 */
 
+/*
     await privservice();
     await timeout(300);
     await privclient();
+*/
+
+    await kvalice();
+    await timeout(300);
+    await kvbob();
 })();
 

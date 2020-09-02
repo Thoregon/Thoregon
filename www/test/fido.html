@@ -2,35 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Audio</title>
-    <style>
-        .btnplay {
-            width: 250px;
-            border: 1px lightskyblue;
-            border-radius: 2px;
-            background-color: lightskyblue;
-            color: papayawhip;
-            text-align: center;
-            padding: 3px 5px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-weight: bold;
-        }
-        .btnplay:hover {
-            border-color: #4D79D8;
-            background-color: #4D79D8;
-        }
-
-        .playing {
-            border-color: palegreen;
-            background-color: palegreen;
-        }
-    </style>
+    <title>FIDO</title>
 </head>
 <body>
 
 <div id="playlist_container">
-    <div class = "song">
-        <p class="btnplay" onclick="play(this)">Play</p>
+    <div class = "song" onclick="play()">
+        <p>Play</p>
         <audio id="bob_metal" style="display:none" id ="1" src=""  preload="none" >
         </audio>
     </div>
@@ -38,7 +16,7 @@
 
 <script>
 
-    let streamurl = 'https://stream.rockantenne.de/heavy-metal/stream/aacp';
+    let streamurl = 'http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de';
     let streams = [
         // metal
         'http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de',
@@ -54,28 +32,40 @@
         'http://digital.lounge.fm/',
     ]
 
-    async function play(elem) {
+    async function play() {
         var player = document.getElementById('bob_metal');
+
+        // var div = document.getElementsByClassName('playlist_container')[0];
+
         if (player.paused) {
             // Cachen eines streams vermeiden: (nur, wenn die JavaScript Funktionalität verwendet wird, und nicht, wenn die nativen audio-controls benutzt werden)
             url = streamurl;    // streams[0];
-            var stream = url  + "?" + new Date().getTime();
-            player.src = stream;
+            var de1 = url  + "?" + new Date().getTime();
+            player.src = de1;
+
+            // aktiven Sender mit einem Button kennzeichnen:
+            // div.getElementsByTagName('p')[e-1].style.background="url('/images/button_12.png') no-repeat 2px 2px / 12px";
 
             try {
-                elem.classList.add("playing");
                 let status = await player.play();
                 player.onended = () => {      // switch visibility
-                    elem.classList.remove("playing");
                 };
                 player.onerror = (err) => {   // todo
-                    elem.classList.remove("playing");
                     console.log(err);
                 };
             } catch (err) {   // todo
-                elem.classList.remove("playing");
                 console.log(err);
             }
+            // player.style.display="block";
+/*
+            de.onended = function (){
+                if (document.getElementById(e+1)) {
+                    play(e+1);
+                } else {
+                    play(1);
+                }
+            }
+*/
         } else {
             player.pause();
         }
