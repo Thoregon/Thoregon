@@ -216,8 +216,10 @@ const bob = async () => {
     await privclient();
 */
 
+/*
     await kvalice();
     await timeout(300);
     await kvbob();
+*/
 })();
 
