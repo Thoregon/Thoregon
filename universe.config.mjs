@@ -44,8 +44,8 @@ protouniverse.atDawn(async universe => {
     // todo: use a wallet or FIDO instead
     // let entry = await universe.Everblack.getPair("heliots.service", "heliotspassphrase1", "./.thoregon/tvs/heliots.tvs");
     // universe.HELIOTS_SERVICE = entry.data;
-    let entry = await universe.Everblack.getPair("identity.webservice", "thoregonidentitypassphrase1", "./.thoregon/tvs/identity.tvs");
-    universe.IDENTITY_PROVIDER = entry.data;
+ //   let entry = await universe.Everblack.getPair("identity.webservice", "thoregonidentitypassphrase1", "./.thoregon/tvs/identity.tvs");
+   // universe.IDENTITY_PROVIDER = entry.data;
 
 });
 
