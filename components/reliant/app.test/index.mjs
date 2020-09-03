@@ -35,7 +35,7 @@ const clientpair  = {
     epriv: "NwEANRzlBSywtX8ySWJw84CtrQWIT0q8AjG7cSlS1Ik"
 };
 
-const kvlocation ='8SCk0k5QdwB8pyHtBBGaTsD8';
+const kvlocation ='8SCk0k5QdwB8pyHtBBGaTsD9';
 
 const kvalice = async () => {
     universe.logger.info("Test Everblack KV Alice");
@@ -47,8 +47,8 @@ const kvalice = async () => {
         .at(kvlocation)
         .createIfMissing();
 
-    // await kv.invite('bobB');
-    // await kv.grantWrite('bobB');
+    await kv.invite('bobB');
+    await kv.grantWrite('bobB');
 
     kv.onChange((item, key) => {
         let value = item ? JSON.stringify(item) : 'null';
@@ -74,9 +74,9 @@ const kvbob = async () => {
         .at(kvlocation)
         .join();
 
-    await kv.put('a', 'A2');
-    await timeout(1000);
-    await kv.put('b', { b: 'B2' });
+    // await kv.put('a', 'A2');
+    // await timeout(1000);
+    await kv.put('b', { b: 'B3', c: { d: 'D3' } });
     await timeout(1000);
     let obj = await kv.get('b');
     universe.logger.info(`Got 'b' -> ${JSON.stringify(obj)}`);
@@ -216,10 +216,8 @@ const bob = async () => {
     await privclient();
 */
 
-/*
     await kvalice();
     await timeout(300);
     await kvbob();
-*/
 })();
 
