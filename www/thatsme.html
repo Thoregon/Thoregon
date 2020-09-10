@@ -113,6 +113,16 @@
 <script type="module" src="/embedded"></script>
 
 <script type="module">
+    class ValidationMethodCanIuseID /*extends ValidationMethod */{
+        errorID()             { return 'required'; }
+        level()               { return  'change'; }
+        priority()            { return '00'; }
+        defaultErrorMessage() { return 'Geht nicht!'; }
+
+        validate() {
+            return false;
+        }
+    }
 
     document.addEventListener('universe.thatsmeapp', () => {
         let app     = universe.thatsmeapp;
@@ -126,6 +136,8 @@
         let vm = new universe.aurora.ViewModel();
         vm.view = document.getElementById('thatsme-register-page');
         vm.model = identity;
+
+        vm.addValidation('user_identity', new ValidationMethodCanIuseID());
     });
 
     document.addEventListener('universe.aurora', () => {
