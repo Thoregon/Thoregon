@@ -69,7 +69,7 @@
     <img src="../img/thats-me-logo.svg">
 </div>
  <h1>Create your self sovereign identity</h1>
-
+<aurora-validation-indicator></aurora-validation-indicator>
 <aurora-inputtext
         name="user_identity"
         aurora-name="user_identity"
@@ -113,6 +113,7 @@
 <script type="module" src="/embedded"></script>
 
 <script type="module">
+
     class ValidationMethodCanIuseID /*extends ValidationMethod */{
         errorID()             { return 'required'; }
         level()               { return  'change'; }
@@ -124,6 +125,8 @@
         }
     }
 
+    window.vm = {};
+
     document.addEventListener('universe.thatsmeapp', () => {
         let app     = universe.thatsmeapp;
         let identity = universe.observe({
@@ -133,7 +136,7 @@
                 app.register(this.useridentity, this.userpassword);
             }
         });
-        let vm = new universe.aurora.ViewModel();
+        vm = new universe.aurora.ViewModel();
         vm.view = document.getElementById('thatsme-register-page');
         vm.model = identity;
 
