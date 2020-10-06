@@ -26,7 +26,7 @@ export const responsibilities   = [
  * initialize the component loader and load all
  */
 
-protouniverse.atDawn(async universe => {
+universe.atDawn(async universe => {
     const componentLocation     = 'components';
     const componentController   = Controller.baseCwd('ThoregonComponentController');
     tservices().components = componentController;
@@ -49,6 +49,6 @@ protouniverse.atDawn(async universe => {
 
 });
 
-protouniverse.atDusk(async universe => {
+universe.atDusk(async universe => {
     await tservices().components.exit();
 });

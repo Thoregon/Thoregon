@@ -5,7 +5,6 @@
  */
 
 import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
-import { serviceWorkerSetup }               from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.reliant.mjs";
@@ -20,7 +19,7 @@ export const responsibilities   = [
     'thoregon.app'
 ];
 
-protouniverse.atDawn(async universe => {
+universe.atDawn(async universe => {
     const componentLocation     = 'components';
     const componentController = Controller.baseCwd('ThoregonComponentController');
     tservices().components = componentController;
@@ -32,10 +31,8 @@ protouniverse.atDawn(async universe => {
 
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
-
-    serviceWorkerSetup();
 });
 
-protouniverse.atDusk(async universe => {
+universe.atDusk(async universe => {
     await tservices().components.exit();
 });

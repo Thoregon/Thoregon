@@ -4,4 +4,4 @@
  * @author: blukassen
  */
 
-protouniverse.DEBUG = false;
+universe.DEBUG = false;

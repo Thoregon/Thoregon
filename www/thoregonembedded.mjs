@@ -4,9 +4,9 @@
  * @author: blukassen
  */
 
-import letThereBeLight          from '/evolux.universe';
-import { timeout, doAsync }     from '/evolux.universe';
-import components               from './@components';
+import letThereBeLight      from '/evolux.universe';
+import { timeout, doAsync } from '/evolux.universe';
+import components           from './@components';
 
 (async () => {
     try {
