@@ -19,6 +19,8 @@ export const responsibilities   = [
     'thoregon.app'
 ];
 
+export const defaultapp = 'thatsme.app';
+
 universe.atDawn(async universe => {
     const componentLocation     = 'components';
     const componentController = Controller.baseCwd('ThoregonComponentController');

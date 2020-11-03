@@ -35,27 +35,32 @@ const clientpair  = {
     epriv: "NwEANRzlBSywtX8ySWJw84CtrQWIT0q8AjG7cSlS1Ik"
 };
 
-const kvlocation ='8SCk0k5QdwB8pyHtBBGaTsD9';
+const secretobjectlocation ='8SCk0k5QdwB8pyHtBBGaTsD9';
 
 const kvalice = async () => {
     universe.logger.info("Test Everblack KV Alice");
 
     await universe.Identity.auth('aliceA', 'aliceA1');
-    let KVStore = universe.everblack.KeyValueStore;
+    let SecretObject = universe.everblack.SecretObject;
 
-    let kv = await KVStore
-        .at(kvlocation)
+    let so = await SecretObject
+        .at(secretobjectlocation)
         .createIfMissing();
 
-    await kv.invite('bobB');
-    await kv.grantWrite('bobB');
+    await so.invite('bobB');
+    await so.grantWrite('bobB');
 
-    kv.onChange((item, key) => {
-        let value = item ? JSON.stringify(item) : 'null';
+    so.onChange((item, key) => {
+        let value = item ? item.toString() : 'null';
         universe.logger.info(`KV '${key}' => ${value}`);
+/*
+        so.forEachEntry(({ item, key }) => {
+            universe.logger.info(`KV forEachEntry '${key}' => ${value}`);
+        });
+*/
     });
 
-    kv.on('b', (item) => {
+    so.on('b', (item) => {
         let value = item ? JSON.stringify(item) : 'null';
         universe.logger.info(`KV Listener for Key 'b' => ${value}`);
     })
@@ -68,18 +73,28 @@ const kvbob = async () => {
 
     await universe.Identity.auth('bobB', 'bobB1');
 
-    let KVStore = universe.everblack.KeyValueStore;
+    let SecretObject = universe.everblack.SecretObject;
 
-    let kv = await KVStore
-        .at(kvlocation)
+    let so = await SecretObject
+        .at(secretobjectlocation)
         .join();
 
-    // await kv.put('a', 'A2');
+    // await so.put('a', 'A2');
     // await timeout(1000);
-    await kv.put('b', { b: 'B3', c: { d: 'D3' } });
+    await so.put('b', { b: 'B3', c: { d: 'D3' } });
     await timeout(1000);
-    let obj = await kv.get('b');
+    let obj = await so.get('b');
     universe.logger.info(`Got 'b' -> ${JSON.stringify(obj)}`);
+
+    let so2 = await so.addSecretObject('so');
+    await so2.invite('aliceA');
+    await so2.grantWrite('aliceA');
+
+    await so2.put('b2', 'B2');
+    await timeout(200);
+    let so3 = await so.get('so')
+    let prop = await so3.get('b2');
+    universe.logger.info("so3['b2'] ->", prop);
 
     universe.logger.info("Test Everblack KV Bob END");
 }
@@ -216,10 +231,9 @@ const bob = async () => {
     await privclient();
 */
 
-/*
     await kvalice();
     await timeout(300);
     await kvbob();
-*/
+
 })();
 

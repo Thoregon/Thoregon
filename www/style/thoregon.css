@@ -4,12 +4,42 @@
  * @author: blukassen
  */
 
+
 /* std fonts */
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=IBM+Plex+Sans:wght@100;400;500;600&family=Open+Sans:wght@300;700&family=Fira+Sans:wght@100;400;500;600;700&family=Rubik:wght@300;400;500&family=Source+Sans+Pro:wght@200;300;400;500;600;700;900&display=swap');
 /* header fonts */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=IBM+Plex+Serif:wght@200;400;600&family=Rubik+Mono+One&display=swap');
 /* condensed fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&family=Barlow+Semi+Condensed:wght@100;400;500;600;700&&family=Open+Sans+Condensed:wght@300;700&display=swap');
+
+@import url('https://rsms.me/inter/inter.css');
+/*
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+}
+*/
+
+/*
+ * colors
+ */
+
+.toregonhead_norm {
+    color           : #007eb3;
+}
+
+.toregonheadback_norm {
+    background-color: #007eb3;
+}
+
+/* used in dark themes */
+.toregonhead_bright {
+    color           : #009fe2;
+}
+
+.toregonheadback_bright {
+    background-color: #009fe2;
+}
 
 /* also use "Helvetica Neue" */
 
