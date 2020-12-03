@@ -37,6 +37,12 @@ const dsys = async (universe) => {
         category:       'universe',
         href:           '/thoregon.tru4D',
     });
+    const truCloud =  ComponentDescriptor({
+          id:             'truCloud',
+          displayName:    'truCloud supporting truServerless',
+          category:       'universe',
+          href:           '/thoregon.truCloud',
+      });
 
     // install 'dynlayer'. provides an infrastructure for all other components
 /*
@@ -59,6 +65,11 @@ const dsys = async (universe) => {
     await components.install(tru4D);
     await components.resolve(tru4D.id);
     await components.start(tru4D.id);
+
+    // install 'truCloud'. this is the magic
+    await components.install(truCloud);
+    await components.resolve(truCloud.id);
+    await components.start(truCloud.id);
 
     // install 'KARTE'. it is essential to have name and discovery service for DDDD available
     await components.install(karte);
