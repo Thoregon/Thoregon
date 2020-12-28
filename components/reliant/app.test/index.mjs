@@ -17,6 +17,9 @@ const rootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUP7';
 const mychannel    = 'mytestchatgroup';
 const clocation    = `${rootlocation}.${mychannel}`;
 
+
+const wpall = 'KvjpVDvE4jVuKSlV2JxCxyUP7.topics.123';
+
 const qrootlocation = 'KvjpVDvE4jVuKSlV2JxCxyUQ10';
 const myqueue       = 'queue';
 const qlocation     = `${qrootlocation}.${myqueue}`;
