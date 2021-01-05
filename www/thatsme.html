@@ -29,12 +29,13 @@
 
     #thatsme-register-page {
         max-width: 550px;
-        text-align: center;
         border-radius: 6px;
         background-color: #fff;
         padding: 4em;
         margin-left: auto;
         margin-right: auto; }
+
+    .thatsme-header { text-align: center;}
 
     .thatsme-logo-wrapper img { width: 60%; }
     .test-button {
@@ -46,11 +47,12 @@
 
 
 <div id="thatsme-register-page">
-<div class="thatsme-logo-wrapper">
-    <img src="../img/thats-me-logo.svg">
-</div>
- <h1>Create your self sovereign identity</h1>
-
+    <div class="thatsme-header">
+        <div class="thatsme-logo-wrapper">
+            <img src="../img/thats-me-logo.svg">
+        </div>
+         <h1>Create your self sovereign identity</h1>
+    </div>
     <aurora-validation-indicator></aurora-validation-indicator>
 <aurora-inputtext
         name="user_identity"
@@ -58,6 +60,18 @@
         label="User ID"
         hint="Diese UserId ist nur für Dich einsehbar!"
         leading_icon="perm_identity"
+        stack_label
+        required
+        fullwidth
+>
+</aurora-inputtext>
+
+<aurora-inputtext
+        type="email"
+        name="user_email"
+        aurora-name="user_email"
+        label="Email"
+        leading_icon="mail_outline"
         stack_label
         required
         fullwidth
@@ -84,6 +98,13 @@
         fullwidth
 >
 </aurora-button>
+
+    <aurora-switch
+    label="to test the switch"
+    ></aurora-switch>
+    <aurora-checkbox
+    label="test an checkbox"
+    ></aurora-checkbox>
 
 <aurora-comment
         name="Martin Neitz"
