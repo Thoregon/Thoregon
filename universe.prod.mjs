@@ -18,7 +18,7 @@ const greenlock = {
     configDir: "./greenlock.d",
 
     // contact for security and critical bug notices
-    maintainerEmail: "<email>",
+    maintainerEmail: "bl@bernhard-lukassen.com",
 
     // name & version for ACME client user agent
     //packageAgent: pkg.name + "/" + pkg.version,
