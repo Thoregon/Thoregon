@@ -167,7 +167,7 @@
     document.addEventListener('universe.aurora', () => {
         franzi = universe.observe({ firstname: 'Franzi', lastname: 'Kwapil' });
 
-        let vm = new universe.aurora.ViewModel();
+        let vm = universe.aurora.ViewModel();
         vm.view = document.getElementsByTagName('aurora-inputtext')[0];
         vm.model = franzi;
 

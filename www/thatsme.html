@@ -24,6 +24,7 @@
 
     body {
         font-family      : "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight      : 200;
         background-color : #0075A2;
     }
 
@@ -167,7 +168,7 @@
                 app.register(this.useridentity, this.userpassword);
             }
         });
-        vm = new universe.aurora.ViewModel();
+        vm = universe.aurora.ViewModel();
         vm.view = document.getElementById('thatsme-register-page');
         vm.model = identity;
 

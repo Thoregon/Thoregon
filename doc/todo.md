@@ -1,8 +1,8 @@
 Thore͛gon ToDo
 =============
 
-- make the installation (root) a logical component(s) --> component loader register 'root' & 'www'
-    - load @components
+- introduce Repositories
+    - Galaxy/Star/Planet for components
 
 - CLI
     - scafolding, create a node

@@ -3,6 +3,9 @@ vani͛llaT
 
 vani͛llaT - Standard library of Thore͛gon
 
+Logo: https://www.canstockphoto.at/vektor-logo-vanille-blume-h%C3%BClsen-29060911.html
+
+
 ## TL;DR
 
 ## Paradigm
