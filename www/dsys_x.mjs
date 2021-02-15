@@ -25,12 +25,21 @@ const dsys = async (universe) => {
         href:           '/thoregon.identity',
     });
 
+    const heavymatter = ComponentDescriptor({
+       id:             'heavymatter',
+       displayName:    'matter for heavy (large) data',
+       category:       'universe',
+       href:           '/terra.ipfs',
+    });
+/*
+
     const schema =    ComponentDescriptor({
         id:             'schema',
         displayName:    'schema for apps and contexts',
         category:       'universe',
         href:           '/evolux.schema',
     });
+*/
     const tru4D =     ComponentDescriptor({
         id:             'tru4D',
         displayName:    'true distributed domain driven design',
@@ -56,10 +65,10 @@ const dsys = async (universe) => {
     await components.resolve(identity.id);
     await components.start(identity.id);
 
-    // install 'schema'. it is essential to have schema descriptions for DDDD available
-    await components.install(schema);
-    await components.resolve(schema.id);
-    await components.start(schema.id);
+    // install 'heavymatter'. it is essential to store files and other big data
+    // await components.install(heavymatter);
+    // await components.resolve(heavymatter.id);
+    // await components.start(heavymatter.id);
 
     // install 'tru4D'. it is essential to have transactions and the eventstore available
     await components.install(tru4D);
