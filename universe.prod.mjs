@@ -4,11 +4,13 @@
  * @author: blukassen
  */
 
-import { browserloader }            from '/evolux.universe';
+import { browserloader } from '/evolux.universe';
+import fs                from '/fs';
 
 // don't change this settings unless you have a really good reason
 export const DEBUG = false;
 export const GUNDEBUG = false;
+
 
 const greenlock = {
     // where to find .greenlockrc and set default paths
@@ -37,3 +39,34 @@ browserloader.serve({
     // port: 80,            --> will server on 443 for secure communication and on 80 for redirects; cannot be changes, its for production
     greenlock: greenlock
 });
+
+/*
+ * serve as gun peer
+ */
+/*
+const peerport = 8765;
+
+;(function(){
+    var cluster = require('cluster');
+    if(cluster.isMaster){
+        return cluster.fork() && cluster.on('exit', function(){ cluster.fork() });
+    }
+
+    var config = { port: peerport };
+    var Gun = require('../'); // require('gun')
+
+    if(process.env.HTTPS_KEY){
+        config.key = fs.readFileSync(process.env.HTTPS_KEY);
+        config.cert = fs.readFileSync(process.env.HTTPS_CERT);
+        config.server = require('https').createServer(config, Gun.serve(__dirname));
+    } else {
+        config.server = require('http').createServer(Gun.serve(__dirname));
+    }
+
+    var gun = Gun({web: config.server.listen(config.port)});
+    console.log('Relay peer started on port ' + config.port + ' with /gun');
+
+    module.exports = gun;
+}());
+*/
+

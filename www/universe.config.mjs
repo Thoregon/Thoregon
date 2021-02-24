@@ -12,7 +12,7 @@ import dsysx                                from "./dsys_x.mjs";
 
 import { tservices, mythoregon }            from '/evolux.universe';
 
-export const gunpeers =    ['https://service.broadcast.green:8765/gun'];
+export const gunpeers =    ['https://matter.thoregon.io:8765/gun'];
 
 // todo: move to seperate config e.g. 'tru4d.config.mjs'
 export const responsibilities   = [
