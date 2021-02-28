@@ -1,0 +1,14 @@
+/**
+ *
+ *
+ * @author: Bernhard Lukassen
+ */
+
+import { ComponentDescriptor } from '/evolux.dyncomponents';
+
+export default ComponentDescriptor({
+    id:             'collaboration',
+    displayName:    'collaboration components',
+    category:       'thoregon',
+    href:           '/thoregon.collaboration',
+})

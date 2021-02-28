@@ -25,21 +25,21 @@ const dsys = async (universe) => {
         href:           '/thoregon.identity',
     });
 
-    const heavymatter = ComponentDescriptor({
-       id:             'heavymatter',
-       displayName:    'matter for heavy (large) data',
-       category:       'universe',
-       href:           '/terra.ipfs',
-    });
-/*
+    /*
+        const heavymatter = ComponentDescriptor({
+           id:             'heavymatter',
+           displayName:    'matter for heavy (large) data',
+           category:       'universe',
+           href:           '/terra.ipfs',
+        });
 
-    const schema =    ComponentDescriptor({
-        id:             'schema',
-        displayName:    'schema for apps and contexts',
-        category:       'universe',
-        href:           '/evolux.schema',
-    });
-*/
+        const schema =    ComponentDescriptor({
+            id:             'schema',
+            displayName:    'schema for apps and contexts',
+            category:       'universe',
+            href:           '/evolux.schema',
+        });
+    */
     const tru4D =     ComponentDescriptor({
         id:             'tru4D',
         displayName:    'true distributed domain driven design',
@@ -59,7 +59,6 @@ const dsys = async (universe) => {
     await components.resolve(dynlayers.id);
     await components.start(dynlayers.id);
 */
-
     // install 'identity'. it is essential to have identities for DDDD available
     await components.install(identity);
     await components.resolve(identity.id);
