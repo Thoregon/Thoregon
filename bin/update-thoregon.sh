@@ -136,6 +136,20 @@ npm install
 npm audit fix
 cd ..
 
+cd thoregon.collaboration
+echo "@ `pwd`"
+git pull
+npm install
+npm audit fix
+cd ..
+
+cd thoregon.widget
+echo "@ `pwd`"
+git pull
+npm install
+npm audit fix
+cd ..
+
 cd ..
 cd terra.modules
 

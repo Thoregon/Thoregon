@@ -129,6 +129,18 @@ echo "@ `pwd`"
 npm install
 npm audit fix
 cd ..
+git clone https://github.com/Thoregon/thoregon.collaboration.git
+cd thoregon.aurora
+echo "@ `pwd`"
+npm install
+npm audit fix
+cd ..
+git clone https://github.com/Thoregon/thoregon.widget.git
+cd thoregon.widget
+echo "@ `pwd`"
+npm install
+npm audit fix
+cd ..
 
 # now terra.modules
 cd ..
