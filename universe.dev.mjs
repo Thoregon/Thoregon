@@ -18,5 +18,6 @@ browserloader.serve({
     // root: 'www/',        --> default
     // common: './',        --> default
     // index: 'index.mjs',  --> default
-    port: 8070
+    port: 8070,
+    host: "0.0.0.0"
 });
