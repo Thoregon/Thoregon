@@ -37,7 +37,8 @@ browserloader.serve({
     // common: './',        --> default
     // index: 'index.mjs',  --> default
     // port: 80,            --> will server on 443 for secure communication and on 80 for redirects; cannot be changes, its for production
-    greenlock: greenlock
+    greenlock: greenlock,
+    cachecontrol: 'public, max-age=18000'     // fresh in seconds = 5 hours
 });
 
 /*
