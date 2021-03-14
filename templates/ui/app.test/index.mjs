@@ -89,7 +89,7 @@ const kvbob = async () => {
     let obj = await so.get('b');
     universe.logger.info(`Got 'b' -> ${JSON.stringify(obj)}`);
 
-    let so2 = await so.addSecretObject('so');
+    let { so2 : secretObject } = await so.addSecretObject('so');
     await so2.invite('aliceA');
     await so2.grantWrite('aliceA');
 

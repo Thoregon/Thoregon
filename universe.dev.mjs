@@ -19,5 +19,6 @@ browserloader.serve({
     // common: './',        --> default
     // index: 'index.mjs',  --> default
     port: 8070,
-    host: "0.0.0.0"
+    host: "0.0.0.0",
+    // cachecontrol: 'public, max-age=120'     // fresh in seconds = 2 minutes
 });
