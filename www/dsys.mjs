@@ -38,14 +38,14 @@ const dsys = async (universe) => {
     });
 
     // install 'gun' to have synced distributed DB available
-    await components.install(pubsub);
-    await components.resolve(pubsub.id);
-    await components.start(pubsub.id);
-
-    // install 'gun' to have synced distributed DB available
     await components.install(gun);
     await components.resolve(gun.id);
     await components.start(gun.id);
+
+    // install 'gun' to have synced distributed DB available
+    await components.install(pubsub);
+    await components.resolve(pubsub.id);
+    await components.start(pubsub.id);
 
     // install 'everblack' to have secure end2end encryption within the distributed DB
     await components.install(everblack);
