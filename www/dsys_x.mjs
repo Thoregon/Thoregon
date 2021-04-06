@@ -10,7 +10,7 @@ const dsys = async (universe) => {
     const ComponentDescriptor   = components.ComponentDescriptor;
 
     /*
-     * Components
+     * Thoregon Components
      */
     const karte =    ComponentDescriptor({
         id:             'KARTE',

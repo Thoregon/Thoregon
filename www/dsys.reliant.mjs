@@ -11,7 +11,7 @@ const dsysp = async (universe) => {
     const ComponentDescriptor   = components.ComponentDescriptor;
 
     /*
-     * Components
+     * UI Components
      */
 
     const UI = ComponentDescriptor({
