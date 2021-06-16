@@ -6,12 +6,12 @@
 
 import letThereBeLight      from '/evolux.universe';
 import { timeout, doAsync } from '/evolux.universe';
-import components           from './@components';
+// import components           from './@components';
 
 (async () => {
     try {
         const universe = await letThereBeLight();
-        await universe.addComponents(components);     // todo: automatize
+        // await universe.addComponents(components);     // todo: automatize
 
         await timeout(300);
         // todo [REFACTOR]: switch to global object 'thoregon'

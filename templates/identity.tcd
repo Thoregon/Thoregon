@@ -7,8 +7,16 @@
 import { ComponentDescriptor } from '/evolux.dyncomponents';
 
 export default ComponentDescriptor({
-    id:             'identity',
-    displayName:    'thoregon distributed identites',
-    category:       'thoregon',
-    href:           '/thoregon.identity',
+    id          : 'thatsme-app-mywebsites',
+    displayName : 'thatsme app to manage my websites',
+    icon        : '',   // 32x32
+    image169    : '',   // image for cards 600x338
+    type        : 'app',
+    categories  : [ 'thatsme' ],
+    href        : '/thatsme-app-mywebsites',
+    dependencies: [
+        'thoregon.aurora@latest',
+        'thatsme-com-websites'
+    ],
+    signature   : '',
 })

@@ -6,7 +6,7 @@
 
 
 import letThereBeLight      from '/evolux.universe';
-import components           from './@components';
+// import components           from './@components';
 
 // import { loadIframe }    from '/evolux.universe';
 // import { busy, ready }   from '/evolux.universe';
@@ -36,7 +36,7 @@ console.log("components", components);
         // busy();
         const universe              = await letThereBeLight();
 
-        universe.addComponents(components);     // todo: automatize
+        // universe.addComponents(components);     // todo: automatize
 
         await timeout(300);
         globalThis.dispatchEvent(new CustomEvent('universe', { detail: universe }));
