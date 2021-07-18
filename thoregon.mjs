@@ -10,7 +10,7 @@ import letThereBeLight      from '/evolux.universe';
 (async () => {
     try {
         const universe              = await letThereBeLight();
-
+        thoregon.checkpoint("§§ start delta");
         // universe.addComponents(components);
     } catch (err) {
         console.log(err);
