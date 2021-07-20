@@ -6,7 +6,7 @@
 
 // export { default as VAPID }     from "./vapid.json";        // todo: maybe store encoded in matter, passphrase in a vault
 
-import { browserloader }            from '/evolux.universe';
+// import { browserloader }            from '/evolux.universe';
 
 export const DEBUG = false;
 export const GUNDEBUG = false;

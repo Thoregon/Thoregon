@@ -6,7 +6,7 @@
 
 import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
 
-import { browserloader, tservices }         from '/evolux.universe';
+import { tservices }                        from '/evolux.universe';
 
 import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
