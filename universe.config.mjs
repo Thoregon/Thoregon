@@ -20,6 +20,18 @@ export const responsibilities   = [
     'identity.services.provider'
 ];
 
+//
+// define app if no reference for this distribution
+//
+export const defaultapp = 'thatsme.app';
+
+//
+// find the universe for this distribution
+// the strangeness is a basic reference to be used as 'pepper' for all PoW's
+//
+export const strangeness = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';
+
+
 // export { default as smtpcredentials }       from "./smtp.json";
 
 /*

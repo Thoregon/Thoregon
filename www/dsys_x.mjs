@@ -12,12 +12,20 @@ const dsys = async (universe) => {
     /*
      * Thoregon Components
      */
+    const archetim =  ComponentDescriptor({
+                                              id:             'archetim',
+                                              displayName:    'universe wide graph DB',
+                                              category:       'universe',
+                                              href:           '/thoregon.archetim',
+                                          });
+/*
     const karte =    ComponentDescriptor({
         id:             'KARTE',
         displayName:    'thoregon universe KARTE',
         category:       'thoregon',
         href:           '/thoregon.karte',
     });
+*/
     const identity  = ComponentDescriptor({
         id:             'identity',
         displayName:    'thoregon distributed identites',
@@ -53,6 +61,10 @@ const dsys = async (universe) => {
           href:           '/thoregon.truCloud',
       });
 
+    // install 'archetim'. provides universe wide persistence
+    await components.install(archetim);
+    await components.resolve(archetim.id);
+    await components.start(archetim.id);
     // install 'dynlayer'. provides an infrastructure for all other components
 /*
     await components.install(dynlayers);
@@ -80,9 +92,11 @@ const dsys = async (universe) => {
     await components.start(truCloud.id);
 
     // install 'KARTE'. it is essential to have name and discovery service for DDDD available
+/*
     await components.install(karte);
     await components.resolve(karte.id);
     await components.start(karte.id);
+*/
 
 };
 
