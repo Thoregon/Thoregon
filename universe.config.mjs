@@ -26,10 +26,11 @@ export const responsibilities   = [
 export const defaultapp = 'thatsme.app';
 
 //
-// find the universe for this distribution
-// the strangeness is a basic reference to be used as 'pepper' for all PoW's
+// define the universe for this distribution
 //
-export const strangeness = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';
+export const STRANGENESS = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';  // the strangeness is a basic reference to be used as 'pepper' for all PoW's
+export const DORIFER = 'HriEr6DQKudGfFVphupRuTyxLGKgxNay';  // the soul (address) of the dorifer directory
+export const THOREGON_SPUB = '';
 
 
 // export { default as smtpcredentials }       from "./smtp.json";
