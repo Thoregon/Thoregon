@@ -8,7 +8,7 @@
 
 // import { browserloader }            from '/evolux.universe';
 
-export const DEBUG = false;
+export const DEBUG    = false;
 export const GUNDEBUG = false;
 
 const TESTAPP = {
