@@ -210,7 +210,7 @@ const bob = async () => {
 
     await channel.send("message 3 from bobB");
 
-    // await universe.identity.leave();
+    // await me.leave();
     universe.logger.info("Test Everblack Bob END");
 }
 
@@ -218,7 +218,7 @@ const bob = async () => {
 /*
     await alice();
     await timeout(500);
-    await universe.identity.leave();
+    await me.leave();
     await bob();
 */
 
