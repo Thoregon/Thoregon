@@ -5,6 +5,11 @@
  */
 
 /*
+// fonts:
+// - Jost       https://fonts.google.com/specimen/Jost#standard-styles
+ */
+
+/*
 // commercial fonts:
 // - Avenir     https://fonts.google.com/?query=Avenir
 // - Averta     https://fonts.google.com/?query=Averta
@@ -12,13 +17,14 @@
 
 
 /* std fonts */
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=IBM+Plex+Sans:wght@100;400;500;600&family=Open+Sans:wght@300;700&family=Fira+Sans:wght@100;400;500;600;700&family=Rubik:wght@300;400;500&family=Source+Sans+Pro:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=IBM+Plex+Sans:wght@100;400;500;600&family=Open+Sans:wght@300;700&family=Fira+Sans:wght@100;400;500;600;700&family=Rubik:wght@300;400;500&family=Source+Sans+Pro:wght@200;300;400;500;600;700;900&family=Jost:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap');
 /* header fonts */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=IBM+Plex+Serif:wght@200;400;600&family=Rubik+Mono+One&display=swap');
 /* condensed fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&family=Barlow+Semi+Condensed:wght@100;400;500;600;700&&family=Open+Sans+Condensed:wght@300;700&display=swap');
 
 @import url('https://rsms.me/inter/inter.css');
+
 /*
 html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
@@ -106,7 +112,7 @@ div.t2 {
 
 /* Theme Thore͛gon 3 */
 .t3 {
-    font-family: "Didact Gothic", Arial, sans-serif;
+    font-family: Jost, "Didact Gothic", Arial, sans-serif;
     font-weight: 200;
     line-height: 1.2;
     padding: 10px 10px;
