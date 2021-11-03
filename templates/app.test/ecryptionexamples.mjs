@@ -110,7 +110,7 @@ const signedsharedsecurestore = async () => {
 
 const signon = async () => {
     universe.logger.info('Auth', await universe.Identity.auth('bgtest1', 'bgtest1'));
-    universe.logger.info('Is', await universe.identity.is);
+    universe.logger.info('Is', await mey.is);
 };
 
 

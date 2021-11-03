@@ -24,6 +24,10 @@
             border-color: palegreen;
             background-color: palegreen;
         }
+        .btnplay.playing:hover {
+            border-color: #e1fb98;
+            background-color: #e1fb98;
+        }
     </style>
 </head>
 <body>
@@ -31,14 +35,14 @@
 <div id="playlist_container">
     <div class = "song">
         <p class="btnplay" onclick="play(this)">Play</p>
-        <audio id="bob_metal" style="display:none" id ="1" src=""  preload="none" >
+        <audio id="player" style="display:none" id ="1" src=""  preload="none" >
         </audio>
     </div>
 </div>
 
 <script>
 
-    let streamurl = 'https://stream.rockantenne.de/heavy-metal/stream/aacp';
+    let streamurl = 'https://stream.rockantenne.de/heavy-metal/stream/aacp'; // 'https://ice2.somafm.com/suburbsofgoa-128-aac'; //
     let streams = [
         // metal
         'http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de',
@@ -52,10 +56,11 @@
         // chillout
         'http://listen.radionomy.com/costa-del-mar',
         'http://digital.lounge.fm/',
+        'https://ice2.somafm.com/suburbsofgoa-128-aac',     // https://somafm.com/suburbsofgoa/directstreamlinks.html
     ]
 
     async function play(elem) {
-        var player = document.getElementById('bob_metal');
+        var player = document.getElementById('player');
         if (player.paused) {
             // Cachen eines streams vermeiden: (nur, wenn die JavaScript Funktionalität verwendet wird, und nicht, wenn die nativen audio-controls benutzt werden)
             url = streamurl;    // streams[0];
