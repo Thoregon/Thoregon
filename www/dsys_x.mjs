@@ -71,10 +71,6 @@ const dsys = async (universe) => {
     await components.resolve(dynlayers.id);
     await components.start(dynlayers.id);
 */
-    // install 'identity'. it is essential to have identities for DDDD available
-    await components.install(identity);
-    await components.resolve(identity.id);
-    await components.start(identity.id);
 
     // install 'heavymatter'. it is essential to store files and other big data
     // await components.install(heavymatter);
@@ -90,6 +86,11 @@ const dsys = async (universe) => {
     await components.install(truCloud);
     await components.resolve(truCloud.id);
     await components.start(truCloud.id);
+
+    // install 'identity'. it is essential to have identities for DDDD available
+    await components.install(identity);
+    await components.resolve(identity.id);
+    await components.start(identity.id);
 
     // install 'KARTE'. it is essential to have name and discovery service for DDDD available
 /*
