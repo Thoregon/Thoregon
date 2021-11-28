@@ -36,6 +36,14 @@ export const SSI_RESOLVER = '/thoregon.identity/lib/resolvers/gunidentityresolve
 
 // export { default as smtpcredentials }       from "./smtp.json";
 
+//
+// Identity
+//
+
+export const GET_SECRET_WORKER = async () => {
+    return (await import('/thoregon.identity/sasecretworker.mjs')).default;
+}
+
 /*
  * initialize the component loader and load all
  */
