@@ -32,8 +32,6 @@ export const STRANGENESS = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';  // the strangene
 export const DORIFER = 'HriEr6DQKudGfFVphupRuTyxLGKgxNay';  // the soul (address) of the dorifer directory
 export const THOREGON_SPUB = '';
 
-export const SSI_RESOLVER = '/thoregon.identity/lib/resolvers/gunidentityresolver.mjs';
-
 // export { default as smtpcredentials }       from "./smtp.json";
 
 //
