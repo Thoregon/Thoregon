@@ -21,9 +21,9 @@ export const responsibilities   = [
 ];
 
 //
-// define app if no reference for this distribution
+// define agent
 //
-export const defaultapp = 'thatsme.app';
+export const AGENT_NAME = 'Test Service Agent';
 
 //
 // define the universe for this distribution
@@ -60,13 +60,8 @@ universe.atDawn(async universe => {
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // todo: Refactor LocationWatcher to use 'matter.components'
 
-    // get the keypair from the vault; since the passphrase is here in clean text, this is also insecure
-    // todo: use a wallet or FIDO instead
-    // let entry = await universe.Everblack.getPair("heliots.service", "heliotspassphrase1", "./.thoregon/tvs/heliots.tvs");
-    // universe.HELIOTS_SERVICE = entry.data;
- //   let entry = await universe.Everblack.getPair("identity.webservice", "thoregonidentitypassphrase1", "./.thoregon/tvs/identity.tvs");
-   // universe.IDENTITY_PROVIDER = entry.data;
-
+    // awake agent when SSI is avialable
+    await agent.prepare();
 });
 
 universe.atDusk(async universe => {

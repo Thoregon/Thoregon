@@ -15,6 +15,7 @@
   "author": "Bernhard Lukassen",
   "license": "MIT",
   "dependencies": {
+    "@mtproto/core": "6.1.0",
     "greenlock-express": "^4.0.3",
     "yargs": "^15.3.1"
   }

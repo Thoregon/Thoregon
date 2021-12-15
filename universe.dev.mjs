@@ -9,7 +9,7 @@
 // import { browserloader }            from '/evolux.universe';
 
 export const DEBUG    = false;
-export const GUNDEBUG = false;
+export const GUNDEBUG = true;
 
 const TESTIDENTITY = {
     alias: 'testuser',
@@ -25,48 +25,10 @@ const TESTIDENTITY = {
     anchor: 'eXup3uod43ud0e600DFUyA85IjSkG249'
 };
 
-const stuff = [
-    { name: 'AA', score: 111 },
-    { name: 'AB', score: 323 },
-    { name: 'AC', score: 132 },
-    { name: 'AD', score: 123 },
-    { name: 'AE', score: 323 },
-    { name: 'AF', score: 151 },
-    { name: 'AG', score: 174 },
-    { name: 'AH', score: 149 },
-    { name: 'AI', score: 130 },
-    { name: 'AJ', score: 196 },
-    { name: 'AK', score: 128 },
-    { name: 'AL', score: 148 },
-    { name: 'AM', score: 185 },
-    { name: 'AN', score: 176 },
-    { name: 'AO', score: 139 },
-    { name: 'AP', score: 142 },
-    { name: 'AQ', score: 103 },
-    { name: 'AR', score: 158 },
-    { name: 'AS', score: 138 },
-    { name: 'AT', score: 133 },
-    { name: 'AU', score: 154 },
-    { name: 'AV', score: 193 },
-    { name: 'AW', score: 198 },
-    { name: 'AX', score: 165 },
-    { name: 'AY', score: 155 },
-    { name: 'AZ', score: 148 },
-    { name: 'BA', score: 160 },
-    { name: 'BB', score: 176 },
-    { name: 'BC', score: 122 },
-    { name: 'BD', score: 164 },
-    { name: 'BE', score: 109 },
-    { name: 'BF', score: 119 },
-    { name: 'BG', score: 157 },
-    { name: 'BH', score: 185 },
-    { name: 'BI', score: 176 },
-    { name: 'BJ', score: 127 },
-    { name: 'BK', score: 299 },
-]
-
 universe.atDawn(async universe => {
     await universe.Identity.useIdentity(TESTIDENTITY);
+
+    const ssi = await me.ssi();
 })
 
 /*
