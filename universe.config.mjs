@@ -4,6 +4,8 @@
  * @author: blukassen
  */
 
+import os                                   from '/os';
+
 import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
 
 import { tservices }                        from '/evolux.universe';
@@ -23,7 +25,12 @@ export const responsibilities   = [
 //
 // define agent
 //
-export const AGENT_NAME = 'Test Service Agent';
+let host = os.hostname();
+let i = host.lastIndexOf('.');
+if (host.lastIndexOf('.') > -1) {
+    host = host.substring(0,i);
+}
+export const AGENT_NAME = 'Agent ' + host + ' on ' + os.type();
 
 //
 // define the universe for this distribution
