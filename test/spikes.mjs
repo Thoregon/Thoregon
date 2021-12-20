@@ -1,5 +1,25 @@
 
 //****************************************************************//
+// Agent Producer                                                 //
+//****************************************************************//
+
+// import { asyncWithPath } from "/evolux.util";
+import ServiceHandle     from "/thoregon.truCloud/lib/service/servicehandle.mjs";
+
+const ssi          = await me.ssi();
+const currentagent = await agent.current;
+const services     = await currentagent.services;
+let   testservice  = await services.test;
+let   source       = 'KhNlE737smMWsKSwK85Ae49JaCOndbCP';
+
+if (!testservice) {
+    testservice = ServiceHandle.forProducer('repo:./producer.mjs', source);
+}
+
+
+
+
+//****************************************************************//
 // entity prop                                                    //
 //****************************************************************//
 
