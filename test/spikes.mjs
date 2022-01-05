@@ -236,9 +236,9 @@ console.log("Telegram sent");
 
 /*
 import fetch             from "/evolux.web/lib/request/fetch.mjs";
-import { TelegramSetup } from "/thatsme-module-message-provider/lib/providers/telegram.mjs";
+import { TelegramAppSetup } from "/thatsme-module-message-provider/lib/providers/telegram.mjs";
 
-const setup = new TelegramSetup();
+const setup = new TelegramAppSetup();
 
 await setup.requestLogin('+436767800786');
 console.log("Login requested");
