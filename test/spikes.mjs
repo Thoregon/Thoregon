@@ -3,7 +3,7 @@
 // Agent Producer                                                 //
 //****************************************************************//
 
-// import { asyncWithPath } from "/evolux.util";
+/*
 import ServiceHandle     from "/thoregon.truCloud/lib/service/servicehandle.mjs";
 
 const ssi          = await me.ssi();
@@ -15,6 +15,7 @@ let   source       = 'KhNlE737smMWsKSwK85Ae49JaCOndbCP';
 if (!testservice) {
     testservice = ServiceHandle.forProducer('repo:./producer.mjs', source);
 }
+*/
 
 
 
@@ -31,15 +32,16 @@ if (!testservice) {
 // Telegram MTProto                                               //
 //****************************************************************//
 
-/*
+
 import process     from '/process';
 import path        from '/path';
 import MTProto     from '/@mtproto/core';
 // import { MTProto } from "/terra.telegram";
 
+/*
 const api_id   = '11199645';
 const api_hash = 'a947ddc3bc76bcc6466dba6dec8cc680';
-const storage  = path.resolve(process.cwd(), './test/data/1.json');
+const storage  = path.resolve(process.cwd(), './data/telegram/1.json');
 
 // 1. Create instance
 const mtproto = new MTProto({
@@ -171,14 +173,17 @@ const enterTelegram = async () => {
 }
 
 const user = await enterTelegram();
+*/
 
 // const martin = "+436765299072";
 
+/*
 const contacts = await mtproto.call('contacts.getContacts');
 
 const martin = contacts.users.find(c => c.last_name == 'Neitz');
+*/
 
-/!*
+/*
 const resolvedPeer = await mtproto.call('contacts.resolveUsername', {
     username: 'Martin Neitz',
 });
@@ -186,8 +191,8 @@ const resolvedPeer = await mtproto.call('contacts.resolveUsername', {
 const channel = resolvedPeer.chats.find(
     (chat) => chat.id === resolvedPeer.peer.channel_id
 );
-*!/
-
+*/
+/*
 const inputPeer = {
     _: 'inputPeerUser',
     user_id: martin.id,
