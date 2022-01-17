@@ -21,8 +21,284 @@ if (!testservice) {
 
 
 //****************************************************************//
-// entity prop                                                    //
+// Telegram spikes                                                //
 //****************************************************************//
+
+/*
+
+import process     from '/process';
+import fs          from "/fs";
+import path        from '/path';
+import MTProto     from '/@mtproto/core';
+import { timeout } from "/evolux.universe";
+
+const api_id   = '11199645';
+const api_hash = 'a947ddc3bc76bcc6466dba6dec8cc680';
+const storage  = path.resolve(process.cwd(), './data/telegram/1.json');
+
+const createId = () =>  Math.ceil(Math.random() * 0xffffff) + Math.ceil(Math.random() * 0xffffff);
+
+// 1. Create instance
+const mtproto = new MTProto({
+                                api_id,
+                                api_hash,
+
+                                storageOptions: {
+                                    path: storage,
+                                },
+                            });
+
+async function getUser() {
+    try {
+        const user = await mtproto.call('users.getFullUser', {
+            id: {
+                _: 'inputUserSelf',
+            },
+        }, { /!* dcId: nearestdc *!/ });
+
+        return user;
+    } catch (error) {
+        return null;
+    }
+}
+
+const user = await getUser();
+setInterval(async () => {
+    await mtproto.call('updates.getState', {});
+}, 3000)
+
+mtproto.updates.on('updates', ({ updates }) => {
+    const newChannelMessages = updates/!*.filter((update) => update._ === 'updateNewChannelMessage')*!/.map(({ message }) => message) // filter `updateNewChannelMessage` types only and extract the 'message' object
+
+    for (const message of newChannelMessages) {
+        // printing new channel messages
+        console.log(JSON.stringify(message));
+    }
+});
+
+async function createChannel(name, description) {
+    try {
+        const res = await mtproto.call('channels.createChannel', {
+            broadcast: true,
+            title: name,
+            about: description
+            // todo [OPEN]: add user?
+        }, { /!* dcId: nearestdc *!/ });
+
+        return res.chats.find(update => update._ === 'channel');
+    } catch (error) {
+        return null;
+    }
+}
+
+// const channel = await createChannel("MyActivites", "Reporting my activites");
+
+// console.log("Channel", channel);
+let channel = {
+    _: 'inputChannel',
+    channel_id: "1697393160",
+    access_hash: "84875028142525042"
+};
+
+async function getChannels(channel) {
+    try {
+        const res = await mtproto.call('channels.getChannels', {
+            id: [channel]
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+
+async function getAllChats() {
+    try {
+        const res = await mtproto.call('messages.getAllChats', {
+            except_ids: []
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+const channels = await getAllChats();
+console.log("Channels", channels);
+
+function readFileBytes(file_path) {
+    return new Promise((resolve, reject) => {
+        fs.open(file_path, "r", function (error, fd) {
+            var bufferSize = fs.fstatSync(fd).size;
+            var buffer = new Buffer(bufferSize);
+            fs.read(fd, buffer, 0, bufferSize, null, function (error, bytesRead, buffer) {
+                fs.close(fd);
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(buffer);
+                }
+            });
+        });
+    })
+}
+
+/!*
+const bender = {
+    id: createId(),
+    name: 'bender_.jpeg',
+    bytes: fs.readFileSync('/Users/blukassen/Pictures/BL/bender_.jpeg', {encoding:'utf8', flag:'r'})
+}
+*!/
+
+/!*
+const rainbowdash = {
+    id: createId(),
+    name: 'rainbowdash.jpeg',
+    bytes: await readFileBytes('/Users/blukassen/Pictures/BL/my-little-pony-rainbow-dash.png')
+}
+*!/
+
+async function uploadFile(file) {
+    try {
+        const res = await mtproto.call('upload.saveFilePart', {
+            file_id: file.id,
+            file_part: 0,
+            bytes: file.bytes
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+// const updfile = await uploadFile(rainbowdash);
+// console.log("Bender", updfile);
+
+async function editChannelImage(channel, image) {
+    try {
+        const res = await mtproto.call('channels.editPhoto', {
+            channel: channel,
+            photo: image
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+const channelimage = {
+    _: 'inputChatUploadedPhoto',
+    flags: 0,
+    file: {
+        _: 'inputFile',
+        id: "24194269",
+        parts: 1,
+        name: 'rainbowdash.jpeg',
+    }
+};
+
+
+// const updphoto = await editChannelImage(channel, channelimage);
+// console.log("Image", updphoto);
+const channelPeer = {
+    _: 'inputPeerChannel',
+    channel_id: channel.channel_id,
+    access_hash: channel.access_hash
+};
+
+async function exportChatInvite(channel) {
+    try {
+        const res = await mtproto.call('messages.exportChatInvite', {
+            peer: channel
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+// const invitation = await exportChatInvite(channel);
+// console.log("Invitation", invitation);
+
+async function sendChannelMessage(channelPeer, message) {
+    try {
+        const res = await mtproto.call('messages.sendMessage', {
+            random_id: createId(),
+            peer: channelPeer,
+            message: message
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+async function getChannelMessages(channelPeer) {
+    try {
+        const res = await mtproto.call('messages.getHistory', {    // 'channels.getMessages'
+            peer: channelPeer,
+            limit: 100
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+/!*
+const msgs = await getChannelMessages(channelPeer);
+console.log("Messages");
+for (const msg of msgs.messages) {
+    if (msg.action) {
+        console.log("Message, Action:", msg.action);
+    } else {
+        console.log("Message, Views:", msg.views, msg.message);
+    }
+}
+*!/
+
+// console.log("$$> b4 test message")
+// await timeout(2000);
+
+// const msgsent = await sendChannelMessage(channelPeer, 'Jetzt bin ich neugierig');
+
+// console.log("$$> test message sent.")
+
+async function getMessageViews(channelPeer, messageId) {
+    try {
+        const res = await mtproto.call('messages.getMessagesViews', {
+            peer: channelPeer,
+            id: [messageId]
+        });
+
+        return res;
+    } catch (error) {
+        return null;
+    }
+}
+
+// const views = await getMessageViews(channelPeer, msgid);
+// console.log("Views", views);
+*/
+
+//****************************************************************//
+
+
+
+
+
+
+
+
+
 
 
 
@@ -33,9 +309,9 @@ if (!testservice) {
 //****************************************************************//
 
 
-import process     from '/process';
-import path        from '/path';
-import MTProto     from '/@mtproto/core';
+// import process     from '/process';
+// import path        from '/path';
+// import MTProto     from '/@mtproto/core';
 // import { MTProto } from "/terra.telegram";
 
 /*
