@@ -17,8 +17,40 @@ if (!testservice) {
 }
 */
 
+//****************************************************************//
+// SignalProvider spikes                                          //
+//****************************************************************//
 
 
+
+//****************************************************************//
+// DevProvider spikes                                             //
+//****************************************************************//
+/*
+import DevProvider from "/thatsme-module-message-provider/lib/providers/devprovider.mjs";
+
+const provider = new DevProvider();
+
+await provider.init({});
+
+const commport = await provider.createCommPort({ name: 'POC2022', description: 'Pioneers of Change Summit 2022'});
+console.log("create comport", JSON.stringify(commport));
+const msg = await provider.sendMessage(commport, { content: 'Hallo wir sind wieder da!' });
+console.log("send message", JSON.stringify(msg));
+
+const pmsg = await provider.getMessage(commport, msg);
+console.log("get message", JSON.stringify(pmsg));
+
+const ports = await provider.getAllCommPorts();
+console.log("all ports");
+ports.forEach(port => console.log(JSON.stringify(port)));
+
+const msgs = await provider.getAllMessages(commport);
+console.log("all messages");
+msgs.forEach(msg => console.log(JSON.stringify(msg)));
+
+debugger;
+*/
 
 //****************************************************************//
 // Telegram spikes                                                //
@@ -99,19 +131,6 @@ let channel = {
     channel_id: "1697393160",
     access_hash: "84875028142525042"
 };
-
-async function getChannels(channel) {
-    try {
-        const res = await mtproto.call('channels.getChannels', {
-            id: [channel]
-        });
-
-        return res;
-    } catch (error) {
-        return null;
-    }
-}
-
 
 async function getAllChats() {
     try {
@@ -517,7 +536,7 @@ console.log("Telegram sent");
 
 /*
 import fetch             from "/evolux.web/lib/request/fetch.mjs";
-import { TelegramAppSetup } from "/thatsme-module-message-provider/lib/providers/telegram.mjs";
+import { TelegramProvider } from "/thatsme-module-message-provider/lib/providers/telegramprovider.mjs";
 
 const setup = new TelegramAppSetup();
 
