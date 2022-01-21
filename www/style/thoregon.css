@@ -85,7 +85,7 @@ html { font-family: 'Inter', sans-serif; }
 
 /* Theme Thore͛gon 1 */
 .t1 {
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family: "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
     font-weight: 200;
     line-height: 1.2;
     padding: 10px 10px;
@@ -95,6 +95,10 @@ div.t1 {
     background: white;
     color: black;
 }
+
+.t1 h1,.t1 h2,.t1 h3,.t1 h4 { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 400; }
+.t1 h1 { font-weight: 600; }
+.t1 .headlike { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 400; font-size: 1em; }
 
 /* Theme Thore͛gon 2 */
 .t2 {

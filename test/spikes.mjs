@@ -26,6 +26,7 @@ if (!testservice) {
 //****************************************************************//
 // DevProvider spikes                                             //
 //****************************************************************//
+
 /*
 import DevProvider from "/thatsme-module-message-provider/lib/providers/devprovider.mjs";
 
@@ -49,7 +50,7 @@ const msgs = await provider.getAllMessages(commport);
 console.log("all messages");
 msgs.forEach(msg => console.log(JSON.stringify(msg)));
 
-debugger;
+console.log("DevProvider tests END");
 */
 
 //****************************************************************//
