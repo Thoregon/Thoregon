@@ -13,13 +13,11 @@ import spec from "./agent_0.config.mjs";
 export const DEBUG    = false;
 export const GUNDEBUG = true;
 
-import TESTIDENTITY from "./testidentity.mjs";
+// import TESTIDENTITY from "./testidentity.mjs";
 
 universe.atDawn(async universe => {
-    await universe.Identity.useIdentity(TESTIDENTITY);
-    await universe.Agent.addServiceSpec(spec);
-
-    const ssi = await me.ssi();
+    // await universe.Identity.useIdentity(TESTIDENTITY);
+    // await universe.Agent.addServiceSpec(spec);
 })
 
 /*

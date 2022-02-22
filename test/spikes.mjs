@@ -6,7 +6,6 @@
 /*
 import ServiceHandle     from "/thoregon.truCloud/lib/service/servicehandle.mjs";
 
-const ssi          = await me.ssi();
 const currentagent = await agent.current;
 const services     = await currentagent.services;
 let   testservice  = await services.test;
@@ -34,19 +33,19 @@ const provider = new DevProvider();
 
 await provider.init({});
 
-const commport = await provider.createCommPort({ name: 'POC2022', description: 'Pioneers of Change Summit 2022'});
-console.log("create comport", JSON.stringify(commport));
-const msg = await provider.sendMessage(commport, { content: 'Hallo wir sind wieder da!' });
+const commpeer = await provider.createPeer({ name: 'POC2022', description: 'Pioneers of Change Summit 2022'});
+console.log("create compeer", JSON.stringify(commpeer));
+const msg = await provider.sendMessage(commpeer, { content: 'Hallo wir sind wieder da!' });
 console.log("send message", JSON.stringify(msg));
 
-const pmsg = await provider.getMessage(commport, msg);
+const pmsg = await provider.getMessage(commpeer, msg);
 console.log("get message", JSON.stringify(pmsg));
 
-const ports = await provider.getAllCommPorts();
-console.log("all ports");
-ports.forEach(port => console.log(JSON.stringify(port)));
+const peers = await provider.getAllPeers();
+console.log("all peers");
+peers.forEach(peer => console.log(JSON.stringify(peer)));
 
-const msgs = await provider.getAllMessages(commport);
+const msgs = await provider.getAllMessages(commpeer);
 console.log("all messages");
 msgs.forEach(msg => console.log(JSON.stringify(msg)));
 

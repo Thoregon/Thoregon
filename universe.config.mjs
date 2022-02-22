@@ -49,6 +49,9 @@ export const GET_SECRET_WORKER = async () => {
     return (await import('/thoregon.identity/sasecretworker.mjs')).default;
 }
 
+import TESTIDENTITY from "./testidentity.mjs";
+import spec         from "./agent_0.config.mjs";
+
 /*
  * initialize the component loader and load all
  */
@@ -66,6 +69,9 @@ universe.atDawn(async universe => {
     // now install all other components
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // todo: Refactor LocationWatcher to use 'matter.components'
+
+    await universe.Identity.useIdentity(TESTIDENTITY);
+    await universe.Agent.addServiceSpec(spec);
 
     // awake agent when SSI is avialable
     await agent.prepare();
