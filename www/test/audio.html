@@ -21,20 +21,48 @@
         }
 
         .playing {
-            border-color: palegreen;
-            background-color: palegreen;
+            border-color: #4D79D8;
+            background-color: #4D79D8;
         }
         .btnplay.playing:hover {
-            border-color: #e1fb98;
-            background-color: #e1fb98;
+            border-color: lightskyblue;
+            background-color: lightskyblue;
         }
     </style>
 </head>
 <body>
 
+<!--
+    -> https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    -> https://developer.chrome.com/blog/media-session/
+        -> https://developer.mozilla.org/en-US/docs/Web/API/Media_Session_API
+
+    todo [OPEN]:
+        - better controls -> check existing JS players
+        - meta information
+        - radio streams: show current title info (who/what)
+-->
+
 <div id="playlist_container">
     <div class = "song">
-        <p class="btnplay" onclick="play(this)">Play</p>
+        <select id="station">
+            <optgroup label="Metal">
+                <option value="https://stream.rockantenne.de/heavy-metal/stream/aacp">Rock Antenne Metal</option>
+                <option value="http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de">BOB metal</option>
+            </optgroup>
+            <optgroup label="Chillout">
+                <option value="http://listen.radionomy.com/costa-del-mar">Costa Del Mar</option>
+                <option value="https://media-ssl.musicradio.com/SmoothChill">Smooth Chill</option>
+                <option value="https://ice2.somafm.com/suburbsofgoa-128-aac">Suburbs Of Goa</option>
+                <option value="http://digital.lounge.fm/">Lounge FM</option>
+            </optgroup>
+<!--
+            <optgroup label="Reggae">
+                <option value=""></option>
+            </optgroup>
+-->
+        </select>
+        <p id="play" class="btnplay" onclick="play(this)">Play</p>
         <audio id="player" style="display:none" id ="1" src=""  preload="none" >
         </audio>
     </div>
@@ -56,32 +84,47 @@
         // chillout
         'http://listen.radionomy.com/costa-del-mar',
         'http://digital.lounge.fm/',
-        'https://ice2.somafm.com/suburbsofgoa-128-aac',     // https://somafm.com/suburbsofgoa/directstreamlinks.html
+        'https://ice2.somafm.com/suburbsofgoa-128-aac',     // https://somafm.com/suburbsofgoa/directstreamlinks.html       --> https://somafm.com/
+        'https://media-ssl.musicradio.com/SmoothChill',     // --> streams see https://media-ssl.musicradio.com/
     ]
 
-    async function play(elem) {
-        var player = document.getElementById('player');
+    let playbtn = document.getElementById('play');
+    let player = document.getElementById('player');
+    let station = document.getElementById('station');
+
+    station.onchange = () => {
+        if (player.paused) return;
+        play();
+        play();
+    }
+
+    async function play() {
+        var mediaurl = station.value ?? streamurl;
         if (player.paused) {
             // Cachen eines streams vermeiden: (nur, wenn die JavaScript Funktionalität verwendet wird, und nicht, wenn die nativen audio-controls benutzt werden)
-            url = streamurl;    // streams[0];
-            var stream = url  + "?" + new Date().getTime();
-            player.src = stream;
+            mediaurl += "?" + new Date().getTime();
+            player.src = mediaurl;
+            playbtn.innerText = "Pause";
 
             try {
-                elem.classList.add("playing");
+                playbtn.classList.add("playing");
                 let status = await player.play();
                 player.onended = () => {      // switch visibility
-                    elem.classList.remove("playing");
+                    playbtn.classList.remove("playing");
+                    playbtn.innerText = "Play";
                 };
                 player.onerror = (err) => {   // todo
-                    elem.classList.remove("playing");
+                    playbtn.classList.remove("playing");
+                    playbtn.innerText = "Play";
                     console.log(err);
                 };
             } catch (err) {   // todo
-                elem.classList.remove("playing");
+                playbtn.classList.remove("playing");
+                playbtn.innerText = "Play";
                 console.log(err);
             }
         } else {
+            playbtn.innerText = "Play";
             player.pause();
         }
     }
