@@ -30,12 +30,14 @@ const dsys = async (universe) => {
         category:       'thoregon',
         href:           '/evolux.everblack',
     });
+/*
     const matter =    ComponentDescriptor({
         id:             'matter',
         displayName:    'matter in the universe',
         category:       'universe',
         href:           '/evolux.matter',
     });
+*/
 
     // install 'gun' to have synced distributed DB available
     await components.install(gun);
@@ -53,9 +55,11 @@ const dsys = async (universe) => {
     await components.start(everblack.id);
 
     // install 'matter' to have fast queries available
+/*
     await components.install(matter);
     await components.resolve(matter.id);
     await components.start(matter.id);
+*/
 
 };
 

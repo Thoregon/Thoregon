@@ -48,12 +48,14 @@ const dsys = async (universe) => {
             href:           '/evolux.schema',
         });
     */
+/*
     const tru4D =     ComponentDescriptor({
         id:             'tru4D',
         displayName:    'true distributed domain driven design',
         category:       'universe',
         href:           '/thoregon.tru4D',
     });
+*/
     const truCloud =  ComponentDescriptor({
           id:             'truCloud',
           displayName:    'truCloud supporting truServerless',
