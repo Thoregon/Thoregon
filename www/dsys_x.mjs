@@ -80,9 +80,9 @@ const dsys = async (universe) => {
     // await components.start(heavymatter.id);
 
     // install 'tru4D'. it is essential to have transactions and the eventstore available
-    await components.install(tru4D);
-    await components.resolve(tru4D.id);
-    await components.start(tru4D.id);
+    // await components.install(tru4D);
+    // await components.resolve(tru4D.id);
+    // await components.start(tru4D.id);
 
     // install 'truCloud'. this is the magic
     await components.install(truCloud);
