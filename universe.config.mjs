@@ -14,7 +14,7 @@ import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
 import dsysx                                from "./dsys_x.mjs";
 
-export const gunpeers           = ['https://matter.thoregon.io:8765/gun'];
+export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
 // todo: move to seperate config e.g. 'tru4d.config.mjs'
 export const responsibilities   = [
@@ -35,9 +35,9 @@ export const AGENT_NAME = 'Agent ' + host + ' on ' + os.type();
 //
 // define the universe for this distribution
 //
-export const STRANGENESS = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';  // the strangeness is a basic reference to be used as 'pepper' for all PoW's
-export const DORIFER = 'HriEr6DQKudGfFVphupRuTyxLGKgxNay';  // the soul (address) of the dorifer directory
-export const THOREGON_SPUB = '';
+// export const STRANGENESS = 'bwhOilJRd73uyFUzeKfJ13604fJdwKTy';  // the strangeness is a basic reference to be used as 'pepper' for all PoW's
+// export const DORIFER = 'HriEr6DQKudGfFVphupRuTyxLGKgxNay';  // the soul (address) of the dorifer directory
+// export const THOREGON_SPUB = '';
 
 // export { default as smtpcredentials }       from "./smtp.json";
 
