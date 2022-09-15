@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Audio</title>
     <style>
+        select {
+            font-size: xx-large;
+        }
         .btnplay {
             width: 250px;
             border: 1px lightskyblue;
@@ -14,6 +18,7 @@
             padding: 3px 5px;
             font-family: "Helvetica Neue", Arial, sans-serif;
             font-weight: bold;
+            font-size: xx-large;
         }
         .btnplay:hover {
             border-color: #4D79D8;
@@ -51,16 +56,16 @@
                 <option value="http://streams.radiobob.de/bob-metal/mp3-192/streams.radiobob.de">BOB metal</option>
             </optgroup>
             <optgroup label="Chillout">
-                <option value="http://listen.radionomy.com/costa-del-mar">Costa Del Mar</option>
+                <option value="https://radio4.cdm-radio.com:18020/stream64k-AAC-Chill">Costa Del Mar</option>    <!-- http://listen.radionomy.com/costa-del-mar -->
                 <option value="https://media-ssl.musicradio.com/SmoothChill">Smooth Chill</option>
                 <option value="https://ice2.somafm.com/suburbsofgoa-128-aac">Suburbs Of Goa</option>
                 <option value="http://digital.lounge.fm/">Lounge FM</option>
             </optgroup>
-<!--
-            <optgroup label="Reggae">
-                <option value=""></option>
-            </optgroup>
--->
+            <!--
+                        <optgroup label="Reggae">
+                            <option value=""></option>
+                        </optgroup>
+            -->
         </select>
         <p id="play" class="btnplay" onclick="play(this)">Play</p>
         <audio id="player" style="display:none" id ="1" src=""  preload="none" >
