@@ -70,8 +70,12 @@ universe.atDawn(async universe => {
     componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
     // todo: Refactor LocationWatcher to use 'matter.components'
 
-    // await universe.Identity.useIdentity(TESTIDENTITY);
-    // await universe.Agent.addServiceSpec(spec);
+    if (universe.DEV?.ssi) {
+        const SSI = universe.DEV?.ssi;
+        const spec = (await import("./agent_0.config.mjs")).default;
+        await universe.Identity.useIdentity(SSI);
+        await universe.Agent.addServiceSpec(spec);
+    }
 
     // awake agent when SSI is avialable
     await agent.prepare();
