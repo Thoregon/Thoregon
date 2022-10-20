@@ -14,6 +14,13 @@ import dsys                                 from "./dsys.mjs";
 import dsysp                                from "./dsys.sovereign.mjs";
 import dsysx                                from "./dsys_x.mjs";
 
+//
+// JS engine independence
+//
+import npath from "/path";
+export const path = npath;
+
+// gun
 export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
 // todo: move to seperate config e.g. 'tru4d.config.mjs'

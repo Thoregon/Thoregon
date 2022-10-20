@@ -10,19 +10,6 @@ export default async (universe) => {
     const services              = universe.services;
     const components            = services.components;
     const ComponentDescriptor   = components.ComponentDescriptor;
-    /*
-     * Components
-     */
-    const www =       ComponentDescriptor({
-                                                 id:             'www',
-                                                 displayName:    'connect to the web world',
-                                                 category:       'universe',
-                                                 href:           '/evolux.web',
-                                             });
-    // install 'web'. provides universe wide persistence
-    await components.install(www);
-    await components.resolve(www.id);
-    await components.start(www.id);
 
     /*
      * Thoregon Components
@@ -71,4 +58,19 @@ export default async (universe) => {
     await components.install(identity);
     await components.resolve(identity.id);
     await components.start(identity.id);
-};;
+
+    /*
+     * Components
+     */
+    const www =       ComponentDescriptor({
+                                              id:             'www',
+                                              displayName:    'connect to the web world',
+                                              category:       'universe',
+                                              href:           '/evolux.web',
+                                          });
+    // install 'web'. provides universe wide persistence
+    await components.install(www);
+    await components.resolve(www.id);
+    await components.start(www.id);
+
+};
