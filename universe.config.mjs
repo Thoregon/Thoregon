@@ -5,14 +5,21 @@
  */
 
 import os                                   from '/os';
+import { version }                          from '/process';
 
 import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
 
 import { tservices }                        from '/evolux.universe';
 
-import dsys                                 from "./dsys.mjs";
-import dsysp                                from "./dsys.sovereign.mjs";
-import dsysx                                from "./dsys_x.mjs";
+import SEA                                  from '/evolux.everblack/lib/crypto/sea.mjs'
+import GunService                           from '/terra.gun/lib/gunservice.mjs';
+import IdentityReflection                   from '/thoregon.identity/lib/identityreflection.mjs';
+import Dorifer                              from '/thoregon.truCloud/lib/dorifer.mjs';
+import WebserviceController                 from '/evolux.web//lib/webservicecontroller.mjs';
+
+// import dsys                                 from "./dsys.mjs";
+// import dsysp                                from "./dsys.sovereign.mjs";
+// import dsysx                                from "./dsys_x.mjs";
 
 //
 // JS engine independence
@@ -37,7 +44,24 @@ let i = host.lastIndexOf('.');
 if (host.lastIndexOf('.') > -1) {
     host = host.substring(0,i);
 }
-export const AGENT_NAME = 'Agent ' + host + ' on ' + os.type();
+const AGENT_NAME = 'Agent ' + host + ' on ' + os.type();
+
+export const deviceInfo = {
+    name     : AGENT_NAME,
+    browser  : 'none',
+    vm       : {
+        name: 'node',
+        os  : os.type(),
+        version
+    },
+    mobile   : false,
+    pointlock: false,
+    agent    : true
+}
+
+Object.defineProperties(thoregon, {
+    'deviceInfo'       : { value: deviceInfo, configurable: false, enumerable: true, writable: false },
+});
 
 //
 // define the universe for this distribution
@@ -56,26 +80,37 @@ export const GET_SECRET_WORKER = async () => {
     return (await import('/thoregon.identity/sasecretworker.mjs')).default;
 }
 
-// import TESTIDENTITY from "./testidentity.mjs";
-// import spec         from "./agent_0.config.mjs";
+//
+// initialize unviverse wide services an functions
+//
 
-/*
- * initialize the component loader and load all
- */
+export const everblack = SEA;
 
 universe.atDawn(async universe => {
-    const componentLocation     = 'components';
-    const componentController   = Controller.baseCwd('ThoregonComponentController');
-    tservices().components = componentController;
+    // const componentLocation     = 'components';
+    // const componentController   = Controller.baseCwd('ThoregonComponentController');
+    // tservices().components = componentController;
+    //
+    // // now setup the basic distributed system
+    // await dsysp(universe);      // first the sovereign settings
+    // await dsys(universe);       // basic system
+    // await dsysx(universe);      // extended system
+    //
+    // // now install all other components
+    // componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
+    // // todo: Refactor LocationWatcher to use 'matter.components'
 
-    // now setup the basic distributed system
-    await dsysp(universe);      // first the sovereign settings
-    await dsys(universe);       // basic system
-    await dsysx(universe);      // extended system
+    const gunservice = new GunService();
+    await gunservice.start();
 
-    // now install all other components
-    componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
-    // todo: Refactor LocationWatcher to use 'matter.components'
+    const identity = new IdentityReflection();
+    await identity.start();
+
+    const dorifer = new Dorifer();
+    await dorifer.start();
+
+    const wsc = new WebserviceController();
+    await wsc.start();
 
     if (universe.DEV?.ssi) {
         const SSI = universe.DEV?.ssi;
@@ -89,5 +124,5 @@ universe.atDawn(async universe => {
 });
 
 universe.atDusk(async universe => {
-    await tservices().components.exit();
+    // await tservices().components.exit();
 });
