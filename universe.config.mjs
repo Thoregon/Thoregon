@@ -7,20 +7,6 @@
 import os                                   from '/os';
 import { version }                          from '/process';
 
-import Controller, { ComponentsWatcher }    from '/evolux.dyncomponents';
-
-import { tservices }                        from '/evolux.universe';
-
-import SEA                                  from '/evolux.everblack/lib/crypto/sea.mjs'
-import GunService                           from '/terra.gun/lib/gunservice.mjs';
-import IdentityReflection                   from '/thoregon.identity/lib/identityreflection.mjs';
-import Dorifer                              from '/thoregon.truCloud/lib/dorifer.mjs';
-import WebserviceController                 from '/evolux.web//lib/webservicecontroller.mjs';
-
-// import dsys                                 from "./dsys.mjs";
-// import dsysp                                from "./dsys.sovereign.mjs";
-// import dsysx                                from "./dsys_x.mjs";
-
 //
 // JS engine independence
 //
@@ -28,14 +14,9 @@ import npath from "/path";
 export const path = npath;
 
 // gun
-export const gunpeers = ['http://185.11.139.203:8765/gun', 'http://127.0.0.1:8765/gun'];
-//export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
+export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
-// todo: move to seperate config e.g. 'tru4d.config.mjs'
-export const responsibilities   = [
-    'thoregon.service',
-    'identity.services.provider'
-];
+export const NEULAND_STORAGE_OPT = { location: 'data', name: 'neuland' };    // can override: writeCount, writeInterval
 
 //
 // define agent
@@ -85,45 +66,13 @@ export const GET_SECRET_WORKER = async () => {
 // initialize unviverse wide services an functions
 //
 
-export const everblack = SEA;
+universe.atDawn(async (universe) => {
+    await import('./thoregonsystem.mjs');
 
-universe.atDawn(async universe => {
-    // const componentLocation     = 'components';
-    // const componentController   = Controller.baseCwd('ThoregonComponentController');
-    // tservices().components = componentController;
-    //
-    // // now setup the basic distributed system
-    // await dsysp(universe);      // first the sovereign settings
-    // await dsys(universe);       // basic system
-    // await dsysx(universe);      // extended system
-    //
-    // // now install all other components
-    // componentController.addPlugin(ComponentsWatcher.watch(componentLocation));
-    // // todo: Refactor LocationWatcher to use 'matter.components'
-
-    const gunservice = new GunService();
-    await gunservice.start();
-
-    const identity = new IdentityReflection();
-    await identity.start();
-
-    const dorifer = new Dorifer();
-    await dorifer.start();
-
-    const wsc = new WebserviceController();
-    await wsc.start();
-
-    if (universe.DEV?.ssi) {
-        const SSI = universe.DEV?.ssi;
-        const spec = (await import("./agent_0.config.mjs")).default;
-        await universe.Identity.useIdentity(SSI);
-        await universe.Agent.addServiceSpec(spec);
-    }
-
-    // awake agent when SSI is avialable
-    await agent.prepare();
+    universe.lifecycle.triggerPrepare();
+    universe.lifecycle.triggerStart();
 });
 
-universe.atDusk(async universe => {
-    // await tservices().components.exit();
+universe.atDusk(async (universe, code) => {
+    universe.lifecycle?.triggerExit(code);
 });
