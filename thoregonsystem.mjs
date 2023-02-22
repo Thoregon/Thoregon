@@ -61,7 +61,7 @@ const dorifer    = new Dorifer();
 const wsc        = new WebserviceController();
 
 neuland.init(NeulandStorageAdapter, universe.NEULAND_STORAGE_OPT);
-neuland.start();
+await neuland.start();
 await gunservice.start();
 await identity.start();
 await dorifer.start();
