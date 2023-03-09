@@ -7,7 +7,7 @@
  */
 
 import SEA                   from '/evolux.everblack/lib/crypto/sea.mjs'
-import GunService            from '/terra.gun/lib/gunservice.mjs';
+// import GunService            from '/terra.gun/lib/gunservice.mjs';
 import NodeLifecycleEmitter  from "/thoregon.neuland/modules/nodepeer/nodelifecycleemitter.mjs";
 import { Automerge, Peer }   from "/thoregon.neuland/modules/nodepeer/index.mjs";
 import NeulandStorageAdapter from "/thoregon.neuland/modules/nodepeer/fsneulandstorageadapter.mjs";
@@ -33,9 +33,17 @@ universe.$lifecycle = new NodeLifecycleEmitter();
 
 universe.$Peer      = Peer;
 universe.$netconfig = {
-    peerid: 'ynGhbGJjEh3BCNH1mSBTykj89a7PXNzO',
-        policies: [P2PNetworkPolicy],
-        p2p: { adapters: [PeerJSNetworkAdapter] }
+    peerid  : 'ynGhbGJjEh3BCNH1mSBTykj89a7PXNzO',
+    policies: [P2PNetworkPolicy],
+    p2p: {
+        adapters: [PeerJSNetworkAdapter],
+        signaling: {
+            host: "185.11.139.203",
+            port: 9000,
+            secure: false,
+            // path: "/myapp",
+        }
+    }
 };
 
 
@@ -55,14 +63,14 @@ universe.$mq        = MQ.setup();
 //
 
 const neuland    = new NeulandDB();
-const gunservice = new GunService();
+// const gunservice = new GunService();
 const identity   = new IdentityReflection();
 const dorifer    = new Dorifer();
 const wsc        = new WebserviceController();
 
 neuland.init(NeulandStorageAdapter, universe.NEULAND_STORAGE_OPT);
 await neuland.start();
-await gunservice.start();
+// await gunservice.start();
 await identity.start();
 await dorifer.start();
 await wsc.start();
