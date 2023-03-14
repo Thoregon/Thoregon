@@ -19,6 +19,7 @@ import MQ                    from "/thoregon.neuland/src/mq/mq.mjs";
 import IdentityReflection    from '/thoregon.identity/lib/identityreflection.mjs';
 import Dorifer               from '/thoregon.truCloud/lib/dorifer.mjs';
 import WebserviceController  from '/evolux.web//lib/webservicecontroller.mjs';
+import { PEERID }            from "./universe.config.mjs";
 
 //
 // crypto, safety & security
@@ -33,7 +34,7 @@ universe.$lifecycle = new NodeLifecycleEmitter();
 
 universe.$Peer      = Peer;
 universe.$netconfig = {
-    peerid  : 'ynGhbGJjEh3BCNH1mSBTykj89a7PXNzO',
+    peerid  : universe.PEERID,
     policies: [P2PNetworkPolicy],
     p2p: {
         adapters: [PeerJSNetworkAdapter],

@@ -62,6 +62,8 @@ export const GET_SECRET_WORKER = async () => {
     return (await import('/thoregon.identity/sasecretworker.mjs')).default;
 }
 
+export const PEERID = 'ynGhbGJjEh3BCNH1mSBTykj89a7PXNzO';
+
 //
 // initialize unviverse wide services an functions
 //
