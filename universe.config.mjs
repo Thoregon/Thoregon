@@ -4,8 +4,9 @@
  * @author: blukassen
  */
 
-import os                                   from '/os';
-import { version }                          from '/process';
+import os                    from '/os';
+import {version}             from '/process';
+export { default as PEERID } from './peer.mjs';
 
 //
 // JS engine independence
@@ -62,7 +63,7 @@ export const GET_SECRET_WORKER = async () => {
     return (await import('/thoregon.identity/sasecretworker.mjs')).default;
 }
 
-export const PEERID = 'ynGhbGJjEh3BCNH1mSBTykj89a7PXNzO';
+// export PEERID;
 
 //
 // initialize unviverse wide services an functions
