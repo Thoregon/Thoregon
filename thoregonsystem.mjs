@@ -36,17 +36,17 @@ universe.$Peer      = Peer;
 universe.$netconfig = {
     peerid  : universe.PEERID,
     policies: [P2PNetworkPolicy],
-    p2p: {
-        adapters: [PeerJSNetworkAdapter],
+    p2p     : {
+        adapters : [PeerJSNetworkAdapter],
+        relay    : true,
         signaling: {
-            host: "185.11.139.203",
-            port: 9000,
+            host  : "185.11.139.203",
+            port  : 9000,
             secure: false,
             // path: "/myapp",
         }
     }
 };
-
 
 const netopt = {};
 universe.$net = universe.netconfig.policies.map((Policy) =>  new Policy(netopt));
