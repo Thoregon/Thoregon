@@ -4,9 +4,11 @@
  * @author: blukassen
  */
 
-import os                    from '/os';
-import {version}             from '/process';
-export { default as PEERID } from './peer.mjs';
+import os          from '/os';
+import { version } from '/process';
+
+export { default as PEERID }     from './peer.mjs';
+export { default as STRIPE_INI } from './stripeini.mjs';
 
 //
 // JS engine independence
