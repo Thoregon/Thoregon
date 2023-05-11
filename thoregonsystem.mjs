@@ -19,6 +19,7 @@ import MQ                    from "/thoregon.neuland/src/mq/mq.mjs";
 import IdentityReflection    from '/thoregon.identity/lib/identityreflection.mjs';
 import Dorifer               from '/thoregon.truCloud/lib/dorifer.mjs';
 import WebserviceController  from '/evolux.web//lib/webservicecontroller.mjs';
+import LogSink               from "/evolux.universe/lib/sovereign/logsink.mjs";
 import { PEERID }            from "./universe.config.mjs";
 
 //
@@ -83,8 +84,10 @@ if (universe.DEV?.ssi) {
 }
 
 //
-// information functions
+// testing & logging
 //
+await LogSink.init();
+universe.$logsink = LogSink;
 
 universe.$p2ppolicy = () => universe.net[0];
 universe.$p2padapter = () => universe.p2ppolicy().net[0];
@@ -93,6 +96,14 @@ universe.$p2padapter = () => universe.p2ppolicy().net[0];
 // awake agent when SSI is avialable
 //
 await agent.prepare();
+
+//
+// shutdown
+//
+
+universe.atDusk(async (universe, code) => {
+    universe.neuland?.stop();
+})
 
 // don't need a double lifecycle handling
 // universe.lifecycle.addEventListener('prepare', () => {
