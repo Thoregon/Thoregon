@@ -92,6 +92,12 @@ universe.$logsink = LogSink;
 universe.$p2ppolicy = () => universe.net[0];
 universe.$p2padapter = () => universe.p2ppolicy().net[0];
 
+universe.neulandFrom = async (location, name) => {
+    const neuland = new NeulandDB({ location, name });
+    neuland.init(NeulandStorageAdapter, universe.NEULAND_STORAGE_OPT);
+    await neuland.start();
+    return neuland;
+}
 //
 // awake agent when SSI is avialable
 //
