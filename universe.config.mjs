@@ -4,11 +4,12 @@
  * @author: blukassen
  */
 
-import os          from '/os';
-import { version } from '/process';
+import os          from "/os";
+import { version } from "/process";
+import CheckMail   from "/evolux.web/lib/mail/checkmail.mjs";
 
-export { default as PEERID }     from './peer.mjs';
-export { default as STRIPE_INI } from './stripeini.mjs';
+export { default as PEERID }     from "./peer.mjs";
+export { default as STRIPE_INI } from "./stripeini.mjs";
 
 //
 // JS engine independence
@@ -47,6 +48,10 @@ export const deviceInfo = {
 Object.defineProperties(thoregon, {
     'deviceInfo'       : { value: deviceInfo, configurable: false, enumerable: true, writable: false },
 });
+
+// email
+
+export const checkmail = new CheckMail();
 
 //
 // define the universe for this distribution
