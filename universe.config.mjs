@@ -9,7 +9,7 @@ import { version } from "/process";
 import CheckMail   from "/evolux.web/lib/mail/checkmail.mjs";
 
 export { default as PEERID }     from "./peer.mjs";
-export { default as STRIPE_INI } from "./stripeini.mjs";
+// export { default as STRIPE_INI } from "./stripeini.mjs";
 
 //
 // JS engine independence
@@ -18,13 +18,14 @@ import npath from "/path";
 export const path = npath;
 
 // gun
-export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
+// export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
 export const NEULAND_STORAGE_OPT = { location: 'data', name: 'neuland' };    // can override: writeCount, writeInterval
 
 //
 // define agent
 //
+
 let host = os.hostname();
 let i = host.lastIndexOf('.');
 if (host.lastIndexOf('.') > -1) {
