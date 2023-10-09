@@ -7,7 +7,6 @@
  */
 
 import SEA                   from '/evolux.everblack/lib/crypto/sea.mjs'
-// import GunService            from '/terra.gun/lib/gunservice.mjs';
 import NodeLifecycleEmitter  from "/thoregon.neuland/modules/nodepeer/nodelifecycleemitter.mjs";
 import { Automerge, Peer }   from "/thoregon.neuland/modules/nodepeer/index.mjs";
 import NeulandStorageAdapter from "/thoregon.neuland/modules/nodepeer/fsneulandstorageadapter.mjs";
@@ -64,15 +63,17 @@ universe.$mq        = MQ.setup();
 // components
 //
 
-const neuland    = new NeulandDB();
-// const gunservice = new GunService();
-const identity   = new IdentityReflection();
-const dorifer    = new Dorifer();
-const wsc        = new WebserviceController();
+const neuland      = new NeulandDB();
+const neulandlocal = new NeulandDB();
+const identity     = new IdentityReflection();
+const dorifer      = new Dorifer();
+const wsc          = new WebserviceController();
 
 neuland.init(NeulandStorageAdapter, universe.NEULAND_STORAGE_OPT);
 await neuland.start();
-// await gunservice.start();
+neulandlocal.init(NeulandStorageAdapter, universe.NEULANDLOCAL_STORAGE_OPT);
+await neulandlocal.start();
+
 await identity.start();
 await dorifer.start();
 await wsc.start();
@@ -93,8 +94,8 @@ universe.$p2ppolicy = () => universe.net[0];
 universe.$p2padapter = () => universe.p2ppolicy().net[0];
 
 universe.neulandFrom = async (location, name) => {
-    const neuland = new NeulandDB({ location, name });
-    neuland.init(NeulandStorageAdapter, universe.NEULAND_STORAGE_OPT);
+    const neuland = new NeulandDB();
+    neuland.init(NeulandStorageAdapter, { ...universe.NEULAND_STORAGE_OPT, location, name });
     await neuland.start();
     return neuland;
 }
@@ -109,6 +110,7 @@ await agent.prepare();
 
 universe.atDusk(async (universe, code) => {
     universe.neuland?.stop();
+    universe.neulandlocal?.stop();
 })
 
 // don't need a double lifecycle handling

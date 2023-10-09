@@ -20,7 +20,8 @@ export const path = npath;
 // gun
 // export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
-export const NEULAND_STORAGE_OPT = { location: 'data', name: 'neuland' };    // can override: writeCount, writeInterval
+export const NEULAND_STORAGE_OPT      = { location: 'data', name: 'neuland' };    // can override: writeCount, writeInterval
+export const NEULANDLOCAL_STORAGE_OPT = { location: 'data', name: 'neulandlocal' };    // can override: writeCount, writeInterval
 
 //
 // define agent
