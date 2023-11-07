@@ -17,6 +17,12 @@ export { default as PEERID }     from "./peer.mjs";
 import npath from "/path";
 export const path = npath;
 
+import pfs from 'fs/promises';
+export const fs = pfs;
+
+import * as pspecials from "/evolux.util/lib/specialnode.mjs";
+export const specials = pspecials;
+
 // gun
 // export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
