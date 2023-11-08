@@ -12,6 +12,12 @@ export { default as PEERID }     from "./peer.mjs";
 // export { default as STRIPE_INI } from "./stripeini.mjs";
 
 //
+// test storae adapter
+//
+
+export const HTTPFILESINK = 'https://resource.thoregon.io'; // 'http://test.thoregon.app:7779';
+
+//
 // JS engine independence
 //
 import npath from "/path";
