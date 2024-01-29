@@ -1,0 +1,996 @@
+Beispiel für guten table/list filter mit static table header
+    https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
+
+Refactorings
+============
+
+- UI Router URLs
+- AuroraList sort/filter when items change
+
+Pitfalls
+========
+
+- when classes gets renamed the persistent objects will not be loaded as 'Object'
+    - migration in Neuland DB!
+
+SSI App (ThatsMe)
+=================
+List
+- Devices
+- Apps
+    - Services
+- Agents
+    - ...
+
+Docker API
+==========
+
+- https://agustincb.github.io/docker-api/
+- https://github.com/apocas/dockerode-compose
+- https://schroederdennis.de/docker/docker-volume-backup-script-sichern-mit-secure-copy-scp-nas/
+
+
+``
+
+
+ToDo Thoregon
+=============
+
+- Translator
+    - consolidate app home and ThoregonApplication
+
+- Agents
+    - agent config in app collection
+    - directory 'agents'
+    - place config for each agent
+        - 'agent_sources' needs to be generated
+        - keep for updates
+    - copy of 'neuland.tdb'
+        - SSI
+        - app instance
+
+
+- Aurora
+    - Texte in Dropdowns fehlen manchmal
+
+- ThoregonDecorator
+    + handle can be set and is persistent (use ids from other systems)
+
++ refactor 'agent_0.config.mjs'
+    + add to git
+    + move 'source' ids to new file 'service.source.mjs'
+        + don't add to git!
+        + import and use in 'agent_0.config.mjs'
+
+- Channel Sammelpunkt
+    - paralelle processings
+    - resume on first ready
+    - resume on all ready
+
+- addProcessor
+    - implement on app home
+    - like wordpress addFilter/addAction
+    - can modify the entity (entities)
+    - invokation api on home
+        - invoke inside commands
+    - hooks
+        - 'before_order'
+        - 'order_created'
+        - 'before_invoice'
+        - 'invoice_created'
+
++ Counter SA local
+    + don't use a synced thoregon entity
+    + simmilar to the channels
+
+- Debounce
+    - sync
+    - aurora attributes
+
+- check sync delay, where does it come from
+- find sync loops
+- check (lazy) init
+    - values in debugger not available even when object was loaded
+- channels
+    - handle call limit
+- @OnMessage
+    - channel@latest  to skip old entries
+
+- Business Math
+    - use fixed point numbers (later)
+        --> see:
+            - https://mikemcl.github.io/big.js/
+            - https://mikemcl.github.io/decimal.js/
+            - https://github.com/Leslie-Wong-H/jsbi-calculator
+    - Operator overloading in JS with valueOf() method
+        - let x = { valueOf() { return BigInt(1) } }
+        - let y = { valueOf() { return BigInt(2) } }
+        - x + y -> 3n
+        - --> https://github.com/codalien/operator-overloading-js
+        - --> https://2ality.com/2011/12/fake-operator-overloading.html
+    + introduce 'fixdec' function to round a number at a number of decimal places
+        - introduce universe.business.math, add fixdec
+
+- Taxonomies
+    - app/ssi collections for user defined values
+        - predefined (delivered with app)
+        - ssi, valid over all apps
+    - new entry
+        - get key for label
+            - on-new-label="..."
+            - JS eval returns key
+
+- modules
+    - get asssets of module
+        - fs
+        - special fn like source and content
+
+- Automerge
+    + merge conflict !
+        + root.credentials are not merged
+    - utilize Automerge.Counter
+    - merge conflict strategy for linked list (Channel)
+
+- ThoregonDecorator
+    - delete obj.prop
+        - needs to be marked, otherwise will will be synced/merged again
+        - caution: the propsdel in syncAMtoEntity has bad consequences
+    - review sync with coupon
+        - app.current.root.coupons[...].discountFirstAmount.percentage = 10
+        - not immed synced on other side
+    - can not decorate a Map -> 'get' doesn't work
+    + if the class was not imported, 'builtin:Object' will be stored in _.origin
+    + if the 'origin' class is not available, mark entity as 'read only'
+    - if "{}" is be assigned to a 'text' attribute it will be converted to an Automerge document (?)
+    - define entity sync for some directories to a depth also for browser apps
+    - check DB init on SA
+        - SyncManager -> useEntities()
+        - Full Backup SA
+    - introduce 'agent' only synced attributes
+        - MetaClass-Attribute 'agent'
+    - initial adjustment of target: __adjustTarget__()
+        - correct instances for initial object
+    - 'delete'
+    - Don't destroy SSI (overwrite directories)
+    - in case of merge, move also all listeners
+        - marked with: @$@ LISTENERS @$@
+        - when entity is exchanged, move listeners from old entity to replacement
+    - depp listeners
+        - check recursion
+        - viewmodel omit some properties
+            - '@REF', 'west', 'east', 'model', 'vmMutationListener', 'modelMutationListener', 'modelRef', 'behavior', 'parent'
+        - lazy init: check if aurora attribute access inits entity
+            - initial change event when entity is restored
+    - check 'set' (see UFD.sources)
+        - after add of source, the sources of the UFD is not initialized
+
+- Packager
+    - node install for components
+    - copy neuland.tdb for new agent/device
+        - connect device -> serialize from allowing device
+        - new agent -> copy from backup/main agent
+    + introduce app packager for SA´s (--no-ui --no-assets)
+    + component path
+
+- Neuland
+    - copy whole DB when
+        - connect device
+        - create agent
+
+- Aurora
+    - AuroraSection
+        + timing issue, aurora-attrs nicht aufgelöst wenn view direkt über URL, über Link schon
+    - Hatch
+        - css in host page
+    - AuroraInclude
+        - content is added multiple times -> CheckoutPage one-column <-> two-columns
+    - AuroraAttributes
+        - introduce listeners for any local! change in model or viewmodel
+        - introduce aurora-attach
+            - attach an html element to a vm property
+            - attribute value = vm property name
+            - how to handle if the same content gets added multiple times -> CheckoutPage one-column <-> two-columns
+
+- Channels
+    - check pending entry when processing was stopped during debugging
+    - tool to 'process' events (for debugging) -> skip events in channel during testing
+    - @OnError
+
++ AnnotationParser
+    +  methods (async?) can be skipped
+
+- AutomationService
+    - (calllimit=x)
+
+- Decorated Array
+    - for of loop: if array is empty, loops with undefined item
+        ? let a = universe.observe([]); for (let i of a) console.log(i); a.forEach(i => console.log(i));
+          behaves correct!
+
+- Channels
+    - AutomationService
+        - failed and success hooks
+
++ local services will not be found because they are always searched over the network
+
+- Firefox
+    - DB is empty
+    - sync destroys root entries (products, ...)
+    - marked as: // @@FIREFOX
+
+- Metaclass Attributes
+    - add 'history' type (double linked list) additional to 'collection'
+    --> introduce Collection as double linked list, see Channel (thoregon.archetim)
+        - add indexes as b-trees on properties and functions on an object
+
+- SharedWorker
+    - check for Firefox and Safari
+        - Safari should work
+    - Firefox about:config -> dom.workers.modules.enabled:true/false
+        -> https://caniuse.com/?search=modules
+        - add a 'classic' JS
+    - Widgets (e.g. checkout page) does not start the SSI shared worker
+
+
+- PeerJS
+    - close unused connections (except known peers) after timeout
+
+- introduce transformer
+    - an entity depends on other entities
+    - apply/transform when any of dependent entities will be modified.
+        - provide details of modification
+
+- separate AgentInstance
+    - persistent info object
+    - worker object
+
+- deep listener
+    - changes: oldvalue is always undefined
+
+- Archetim MQ
+    - maintain entry order after network partition (channel entries merge)
+    - how to notify channel histories about entries from merge
+
+- Crystalline - crystallize ThoregonEntities for transmission
+    - add binary AMDOC
+    - embedded/compound and autoinit attributes - add binary AMDOC
+    - ThoregonDecorator restore from AMDOC
+
+- MetaClass
+    - Directories/Collections: assignment of items/objects don't emit change events on the collection/directory
+
+- app store (root) structure simmilar to a MetaClass
+    - e.g. define the Class/MetaClass for storeSettings in the upay.me apps
+
+- sync between 2 apps (UI) after relay becomes active
+
+- aurora-color-picker with aurora-name -> timing problem
+- survival kit: simple props + componds
+- close unused open connections
+
+- events
+    - 'state' -> emitted on every 'change' and also for the inital state when the listener is added
+- Persistent Events (Notifications)
+    - state engine
+        - replay old state changes for new listeners
+    - replay when error
+        - commit processing
+
+- Synch in Widget
+    - sync seems to be not registered
+    - sync start when a property of object is queried
+
+- ThoregonDecorator
+    - init Objects
+        - consider 'autocomplete'
+        - consider componds
+            - pass on compond definition like Metaclass to sub objects
+        - trashcan
+            - 'withDeleted'
+            - show old content, but readonly: 'thombstone' ?
+
+- AutoraAttributes
+    - new function
+        - isActiveRoute(route)
+
+- crystalline
+    - thoregon entity with 'starter package'
+    - some properties, also deeper object structures will be initially returned to the caller before sync
+    - merge on the receiver side
+    - add credentials automatically
+    - check use of annotations
+
+- simplify event handling with ThoregonEntities (programming)
+    - simmilar to AuroraAttributes in Views
+    - event on object path when a property is modified or become existent. uses deep-change
+        - adjusted (transition, revision, accessible)
+
+- NeulandDB
+    - create backup versions
+    - not too close (in time) if there are much store requests (use period before a backup is created)
+    - if the load of the current version fails, get the latest backup and use it (loop back until a non corrupted is found)
+    - sync will restore the current state
+
+- Mediathek
+    - filedescriptor mit content
+
+- AuroraList
+    - if sort or filter is defined
+        - add change listeners on items
+        - resort and refilter items
+
+- aurora-scope: define scope for element to model or vm property
+- aurora-section like include w/o shadow dom
+    - change listeners to object in properties which do not exist now
+       - build paralell structure with evolux.tree
+       - connect when it shows up
+
+- Kubernetes cluster
+    - nginx reverse proxy with letsencrypt
+
+
+- ThoregonDecorator
+    - thoregon decorator for localstorage (indexeddb)
+       - utilize evolux.tree
+
+Aurora View
+- repoloader update modules
+    - TBD
+    - check update, all modules in an archive
+- PULS cache
+    - store REPOLIST
+    - store metainfo about other caches
+        - update settings from user
+- AuroraBlueprint & App
+    - blueprint elements w/o shadow DOM (like aurora-include)
+        - all aurora elements support new protocol 'withShadowDOM'
+    - introduce AuroraItem (or AuroraPart AuroraFacet)
+    - aurora-section
+
+- Object Utils
+    - assign/apply object to another
+        - like Object.assign() but direct async on any object
+        - entity -> work copy
+        - viewmodel -> entity
+    - ThoregonEntity Utils
+        - create a working entity/object from a master entity
+            - e.g. product (master) and order item product
+                - name mapping
+                - functions to convert property values
+            - working object
+                - create thoregon entity
+                - assign to thoregon entity
+                - create plain object
+                - assign to plain object
+            - functions to generate missing properties
+            - detect changes of master to adjust working object, also for collections and directories
+                - freeze working entity
+
+- aurora
+    - AuroraElement
+        - reduce
+        -
+    - aurora attributes
+        + introduce param $event for action & route (event object)
+        - introduce formating functions
+        - omit attribute binding in aurora list templates (table-definition, grid-definition, ...)
+
+    - aurora-bind
+        - listen only to model or vm changes
+        <div aurora-bind:class.vm="prop"/> <div aurora-bind:class.model="prop"/>
+        <div aurora-bind.vm="prop"/> <div aurora-bind.model="prop"/>
+
+    - aurora-list
+        - model and vm is bound to item and item vm
+        - need access to vm and model from surrounding view
+
+    - embed views with <aurora-include>
+        - insert in surrounding view, no own shadow DOM
+            - except top level view in blueprint element is standalone
+            - enclose with a wrapper (div or span) to enable simple remove of whole view
+        - model and viewmodel from surrounding view
+        - collect css definitions
+        - !! enable aurora-attributes on <aurora-import> like aurora-show, ...
+            - copy to the 'wrapper'
+        - aurora-section and other blueprint elements
+            - refactor to non shadow DOM like aurora-include
+    - aurora views as independent components with own tag
+    - view as independent component
+        - with own html tag!
+        - own model and view model
+        - app published components  --> add to repository entries
+    - auto blueprint
+        - simple components will get a generic blueprint
+    + view model to sub sub views
+    + aurora
+        + define 'view-context' as attribute
+        + inherit to all contained aurora elements
+    + aurora-include + aurora-view pass parameters to the view
+        <aurora-include view=path_to_view""> (also view <aurora-view>)
+            <arg name="param1">value</arg>
+        </aurora-include>
+        + provide also all attributes defined except 'view' and all aurora-attributes as template variables
+        + replace in template {{ ... }}
+
+- annotations
+    - move 'checkin' API from dorifer to universe
+        - universe: add queues
+        - define where to implement (keep in dorifer?)
+    - get imports of annotations (consider relative urls)
+    - metaclass inheritance (import of superclass)
+    - multiple classes in one module! -> checkin get name of class and find annotations
+    - annotations for consts and functions
+
+    - annotations register itself with origin
+    - register builder
+
+    - @ThoregonEntity
+    - @ViewModel
+
+- crystalline
+    - add ws producer/consumer
+    - add rest (crystalline) producer/consumer
+    - use for services in agents
+    - add OpenAPI, AsyncAPI producer/consumer
+    - ! it's not a MQ ! it's RPC
+
+- Identity
+    - signoff, signon again -> 'me' can't be redefined (currently)
+        - signoff (also shared worker), reload page?
+    - update and restart shared worker for identity secret
+        - IdentitySecret -> self.close();
+        - start again
+        - reconnect all (?)
+    - or change to Worker (not SharedWorker)
+
+- app home
+    - get every - also local - service from 'home'
+    - provide events (topics)
+        - add listeners
+        - emit
+    - provide
+
+- App Event (Topic) Mechanism
+    - public/app internal events
+    - (agent) services can listen to it
+    - aurora integration
+
+- AgentInstance
+    - check if instance changed for services
+    - producer setup
+        - register environment events
+            - agent.config
+            - install
+            - attach app instance
+            - activate, deactivate
+            - default functions
+        - cron (zeitsteuerung)
+
+- Derived attributes
+    - properties of producers on an agent
+
+- Dataloader
+    - deserialize Objects
+
+- Review PromiseChain
+    - try to find if chain ends before next step
+
+- ThoregonEntity/Metaclass
+    materialize: engage, approve, accept, admit
+
+    - decorator
+        - set handler: if a Promis will be set as value to a property, await it
+        - if class unknown (dorifer), try to import it
+
+    - ?different metaclass between provider SSI and user SSI
+        - private - public behavior
+            - also behavior for producer (service) and consumer (client)
+            - public repository entries, private overrides
+        - read only attributes
+        - or split objects?
+
+    + attributes: emergent (system)
+        + OK: defaultValue, persistent, enumerable
+
+    - derived attributes
+        - change from type 'derived' to option 'derived'
+
+    - ensure path
+        -
+
+    - optimizing
+        - BaseObserver (AccessObserver) instrumentation
+        - Entity connect (to gun)
+        - event loops and multiple events
+        - introduce log snapshots, simplify decorator
+
+    - gun 'on' does not work when entity does not exist in the local DB
+      ? same as in thoregon.crystalline  -> thoregon.Queue
+
+    - grants & permissions
+        - store in entry.g
+
+
+- i18n
+    OK translator class move from thoregon.aurora to ?
+    - multi stage translator
+        - apps
+        - modules
+        - integrations
+
+- Repos
+    + boot definition for unstained environments
+    - Private
+    - Thoregon
+    - Thatsme
+    - Neuland
+
+- gun
+    + latest gun version
+    - standalone agent
+        - separate data directory
+        - separate code directory
+    - greenlock for agents with public interface
+    - nginx reverse proxy
+        - signaling peers
+        - web interface
+
+    - signaling peers
+        - no local data store, only
+        --> https://github.com/Dletta/superPeer
+        --> gun/example/http.js
+
+- ThoregonDecorator for local DB
+    - act as ObjectDB bound to the device/agent w/o sync
+        - provide soul and change events
+    - in-memory DB, sync to local store
+    - NodeJS
+    - Browser (IndexedDB)
+
+- thoregon CLI
+    + specify identity file for signing
+    - include Vault
+
+- Vault (Thoregon)
+    - import identites/pairs
+    - cli/pipe/api for crypto functions (sign/verify, encrypt/decrypt, ...) with an identity
+
+- service agent
+    - kubernetes cluster
+    - AppStructure
+        - use in other Classes e.g. AuroraElement
+        - 'index.mjs' not mandatory
+        - allow override of structure (in index.mjs)
+    - ModuleStructure
+        - like app structure
+    - ServiceStructure
+        - like app structure
+
+    - Resource Loading
+        - check which resources are available
+        - aurora -> theme & behavior
+        - views -> which css, jst, amd mjs are available
+
+- aurora
+    - Cleanup review all marked with $$@AURORACLEANUP
+
+    - AuroraElement refactorings
+        - Forwared Attributes
+            - currently synced when 'childrenAvailable'
+            - $$@ALLCHILDREN
+            -> observe content
+
+    - Merge UIElement & AuroraElement
+    - Merge View & AuroraView
+    - aurora-route verhalten
+        - integrations -> Liste wird neu geladen
+        - product -> product view bleibt
+
+    - AuroraAttributes
+        - aurora-route:click="product/${$.name}"
+        - combined to aurora-i18n & aurora-action (multiple expressions)
+        - for conditions if a route can be called use 'enabled' & 'show'
+
+    - UIRouter
+        - routes.mjs
+            - declarative, not a function
+            - Routespec: multiple targets
+        - routes with media query
+            - router.route('route/to/view', 'mediaquery', (req) => { ... } );
+            - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+            - https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+            - https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+
+                var mql = window.matchMedia('(max-width: 600px)');
+                // mql.matches
+                mql.addEventListener('change', console.log)
+
+
+    - Dorifer
+        - refactor (get rid off) restartApp() -> await view.untilExist();
+        - refactor app registry
+
+    - AuroraList/AuroraAttributes
+        - fire aurora-attributes inside embedded view/list (when embedded)
+
+    - AuroraList
+        - item view model need access list
+            - e.g. only one element is the active/preferred, all others must be deactivated
+    - AuroraList
+        - attribute 'items': give the items a name for JS in aurora attributes (bind, i18n, action, ...)
+    - AuroraList
+        - introduce <actions-column> -> actions work on item view model
+        - introduce <actions-header> -> actions work in view model (surrounding view)
+    - AuroraList
+        - infinite scroll
+        - apply accelerate/decelerate on Query
+    - AuroraList
+        - reusable Queries combined with :query="..."
+
+    - ViewModel
+        - path listeners on Model and ViewModel
+    - Viewmodel
+        - refactor to a decorator (proxy?)
+        - don't require as superclass
+    - ViewModel
+        - introduce lifecycle
+        - hook methods for create, edit, ...
+    - Viewmodel
+        - persistent (state for restart) in User settings
+
+    - <aurora-temporal>
+        - 'ago'/'vor', 'in', 'since'/'seit'
+        - duration
+        - formated date/time
+        - user setting
+            - per view/element
+            - overall, per app
+
+    - ThoregonApp (app base)
+        - Menu, whole app
+        - Indicators
+            - whole app
+            - per view
+    - i18n
+        - BUG: aurora-i18n attribute sometimes doesn't work
+            --> check decission if update once or on each change
+        - thoregon modules
+            - aurora
+        - user modules, via repos.mjs
+
+    - Validations (-> indicators)
+    - review styles loading
+    - Consider Appstructure
+
+    - add AuroraElements with view model like aurora attributes
+        - move auroraattributes from blueprintelement functionality up to a mixin or fn lib?
+        - review and refactor mixin View
+
+- ThoregonEntity
+    - move some functions (TBD) up to AccessObserver -> or introduce another superclass of ThoregonDecorator w/o gun for PJO's
+        - metaclass
+
+    - WeakMap for all ThoregonEntities
+
+    - parent
+        - due to network structure not possible automatic
+        - app designer must define what is the parent
+        - ? add a fn like gun .back()
+
+Services
+========
+
+- mulitple service agents per SSI
+- no multi SSI services
+
+service
+- multi apps
+- multi app instance roots
+- single app instance
+    me.agents['123'].services.easypay['POC']
+    app.current.services.easypay
+- multiple serices per container
+- single service per container
+
+Split Repository and (App)Store
+
+Store
+    - Apps
+    - Bundles
+    - Services
+    - Widgets
+
+
+------------
+
+- devserver
+    - ws -> http  (back to simple requests)
+
+- Universe Browser (Hierarchical/Hyperblic)
+
+- thoregon.crystalline / archetim
+
+    - ThoregonObject(Decorator)
+        - when ThoregonEntity is restored
+            OK PromiseChain
+                - init the methods immed (otherwise first access needs 'await')
+            - check at 'get' if the property is a method and return it
+            - find restore leak. is it in ThoregonDecorator or in Gun?
+                -> await mediathek.root.allCIDs()
+                a TypeError: Cannot read properties of undefined (reading 'propertyNames')
+                b []
+                c ['QmVrA3QUnfrkgAoppbd9SjoHasg17M6Jo3HfPbkDp9NjpS']
+        7 propertyNames availability (sometimes too late): after restore/connect the variable properties are filled in 'modifiedItem'
+            -> connect
+        5 OK) mark property delete in meta info
+            - check autorization
+            - remove simple props
+            - mantain a 'deleted' collection for complex properties
+                - also 'null' the property
+            - caution: in collections and directories this registry may get big
+        - create non persistent but decorated
+            - assign new <PersistentCls> to a property causes 'entity overwrite' -> __materialize__()
+            1 OK) store when assigned to a persistent objects property (create nonperistent)
+        - Collection & Directory
+            + autocompletion for Collection and Directory
+                - chain Directory autocompletion, create sub directory on access
+                - no chained autocomplete for Collections
+            + async: keys(), values(), entries(), clear()
+            - async length
+            - async (Collection only): splice(), pop(), push(), shift(), unshift()  ? is this possible? does collection has an order?
+        - views on thoregon objects
+    - property access
+        - implement autocompletion
+        - first access init fn
+            - params: current content (from matter), consumer object where to get the update (optional)
+    - implement '===' equality for thoregon entities
+
+    - RequestQ:
+         4 OK) pass interface to consumer
+         4 OK) param serialization for Thoregon Entities
+         - consumer options
+            - debounce
+            - throttle
+        - producer consider timeout
+            - thoregon sub queue timeout
+        - guarantied delivery ()
+            - persistent (named) queue for producer/consumer tupel
+            - introduce Topic (subscription only w/o request)
+
+    - AuroraList/Query
+        - function (phony) items e.g. 'Create Item'
+
+    - EntityResolver (extends ThoregonDecorator)
+        - resolve the entity, only a spec is stored (e.g. streams, files, producer/consumer)
+        - properties with service references (thoregon.crystalline)
+            - automatic producer/consumer instances
+            - service spec can only be read (decrypted) on service proider side
+
+- AgentInstance
+    - setup, don't overwrite persistent servicesettings, but add new ones
+    - Setup physical/logical infrastructure
+    - BPMN to define coreography of services
+
+- IPFS pinning
+    - on own agent
+    - BG pinning service
+
+- EventEmitter
+    - reusable for every purpose
+
+- $@VIEWBUILD
+    - on open actions, triggers for item clicked is invoked
+    - elements with 'aurora-name' ... registers themselves at the viewmodel once it exists
+    - introduce {@property.path}
+
+- ServiceAgents
+    - install service from app client
+
+- Test Tool like Postman for Thoregon Producers
+
+- Query
+    ? remove empty entries
+    - sort
+    - filter
+    - onMove
+    - onFlush
+    - onDrop
+
+    - Aggregtions
+        - on thoreogn entities, one or more
+        - size
+        - sum
+        - avg
+        - diff between 2 entities
+        --> Aggregate (Pattern) https://en.wikipedia.org/wiki/Aggregate_pattern
+        --> Visitor Pattern
+            - https://www.heise.de/blog/Patterns-in-der-Softwareentwicklung-Das-Besuchermuster-7357177.html
+            - https://en.wikipedia.org/wiki/Visitor_pattern
+
+    - events for changes
+
+
+
+*************************************************************
+DONE
+*************************************************************
+
+- randomNum generator
+    - only digits
+
++ Aurora
+    + if uri path is to a 'new' entity, after 'commit' and create of a new entity replace(!) path to the entity
+    + keys of products comming from a list item route (@key)
+    + aurora-route: enable relative path
+
+    + AuroraAttributes
+        - name/bind ... check if values is same -> don't modify/semd event
+    + AuroraAction nicht wenn "disabled"
+    + AuroraShow
+        + style: display:none
+        + initial style merken
+    + AuroraList
+        + items (rows) connect aurora attributes in generated innerHTML  -> View refactoring
+        + handover 'dispose' to item view models when view is closed
+
++ DomainDrivenDesign
+    + Commands
+        + pre()
+        + produce()
+        + post()
+
++ ResourceProxy/AppStructure
+    + get directory content w/o fetch
+    + retrieve from app structure in ResourceProxy
+        $$ CRAWL /easypay-application-dashboard!
+        >> Request Index /easypay-application-dashboard/ui/components/
+        >> Request Index /easypay-application-dashboard/i18n/
+
++ Links
+    + with onclick
+    + check pressed keys
+        + metaKey ... apple command -> open new tab
+        + controlKey, altKey, shiftKey
+
++ aurora-name.keyup  should work
+
++ find ERR open stripe/index.js
++ fix import 'terra.stripe' --> export * from "./modules/terra.stripe/node_modules/stripe/esm/stripe.esm.node.js";
+
++ ServiceAgent
+    + context (instance) for AppInstance
+
++ Collections/Directories delete -> propagate to Query/AuroraList
+
++ system start
+    + sync overrides local 'origin' with 'builtin:Object'
+    + ThoregonDecorator
+        - when exists in DB, restore first, then 'initEmbedded'
+
++ MetaClass
+    + enable assignment of arrays and objects to colleciton attributes
+        + arrays are merged now on assign. correct or replace old items? -> no! to identify same items use Directory
+    + decorate assigned objects with the class specified in attr spec
+    + allow Cls/Metaclass for content of collection attributes
+
++ load/sync: embedded objects or autoinit
++ embedded collections/direcories
+    + load/init all when embedded or autoinit
+
++ check sync queue (interval) to collect sync requests for same entit
++ restore amdoc, get binary
++ don't use toregondecorator avaliable
+
++ Mediathek
+    + add www url sources
+    + UFD id's ends with '_'
+        -> private property will be filtered by ownKeys
+        -> not in amdoc -> no sync!
+    + https storage adapter
+        + simple upload server
+    + image cropper
+
+
++ new ThoregonDecorator
+    + delete entity
+        + delete event { once: true }
+    + delete references (in Collection/Dictinary)
+        + filter deleted -> $keys shows all prev keys
+        + wasDeleted(prop) info fn
+    + SSI sync at startup
+    + deep-change listeners
+        + add listener to each object in a property
+        + check all Reflect.set() in ThoregonDecorator
+
++ utilize automerge (automerge-repo)
+    - https://github.com/automerge
+    - https://github.com/pvh/automerge-repo
+    - https://github.com/local-first-web
+
++ Device: add os info
+
++ Query sendet 'add' zweimal
+
+
++ easypay_home package
++ cache directory entries with directories only
++ ResourceProxy handle _: 'flat'
++ dev loader/mode
+    + two directories, one with universe.dev.mjs
+
+
++ repoloader
+    + see thoregon.truCloud repositories.md
+
+
++ UIRouter route listeners: current route
+    + only routes use hash '#'
+    + routes & aurora-route
+        aurora-route='@back'
+    + redesign view/target/reference -> route like an URL e.g. /product/
+
++ element/view dispose
+
++ ViewModel
+    + wrap with AccessObserver
+    + don't init in constructor
+    + introduce 'initialize' method
+
++ App matter structure
+    + app defines its storage structure
+    + specifies collections, directories and default values
+
++ ServiceAgent
+    + instances
+    + installed services
+        + ServiceHandle
+        + Producer/Consumer
+
++ Query
+    + listen 2 changes
+
++ ToregonEntity/ThoregonDecorator
+    + cancommit listener autoremove (invoke only once)
+        + add options to addEventListener(name, fn, opt)
+            + 'once' -> default true for cancommit
+
+    + resolve all promises in setProp() for 'value'
+
+    + delete
+        + introduce entity.delete
+            + handle$.entry.x = true
+            + __restore__()
+
+        + delete property
+            + check autocomplete for deleted properties
+            + delete property does not delete the referenced object
+            + create 'deleted' entry with owner signature
+            + if entry deleted return undefined
+
+            + get property -> remove if undefined
+            + propertyNames -> remove if undefined
+            + Directory/Collection -> iterator skip undefined entities
+            + Query -> skip undefined entities
+
+    + System attributes and properties for each ThoregonEntity
+        + soul, is_empty, length
+        + created, modified, deleted
+            + nonenumerable -> remove in propertyNames
+        + MetaClass.suppressTimestamps()
+
+    + can commit -> solved with events
+    + review metaclass persistencemode
+    + universal 'prop' (property) method
+        > await entity.prop('a', 'A')
+        > await entity.prop('bo', new BO({ x: 'X' }))
+        > let bo = await entity.prop('bo', new BO({ x: 'X' }))
+        > let a = await entity.prop('a')
+        > let bo = await entity.prop('bo')
+        > let bo = await entity.prop('bo.a.b.c')
+    + auto init when defined
+    + MetaClass/ThoregonDecorator
+        + autocomplete attribute (especially for Collections and Directories)
+        + attributePresets
+
++ ThoregonDecorator
+    + Object Attributemode VARIABLE
