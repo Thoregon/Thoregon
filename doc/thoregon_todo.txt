@@ -1,6 +1,9 @@
 Beispiel für guten table/list filter mit static table header
     https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
 
+
+
+
 Refactorings
 ============
 
