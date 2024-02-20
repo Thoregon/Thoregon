@@ -33,11 +33,25 @@ Docker API
 - https://schroederdennis.de/docker/docker-volume-backup-script-sichern-mit-secure-copy-scp-nas/
 
 
+universe.p2ppolicy().resourcehandlers[1].services.get("WASCf7l4YCocvf9BWQFCgCXZ0WncGY3H")
+
 ``
 
+Infrastructure
+==============
+
+- uPayMe
+    - sales app/page
+    - automate generator build
+- Vendor
+    - generate containers: prime, checkout, images
 
 ToDo Thoregon
 =============
+
+- Mediathek/UnifiedFileDescriptor
+    - sources are merged with holder content -> cleanup strategy
+    - UFD editor
 
 - Translator
     - consolidate app home and ThoregonApplication
@@ -54,7 +68,8 @@ ToDo Thoregon
 
 
 - Aurora
-    - Texte in Dropdowns fehlen manchmal
+    -  app components does not work anymore
+    OK Texte in Dropdowns fehlen manchmal
 
 - ThoregonDecorator
     + handle can be set and is persistent (use ids from other systems)
