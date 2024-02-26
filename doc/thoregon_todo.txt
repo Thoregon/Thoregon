@@ -55,7 +55,8 @@ ToDo Thoregon
 
 - Translator
     - consolidate app home and ThoregonApplication
-
+    - each module/service/component should provide its own i18n (currently its bound to the app)
+    
 - Agents
     - agent config in app collection
     - directory 'agents'
