@@ -2,6 +2,7 @@ Beispiel für guten table/list filter mit static table header
     https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
 
 
+docker exec -it <conid> sh
 
 
 Refactorings
@@ -49,6 +50,17 @@ Infrastructure
 ToDo Thoregon
 =============
 
+- SyncManager
+    - sync all entities in DB
+        - currently only entities in memeory will be synced
+- InitialSync
+    - copy DB also to browser when SSI did not exists locally
+    - currently only SA will copy it
+
+- Browser clean cache
+    - detect by checking if local DB was deleted
+    - use 'visibilitychanged' to recheck if DB must be copied
+
 - Mediathek/UnifiedFileDescriptor
     - sources are merged with holder content -> cleanup strategy
     - UFD editor
@@ -56,7 +68,7 @@ ToDo Thoregon
 - Translator
     - consolidate app home and ThoregonApplication
     - each module/service/component should provide its own i18n (currently its bound to the app)
-    
+
 - Agents
     - agent config in app collection
     - directory 'agents'
@@ -67,6 +79,10 @@ ToDo Thoregon
         - SSI
         - app instance
 
+- Directory/Collection
+    - use somthing like BigMap
+        - https://gist.github.com/josephrocca/44e4c0b63828cfc6d6155097b2efc113
+        - https://stackoverflow.com/questions/9282869/are-there-limits-to-the-number-of-properties-in-a-javascript-object
 
 - Aurora
     -  app components does not work anymore

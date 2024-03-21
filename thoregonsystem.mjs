@@ -6,6 +6,7 @@
  * @see: {@link https://github.com/Thoregon}
  */
 
+import path                  from "/path";
 import SEA                   from '/evolux.everblack/lib/crypto/sea.mjs'
 import NodeLifecycleEmitter  from "/thoregon.neuland/modules/nodepeer/nodelifecycleemitter.mjs";
 import { Automerge, Peer }   from "/thoregon.neuland/modules/nodepeer/index.mjs";
@@ -19,7 +20,7 @@ import IdentityReflection    from '/thoregon.identity/lib/identityreflection.mjs
 import Dorifer               from '/thoregon.truCloud/lib/dorifer.mjs';
 import WebserviceController  from '/evolux.web//lib/webservicecontroller.mjs';
 import LogSink               from "/evolux.universe/lib/sovereign/logsink.mjs";
-import { PEERID }            from "./universe.config.mjs";
+import { PEERSIGNALING }     from "./etc/universe.config.mjs";
 
 //
 // crypto, safety & security
@@ -40,7 +41,7 @@ universe.$netconfig = {
         adapters : [PeerJSNetworkAdapter],
         relay    : true,
         signaling: {
-            host  : "185.11.139.203",
+            host  : universe.PEERSIGNALING, // "185.11.139.203",
             port  : 9000,
             secure: false,
             // path: "/myapp",
@@ -79,7 +80,7 @@ await dorifer.start();
 await wsc.start();
 if (universe.DEV?.ssi) {
     const SSI = universe.DEV?.ssi;
-    const spec = (await import("./agent_0.config.mjs")).default;
+    const spec = (await import("./etc/agent_0.config.mjs")).default;
     await universe.Identity.useIdentity(SSI);
     await universe.Agent.addServiceSpec(spec);
 }
@@ -126,7 +127,7 @@ universe.atDusk(async (universe, code) => {
 //     await wsc.start();
 //     if (universe.DEV?.ssi) {
 //         const SSI = universe.DEV?.ssi;
-//         const spec = (await import("./agent_0.config.mjs")).default;
+//         const spec = (await import("./etc/agent_0.config.mjs")).default;
 //         await universe.Identity.useIdentity(SSI);
 //         await universe.Agent.addServiceSpec(spec);
 //     }

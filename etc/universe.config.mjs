@@ -85,13 +85,13 @@ export const GET_SECRET_WORKER = async () => {
 }
 
 // export PEERID;
-
+export const PEERSIGNALING = "peer.thoregon.io";
 //
 // initialize unviverse wide services an functions
 //
 
 universe.atDawn(async (universe) => {
-    await import('./thoregonsystem.mjs');
+    await import('../thoregonsystem.mjs');
 
     universe.lifecycle.triggerPrepare();
     universe.lifecycle.triggerStart();
