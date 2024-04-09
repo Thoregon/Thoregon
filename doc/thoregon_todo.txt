@@ -2,8 +2,33 @@ Beispiel für guten table/list filter mit static table header
     https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
 
 
+namecheap.com
+    MartinKirchner
+    bgn*rak7xky-kqx9KGU
+
+    API Key:
+
+
+import DNSManager from "/thoregon.crystalline/lib/dns/dnsmanager.mjs";
+import NamecheapDNS from "/thoregon.crystalline/lib/dns/namecheap/namecheapdns.mjs";
+
+DNSManager.use('namecheap', { apiKey: 'c154b631ac6945a591e36458a004d6b1', apiUser: 'MartinKirchner', clientIp: '81.217.87.214' }).listRecords('me', 'upay');
+
+
+https://api.namecheap.com/xml.response?ApiUser=MartinKirchner&ApiKey=c154b631ac6945a591e36458a004d6b1&UserName=MartinKirchner&Command=namecheap.domains.dns.getHosts&ClientIp=181.217.87.214&SLD=upay&TLD=me
+https://api.namecheap.com/xml.response?ApiUser=MartinKirchner&ApiKey=c154b631ac6945a591e36458a004d6b1&UserName=MartinKirchner&ClientIp=81.217.87.214&Command=namecheap.domains.dns.getList&SLD=upay&TLD=me
+
+https://api.namecheap.com/xml.response?apiuser=MartinKirchner&apikey=c154b631ac6945a591e36458a004d6b1&username=MartinKirchner&Command=namecheap.domains.dns.setHosts&ClientIp=81.217.87.214&SLD=upay51&TLD=me&HostName1=test&RecordType1=A&Address1=185.11.139.203&TTL1=1000
+
+
+
+    81.217.87.214
+
 docker exec -it <conid> sh
 
+http://127.0.0.1:7777/thoregon.html#easypay-application-dashboard
+http://127.0.0.1:7777/thoregon.html#upayme-application-nexus
+http://127.0.0.1:7777/thoregon.html#upayme-application-accountportal/login
 
 Refactorings
 ============
@@ -49,6 +74,11 @@ Infrastructure
 
 ToDo Thoregon
 =============
+
+- fix serialize
+    - Number, Boolean, ...
+- fix txserialize
+    - Date and other 'privitives'
 
 - SyncManager
     - sync all entities in DB
