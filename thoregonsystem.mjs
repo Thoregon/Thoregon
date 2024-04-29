@@ -5,7 +5,6 @@
  * @licence: MIT
  * @see: {@link https://github.com/Thoregon}
  */
-
 import path                  from "/path";
 import SEA                   from '/evolux.everblack/lib/crypto/sea.mjs'
 import NodeLifecycleEmitter  from "/thoregon.neuland/modules/nodepeer/nodelifecycleemitter.mjs";
@@ -20,7 +19,9 @@ import IdentityReflection    from '/thoregon.identity/lib/identityreflection.mjs
 import Dorifer               from '/thoregon.truCloud/lib/dorifer.mjs';
 import WebserviceController  from '/evolux.web//lib/webservicecontroller.mjs';
 import LogSink               from "/evolux.universe/lib/sovereign/logsink.mjs";
-import { PEERSIGNALING }     from "./etc/universe.config.mjs";
+import SelfSovereignIdentity from "/thoregon.identity/lib/selfsovereignidentity.mjs"
+import MetaClass             from "/thoregon.archetim/lib/metaclass/metaclass.mjs";
+import Directory             from "/thoregon.archetim/lib/directory.mjs";
 
 //
 // crypto, safety & security
@@ -38,9 +39,10 @@ universe.$netconfig = {
     peerid  : universe.PEERID,
     policies: [P2PNetworkPolicy],
     p2p     : {
-        adapters : [PeerJSNetworkAdapter],
-        relay    : true,
-        signaling: {
+        adapters  : [PeerJSNetworkAdapter],
+        knownPeers: universe.KNOWN_PEERS,
+        relay     : true,
+        signaling : {
             host  : universe.PEERSIGNALING, // "185.11.139.203",
             port  : 9000,
             secure: false,
@@ -78,12 +80,7 @@ await neulandlocal.start();
 await identity.start();
 await dorifer.start();
 await wsc.start();
-if (universe.DEV?.ssi) {
-    const SSI = universe.DEV?.ssi;
-    const spec = (await import("./etc/agent_0.config.mjs")).default;
-    await universe.Identity.useIdentity(SSI);
-    await universe.Agent.addServiceSpec(spec);
-}
+
 
 //
 // testing & logging
@@ -100,10 +97,25 @@ universe.neulandFrom = async (location, name) => {
     await neuland.start();
     return neuland;
 }
-//
-// awake agent when SSI is avialable
-//
-await agent.prepare();
+
+setTimeout(async () => {
+    //
+    // check SSI for agent
+    //
+
+    const SSI = universe.DEV?.ssi ?? universe.ssi;
+    if (SSI) {
+        const confdir = universe.env.etcdir ?? './etc';
+        const spec = (await import(`${confdir}/agent_0.config.mjs`)).default;
+        await universe.Identity.agentIdentity(SSI);
+        await universe.Agent.addServiceSpec(spec);
+    }
+
+    //
+    // awake agent when SSI is avialable
+    //
+    await agent.prepare();
+}, 300);
 
 //
 // shutdown
