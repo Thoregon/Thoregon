@@ -5,6 +5,8 @@ import PortalService            from "/upayme-service-portal/portalservice.mjs";
 import ConfirmService           from "/upayme-service-portal/confirmservice.mjs";
 import AffiliateService         from "/easypay-service/affiliates/affiliateservice.mjs";
 import AffiliateStatistics      from "/easypay-service/affiliates/affiliatestatistics.mjs";
+import BroadcastEmailService    from "/easypay-service/broadcastservice/broadcastemailservice.mjs";
+
 
 
 import { IDENTITY, PORTAL, ACTIVITES, STATISTICS,SETTINGS } from "./agent_sources.mjs";
@@ -14,7 +16,7 @@ export default {
 
     app: {
         id      : 'upayme-application-nexus',
-        instance: 'BLDEV5',
+        instance: 'MNDEV5',
         home    : UpaymeNexusHome,
         create  : true,
     },
@@ -66,6 +68,11 @@ export default {
             producer: AffiliateStatistics,
             settings: {}
         },
-
+        broadcastemailservice: {
+            home    : UpaymeNexusHome,
+            producer: BroadcastEmailService,
+            settings: {
+            }
+        },
     }
 }

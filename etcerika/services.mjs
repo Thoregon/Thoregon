@@ -7,7 +7,7 @@
  */
 
 export default {
-    identity           : 'QjmNf7UTjACd9GATFQvuoU9Mstnkromu',
-    portal             : 'JZA2wYSG71p0OmPQ2qWEcHYbv1HJaHmS',
-    nexusinfo          : 'Rz6Q9O6qKeEB3jvDQM0e3uUb8UQuJJXB',
+    identity           : 'w22PQ1j42XxGJAGOUO1ZNBYUMNH8JHdG',
+    portal             : 'CaICDh1OuGDt7dlmzH24SafdbRh9CBfE',
+    // nexusinfo          : 'Rz6Q9O6qKeEB3jvDQM0e3uUb8UQuJJXB',
 };
