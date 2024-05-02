@@ -1,12 +1,13 @@
 Beispiel für guten table/list filter mit static table header
     https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
 
+identity service: w22PQ1j42XxGJAGOUO1ZNBYUMNH8JHdG
 
 namecheap.com
     MartinKirchner
     bgn*rak7xky-kqx9KGU
 
-    API Key:
+    API Key: c154b631ac6945a591e36458a004d6b1
 
 
 import DNSManager from "/thoregon.crystalline/lib/dns/dnsmanager.mjs";
@@ -65,6 +66,17 @@ universe.p2ppolicy().resourcehandlers[1].services.get("WASCf7l4YCocvf9BWQFCgCXZ0
 
 Infrastructure
 ==============
+- RepoLoader
+    - introduce versionless caching
+
+- Home Utils
+    - ensure Directory
+
+- Dorifer
+    - normalize Class references repo:/thoregon.archetim@1.0.0/lib/directory.mjs:Directory <-> repo:/thoregon.archetim/lib/directory.mjs:Directory
+    - add version at the end of the reference: repo:/thoregon.archetim/lib/directory.mjs:Directory:1.0.0
+    - strategy to handle versions
+        - mirgrate! up to higher version, also down?
 
 - uPayMe
     - sales app/page

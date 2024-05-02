@@ -7,6 +7,7 @@
  */
 
 export default {
+
 //    affiliateactivities: 'PxTIAr4P26ygI0227ug1vu9vGE5mvorC',
 //    affiliatestatistics: '',
 

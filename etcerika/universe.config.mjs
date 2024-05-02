@@ -79,6 +79,7 @@ export const WWW = {
     // common: './',        --> default
     // index: 'index.mjs',  --> default
     static: '../Puls.Dev.Anon',
+    rewrite: [{ match: '/etc/*', to: '/etcerika'}],
     port: 30101,
     host: "0.0.0.0",
     // cachecontrol: 'public, max-age=120'     // fresh in seconds = 2 minutes

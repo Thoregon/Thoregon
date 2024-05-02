@@ -66,7 +66,7 @@ export default {
             settings: {}
         },
 
-        UPAYMEORDER: {
+        upaymecheckout: {
             source  : UPAYMEORDER,
             home    : UpaymeExtended,
             producer: CheckoutService,
