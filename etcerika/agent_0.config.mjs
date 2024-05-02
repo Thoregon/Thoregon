@@ -17,6 +17,7 @@ import MQService               from "/thoregon.archetim/test/mq/mqservice.mjs";
 import IPNDispatcherService    from "/easypay-service/ipnservice/ipndispatcherservice.mjs";
 import IPNService              from "/easypay-service/ipnservice/ipnservice.mjs";
 import CustomerService         from "/easypay-service/customer/customerservice.mjs";
+import ContentLinkService      from "/easypay-service/web/contentlinks.mjs";
 
 import { NUMBERS, UPAYMEORDER, STRIPE, CUSTOMER, SETTINGS } from "./agent_sources.mjs";
 
@@ -161,6 +162,11 @@ export default {
         digistore24SA: {
             home    : UpaymeExtended,
             producer: Digistore24SAService,
+            settings: {}
+        },
+
+        contentlink: {
+            producer: ContentLinkService,
             settings: {}
         },
 
