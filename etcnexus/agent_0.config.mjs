@@ -7,16 +7,17 @@ import AffiliateService         from "/easypay-service/affiliates/affiliateservi
 import AffiliateStatistics      from "/easypay-service/affiliates/affiliatestatistics.mjs";
 import BroadcastEmailService    from "/easypay-service/broadcastservice/broadcastemailservice.mjs";
 
+import InspectionService        from "/thoregon.truCloud/lib/inspect/inspectionservice.mjs"
 
 
-import { IDENTITY, PORTAL, ACTIVITES, STATISTICS,SETTINGS } from "./agent_sources.mjs";
+import { IDENTITY, PORTAL, ACTIVITES, STATISTICS, INSPECT, SETTINGS } from "./agent_sources.mjs";
 
 export default {
     alias: "bltestaffiliateagent",
 
     app: {
         id      : 'upayme-application-nexus',
-        instance: 'MNDEV5',
+        instance: 'nexus',
         home    : UpaymeNexusHome,
         create  : true,
     },
@@ -33,6 +34,13 @@ export default {
     },
 
     services: {
+
+        inspect: {
+            source  : INSPECT,
+            home    : UpaymeNexusHome,
+            producer: InspectionService,
+            settings: {}
+        },
 
         identity: {
             source  : IDENTITY,
