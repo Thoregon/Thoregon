@@ -18,6 +18,7 @@ import IPNDispatcherService    from "/easypay-service/ipnservice/ipndispatcherse
 import IPNService              from "/easypay-service/ipnservice/ipnservice.mjs";
 import CustomerService         from "/easypay-service/customer/customerservice.mjs";
 import ContentLinkService      from "/easypay-service/web/contentlinks.mjs";
+import RedirectLinkService     from "/easypay-service/web/redirlinks.mjs";
 
 import { NUMBERS, UPAYMEORDER, STRIPE, CUSTOMER, SETTINGS } from "./agent_sources.mjs";
 
@@ -170,33 +171,39 @@ export default {
             settings: {}
         },
 
-
-/*
-        businessdocuments: {
-            producer: BusinessDocumentsStatic,
-            settings: {
-            }
-        },
-
-        echo: {
-            source  : 'fCPpFKf7T97EVJdFCwhCENZ77BNZBbBB',
+        redirlink: {
+            producer: RedirectLinkService,
+            settings: {}
         },
 
 
-        easypayStatistics : {
-            // cron    : "0 * * ? * *",        // see https://github.com/node-cron/node-cron, https://www.freeformatter.com/cron-expression-generator-quartz.html
-            schedule: "1 min",
-            producer: Statistics,
-            hooks   : {
-                oninstall   : async (service, settings) => await service.init(settings),
-                onattach    : async (service, handle, appinstance) => await service.attach(handle, appinstance),
-                onactivate  : async (service) => await service.activate(),
-                ondeactivate: async (service) => await service.deactivate(),
-                onuninstall : async (service) => await service.quit(),
-            },
-            settings: {
-            }
-        },
-*/
+
+        /*
+                businessdocuments: {
+                    producer: BusinessDocumentsStatic,
+                    settings: {
+                    }
+                },
+
+                echo: {
+                    source  : 'fCPpFKf7T97EVJdFCwhCENZ77BNZBbBB',
+                },
+
+
+                easypayStatistics : {
+                    // cron    : "0 * * ? * *",        // see https://github.com/node-cron/node-cron, https://www.freeformatter.com/cron-expression-generator-quartz.html
+                    schedule: "1 min",
+                    producer: Statistics,
+                    hooks   : {
+                        oninstall   : async (service, settings) => await service.init(settings),
+                        onattach    : async (service, handle, appinstance) => await service.attach(handle, appinstance),
+                        onactivate  : async (service) => await service.activate(),
+                        ondeactivate: async (service) => await service.deactivate(),
+                        onuninstall : async (service) => await service.quit(),
+                    },
+                    settings: {
+                    }
+                },
+        */
     }
 }
