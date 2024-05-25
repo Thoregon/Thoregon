@@ -13,14 +13,18 @@ import ActiveCampaignConnx     from "/easypay-service/connx/activecampaignconnx.
 import Digistore24Connx        from "/easypay-service/connx/digistore24connx.mjs";
 import Digistore24UXService    from "/easypay-service/digistore24service/digistore24uxservice.mjs";
 import Digistore24SAService    from "/easypay-service/digistore24service/digistore24saservice.mjs";
-import MQService               from "/thoregon.archetim/test/mq/mqservice.mjs";
+// import MQService               from "/thoregon.archetim/test/mq/mqservice.mjs";
 import IPNDispatcherService    from "/easypay-service/ipnservice/ipndispatcherservice.mjs";
 import IPNService              from "/easypay-service/ipnservice/ipnservice.mjs";
 import CustomerService         from "/easypay-service/customer/customerservice.mjs";
 import ContentLinkService      from "/easypay-service/web/contentlinks.mjs";
 import RedirectLinkService     from "/easypay-service/web/redirlinks.mjs";
 
-import { NUMBERS, UPAYMEORDER, STRIPE, CUSTOMER, SETTINGS } from "./agent_sources.mjs";
+import IdentityService          from "/thoregon.identity/lib/service/identityservice.mjs";
+import InspectionService        from "/thoregon.truCloud/lib/inspect/inspectionservice.mjs"
+import HeartBeat                from "/thoregon.truCloud/lib/service/heartbeat.mjs"
+
+import { NUMBERS, UPAYMEORDER, STRIPE, CUSTOMER, IDENTITY, INSPECT, HEARTBEAT, SETTINGS } from "./agent_sources.mjs";
 
 // todo [OPEN]:
 //  - multiple instances for services
@@ -35,6 +39,7 @@ export default {
         id      : 'easypay-application-dashboard',
         instance: 'dashboard',
         home    : UpaymeExtended,
+        create  : true,
     },
 
     channels: {
@@ -55,11 +60,33 @@ export default {
 
     services: {
 
+        heartbeat: {
+            source  : HEARTBEAT,
+            producer: HeartBeat,
+            settings: {}
+        },
+
+        inspect: {
+            source  : INSPECT,
+            home    : UpaymeExtended,
+            producer: InspectionService,
+            settings: {}
+        },
+
+        identity: {
+            source  : IDENTITY,
+            home    : UpaymeExtended,
+            producer: IdentityService,
+            settings: {}
+        },
+
+/*
         mqtest: {
             home    : UpaymeExtended,
             producer: MQService,
             settings: {}
         },
+*/
 
         numbers: {
             source  : NUMBERS,

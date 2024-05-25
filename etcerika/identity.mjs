@@ -16,5 +16,6 @@ export default {
     },
     salt: "ZCEZZYFyk5rSZL8N",
     anchor: "mghvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
+    // anchor: "MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
 }
 

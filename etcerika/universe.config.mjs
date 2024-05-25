@@ -10,7 +10,16 @@ import CheckMail   from "/evolux.web/lib/mail/checkmail.mjs";
 
 export { default as PEERID }     from "./peer.mjs";
 // export { default as STRIPE_INI } from "./stripeini.mjs";
-export { default as services }           from './services.mjs';
+import services from './services.mjs';
+export { services };
+
+//export { default as services }           from './services.mjs';
+
+//
+// inspect & test
+//
+
+export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
 
 //
 // test storae adapter
@@ -35,8 +44,8 @@ export { default as account } from "./account.mjs";
 // gun
 // export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
-export const NEULAND_STORAGE_OPT      = { location: 'data', name: 'neuland' };    // can override: writeCount, writeInterval
-export const NEULANDLOCAL_STORAGE_OPT = { location: 'data', name: 'neulandlocal' };    // can override: writeCount, writeInterval
+export const NEULAND_STORAGE_OPT      = { location: 'dataerika', name: 'neuland' };    // can override: writeCount, writeInterval
+export const NEULANDLOCAL_STORAGE_OPT = { location: 'dataerika', name: 'neulandlocal' };    // can override: writeCount, writeInterval
 
 //
 // define agent

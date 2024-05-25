@@ -10,7 +10,15 @@ import CheckMail   from "/evolux.web/lib/mail/checkmail.mjs";
 
 export { default as PEERID }     from "./peer.mjs";
 // export { default as STRIPE_INI } from "./stripeini.mjs";
-export { default as services }           from './services.mjs';
+//export { default as services }           from './services.mjs';
+import services from './services.mjs';
+export { services };
+
+//
+// inspect & test
+//
+
+export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
 
 //
 // test storae adapter
