@@ -19,12 +19,22 @@ import IPNService              from "/easypay-service/ipnservice/ipnservice.mjs"
 import CustomerService         from "/easypay-service/customer/customerservice.mjs";
 import ContentLinkService      from "/easypay-service/web/contentlinks.mjs";
 import RedirectLinkService     from "/easypay-service/web/redirlinks.mjs";
-
+import VendorReportsService    from "/easypay-service/vendorreports/vendorreports.mjs"
 import IdentityService          from "/thoregon.identity/lib/service/identityservice.mjs";
 import InspectionService        from "/thoregon.truCloud/lib/inspect/inspectionservice.mjs"
 import HeartBeat                from "/thoregon.truCloud/lib/service/heartbeat.mjs"
 
-import { NUMBERS, UPAYMEORDER, STRIPE, CUSTOMER, IDENTITY, INSPECT, HEARTBEAT, SETTINGS } from "./agent_sources.mjs";
+import {
+    NUMBERS,
+    UPAYMEORDER,
+    STRIPE,
+    CUSTOMER,
+    IDENTITY,
+    INSPECT,
+    HEARTBEAT,
+    SETTINGS,
+    VENDORREPORTS
+} from "./agent_sources.mjs";
 
 // todo [OPEN]:
 //  - multiple instances for services
@@ -63,6 +73,13 @@ export default {
         heartbeat: {
             source  : HEARTBEAT,
             producer: HeartBeat,
+            settings: {}
+        },
+
+
+        vendorreports: {
+            source  : VENDORREPORTS,
+            producer: VendorReportsService,
             settings: {}
         },
 
