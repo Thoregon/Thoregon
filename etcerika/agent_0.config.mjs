@@ -8,7 +8,7 @@ import TransactionService      from "/easypay-service/transactions/transactionse
 import StripeService           from "/paymentprocessors/stripe/stripeservice.mjs";
 import StripeCollector         from "/paymentprocessors/stripe/stripecollector.mjs";
 import PaymentServiceCollector from "/paymentprocessors/paymentservicecollector.mjs";
-import MembersSuiteConnx       from "/easypay-service/connx/memberssuiteconnx.mjs";
+import MembersSuiteConnxBridge from "/easypay-service/connx/memberssuiteconnxbridge.mjs";
 import ActiveCampaignConnx     from "/easypay-service/connx/activecampaignconnx.mjs";
 import Digistore24Connx        from "/easypay-service/connx/digistore24connx.mjs";
 import Digistore24UXService    from "/easypay-service/digistore24service/digistore24uxservice.mjs";
@@ -183,7 +183,7 @@ export default {
 //--- integration services list of all Connectors ------
         memberssuiteconnx: {
             home    : UpaymeExtended,
-            producer: MembersSuiteConnx,
+            producer: MembersSuiteConnxBridge,
             settings: {}
         },
 
