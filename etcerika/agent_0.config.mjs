@@ -5,6 +5,7 @@ import NumberService           from "/easypay-service/numberranges/numberservice
 import BroadcastService        from "/easypay-service/broadcastservice/broadcastservice.mjs"
 import BroadcastEmailService   from "/easypay-service/broadcastservice/broadcastemailservice.mjs"
 import TransactionService      from "/easypay-service/transactions/transactionservice.mjs";
+import ProvisionService        from "/easypay-service/provisions/provisionservice.mjs";
 import StripeService           from "/paymentprocessors/stripe/stripeservice.mjs";
 import StripeCollector         from "/paymentprocessors/stripe/stripecollector.mjs";
 import PaymentServiceCollector from "/paymentprocessors/paymentservicecollector.mjs";
@@ -152,6 +153,11 @@ export default {
 
         transactions: {
             producer: TransactionService,
+            settings: {}
+        },
+
+        provisions: {
+            producer: ProvisionService,
             settings: {}
         },
 
