@@ -14,6 +14,7 @@ import ActiveCampaignConnx     from "/easypay-service/connx/activecampaignconnx.
 import Digistore24Connx        from "/easypay-service/connx/digistore24connx.mjs";
 import Digistore24UXService    from "/easypay-service/digistore24service/digistore24uxservice.mjs";
 import Digistore24SAService    from "/easypay-service/digistore24service/digistore24saservice.mjs";
+import ConversionTools         from "/easypay-service/conversiontools/conversiontools.mjs";
 // import MQService               from "/thoregon.archetim/test/mq/mqservice.mjs";
 import IPNDispatcherService    from "/easypay-service/ipnservice/ipndispatcherservice.mjs";
 import IPNService              from "/easypay-service/ipnservice/ipnservice.mjs";
@@ -158,6 +159,11 @@ export default {
 
         provisions: {
             producer: ProvisionService,
+            settings: {}
+        },
+
+        conversion: {
+            producer: ConversionTools,
             settings: {}
         },
 
