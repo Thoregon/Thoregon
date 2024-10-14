@@ -1,3 +1,108 @@
+======================================================================================================================
+Tasks Now:
+- Git
+    - tag versions
+    - tag prod
+- TeamCity
+    - https://www.youtube.com/watch?v=zqi4fDF-S60
+- Nomad
+- Network Storage for all service agents
+    - code & archives
+    - common docroot (thoregon.html, ...)
+    - map with docker volumes
+    - backup
+- JS Imports
+    + CLI
+        + create *.arch.gz with zlib.gzip
+        + extract *.arch.gz with zlib.gzip
+    + Browser
+        + extract *.arch.gz with DecompressionStream
+    - expanded source
+        - modules git chekcout
+        - caddy: create rewrite/redir config
+        - compose: volume mapping for js modules
+    - archives
+        - node loader
+        - browser serviceworker loader
+- Identities
+    - browser only remote
+        - passkey
+    - agents with config
+- browser
+    - remote home
+    - remote thoregon decorator
+    - globals: app, me, ssi, universe
+- agent
+    - binary DB
+    - local thoregon decorator
+
+======================================================================================================================
+
+- bunny.net      -> https://bunny.net/stream/
+- videopress     -> https://videopress.com/
+
+======================================================================================================================
+Subscriptions
+--> migrate subscriptions: https://docs.stripe.com/recurring-payments#migrate-subscriptions
+
+- checkout/session
+    - create products on demand at payment providers DB
+    - recognise customer
+        - create/attach
+            - create payment method
+            - stripe.paymentMethods.attach(paymentMethodId -> customer: customer.id)
+            - await stripe.customers.update(customer.id, -> invoice_settings: default_payment_method: paymentMethodId)
+            - handle exceptions:
+                - handleCardSetupRequired -> confirmCardSetup
+                - handlePaymentThatRequiresCustomerAction -> confirmCardPayment
+                - active subscription needs update: handleRequiresPaymentMethod -> e.g. card expired/declined
+                    - create new payment method
+                    - after that  retryInvoiceWithNewPaymentMethod
+                        - also handle exceptions: handleCardSetupRequired, handlePaymentThatRequiresCustomerAction
+            - handle payment/subscription complete
+        - when customer enters checkout again, show current settings and select default_payment_method
+    - when recurring payment fails
+        - notify vendor
+        - send email to customer
+            - on behalf of vendor
+            - link to
+                - customers account page, includes payment retry
+                - checkout page with payment retry
+- customer page
+    - list all purchases
+        - list invoices
+    - cancel subscription
+    - return buy
+    - retrieve/show upcoming invoice
+    - create new payment method
+
+- stripe
+    - create product at stripe for payment plan
+    - checkout page/widget
+    - product 'paymentProvider'
+        - stripe
+            - product id
+            - price id(s)
+        - paypal
+            - ?
+    - service
+        - create subscription
+            - override price
+    - capture subscription
+        - client
+        - server
+            - create customer if not exists (check with email)
+
+- paypal
+    - same as for stripe
+
+Trial Periods
+- Events (WebHook)
+    - invoice.upcoming
+    - customer.subscription.paused
+
+======================================================================================================================
+
 Beispiel für guten table/list filter mit static table header
     https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2023&cupcode=WC&disciplinecode=ALL&gendercode=M&nationcode=
 
@@ -9,6 +114,10 @@ namecheap.com
 
     API Key: c154b631ac6945a591e36458a004d6b1
 
+Test IBAN: DE89370400440532013000
+
+    pi_3PVC3gDbpikf6An53A8kpxRX
+    pi_3PVC3gDbpikf6An53A8kpxRX
 
 import DNSManager from "/thoregon.crystalline/lib/dns/dnsmanager.mjs";
 import NamecheapDNS from "/thoregon.crystalline/lib/dns/namecheap/namecheapdns.mjs";
@@ -55,6 +164,22 @@ List
 Docker API
 ==========
 
+Peers:
+-----------------
+s4/upaymesatest     Gj1gnP1ojDc9cwW0c20zbdX7CytGeHF8        upayme agent instance
+export default {
+    identity           : 'A2MLmSRvBdE0STpFcX48X2ycJEf5kOIR',
+    portal             : 'VMWnorlMnHF1FMM3jYbtzETf3jwpycwC',
+    affiliates         : 'ZKO1J7YKN9x7kc4OiuwmwX30SCzc5OwJ',
+    customer           : 'EYtuJJq00IPZAjzxNk1nVgP759IWMJbr',
+    stripe             : 'pVqTJkeikkWZRzFGP5orfxDOqMsQaI0D',
+//    nexusinfo          : 'Rz6Q9O6qKeEB3jvDQM0e3uUb8UQuJJXB',
+    inspector          : 'RAiybEqLACtdfsEYVjL2JoiC1npFUHP4',
+};
+
+-----------------
+s4/upaymenxtest     MU54OppJyk4b8FPCsuZsQutRbHCvaPow        nexus agent instance
+
 - https://agustincb.github.io/docker-api/
 - https://github.com/apocas/dockerode-compose
 - https://schroederdennis.de/docker/docker-volume-backup-script-sichern-mit-secure-copy-scp-nas/
@@ -64,8 +189,132 @@ universe.p2ppolicy().resourcehandlers[1].services.get("WASCf7l4YCocvf9BWQFCgCXZ0
 
 ``
 
-Infrastructure
-==============
+https://erikawest.upay.me/checkout/product/2479767648
+
+Get inspector
+Nexus
+    let inspectornexus = await universe.mq.consumerFor('Bss7YDINdXVaqrdL3IC3fvTtQVcInmHQ');   // s4 (server)
+    let inspectornexus = await universe.mq.consumerFor('I86vdIvQLKTAn6vwXHVDZJjDRXLqFpie'));   // dev (local)
+
+    await inspectornexus.apply('app.current.home.listPendingAccounts()')
+
+    let affiliates = await universe.mq.consumerFor('ZKO1J7YKN9x7kc4OiuwmwX30SCzc5OwJ');   // dev (local)
+
+
+Erika   https://erikawest.upay.me/thoregon.html#easypay-application-checkout/checkoutpage/2311671858?product=2311671858&service=FXsXTpbSs0IpgX3kInTBWZgZ4P9QIOBU&vendor=893793363&fit-to-content=false
+    let inspectorerika = await universe.mq.consumerFor('RAiybEqLACtdfsEYVjL2JoiC1npFUHP4');
+    let identityerika = await universe.mq.consumerFor(universe.services.identity);
+
+    https://erikawest.upay.me/checkout/product/2479767648
+
+    https://resource.thoregon.io/I7YdQH+8CJXsR4y2Wo7eu8R48XxDZTgE1Zya0Zt6EUY.png
+
+Stripe Test
+    pub key: pk_test_vm9yYD9Eg7Y9wKSmmo93QwOY
+    sec key: sk_test_abfZqREunvxDT9saSJBEBuUa
+    webhook secret: whsec_dDvyupp67A5Kp7WtYoB7mf9kGvmSFMg7 (whsec_805b90d468f7651aa737de4ed14fdebe2124d3580853713b84fab681083e420c)
+
+
+Heartbeat
+   local erikawest     let hb = await universe.mq.consumerFor('SWDQb1yJzVSmLzfC5sV6ICWivmfnp2EJ')
+
+ToDo's
+======
+
+- Aspect Oriented
+    - add interface function by aspects e.g. for payment providers stripe or paypal
+
+- stripe/paypal mountpoints
+    - reuse slots
+    - create on start, make visible on request
+
+- CheckoutSession
+    - when checkout ok, generate new id, don't use tdevice
+    - check if selected paymentPlan is valid, use preferred instead
+
+- Stripe/Paypal
+    - pass upayme email as user mail
+    - send own 'charge announcements' for installments and subscriptions
+
+- P2P Adapter
+    - WebSocket
+    - Bridge
+
+- Channels
+    - insert events: evt: type, detail, cmd { skip )
+    - backups
+    - filesize, partition files
+    - ChannelHistory auf function, nicht auf service!!!
+
+- Aurora
+    - all structural components should work like aurora-include
+        - keep view context (ui path) to view
+    - only 'real' components should have a shadow root
+
+- Neuland
+    - Backup
+        - restore 'right' file
+    - root entity in neuland
+        universe.neuland.storage.db.keys().next()
+    - consolidate entity
+    - merge: use oldest (first) soul
+    - consolidate neuland (db)
+       - get rid of unneeded entities
+       - create a new neuland with SSI and apps
+
+- Keep History of Business Processes and Entities
+    - checkoutsession done …
+    - invoice mail sent …
+
+store as history (logs) to the entity
+
+- Confirm Page content!
+- uirouter default page
+- link from email
+
+S4 Identities:
+    erika: 'MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ'
+    nexus: 'EXup3uod43ud0e600DFUyA85IjSkG240'
+
+- me.apps
+    - is overwritten after login
+    - check Identity.detachAppContent()
+    - check ThoregonApplication.selectInstance()
+    - check SelfSovereignIdentity Meta definition of "apps" -> autocomplete: true, autoinit: true
+
+- containers
+    - remove 'email' file in data
+    - add to vendor container
+        - resources (resourceserver)
+        - stripe/paypal collector (webhooks for payment services)
+
++ nexus
+    + create IdentityCards
+        + erika west    erika@ernaehrenswert.de     erika$!1X
+            await (await app.current.services.portal.consumer()).createCard4SSI({ id: 'erikawest', password: 'erika$!1X', email: 'erika@ernaehrenswert.de', ssispec: { alias: 'ernaehrenswert', pairs :  {"spriv": "bWi3DRz4qKoPegphkUieAmYHP5bvM9Wh8oJSuFRSeSk", "spub": "MBXR7ufZHvIdAGFGZBJPKsus0VcMOWpLrCEN_HhSvnU.GPLFNIvMHrPVzryYSgOqmSd5KXwXo8fzfOt2JTvvVwQ", "epriv": "bT_KIsqyu047BqPCN-ejesaApTuWJr22VS6hG_LPmLQ", "epub": "zUn13GfDia6KzAGi_fIDlmFfGcjti9owfZOwi3T2914.cj8nhEDpQ01US-gtVWowPsk9SxkjdznjjzPd_6ymLWw", }, salt: 'ZCEZZYFyk5rSZL8N', anchor: 'MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ'} })
+            await (await app.current.services.portal.consumer()).login({ id: 'erikawest', password: 'erika$!1X', email: 'erika@ernaehrenswert.de' })
+            universe.ThoregonDecorator.from(app.current.home.getAllIdentityCards().erikawest.identity.anchor)
+        + upayme        upayme@bernhard-lukassen.com    upayme$!1X
+            await (await app.current.services.portal.consumer()).createCard4SSI({ id: 'upayme', password: 'upayme$!1X', email: 'upayme@bernhard-lukassen.com', ssispec: { alias: 'upayme', pairs :  {"spriv": "6qVy7_nSSpID_l52VTxiIXGM5f2_tFr_0PwLmZNvwKQ", "spub": "9pE55g0wLnYWsO7StqLuU_aMS7B0eyrPZmUJMy30zyA.om3gh6eVdZAOkthFVWOfTRN263oxVxfN-XusHCRq9TA", "epriv": "LR8F3zbKrlXBiXI2-iBqanG7Ly3HqaX2g_G91_Nr9Rc", "epub": "Aw8nkkcW5gWPQ7QUnR15LSL6xvey2cPL3rxTytCV9tk.8i29pajwLhr_Fg3A7xqxp94cqYqC7qedvNHbrxTMm3I", }, salt: '0qmLV1600', anchor: 'eXup3uod43ud0e600DFUyA85IjSkG249'} })
+            universe.ThoregonDecorator.from(app.current.home.getAllIdentityCards().upayme.identity.anchor)
+
+    https://erikawest.upay.me/redir/2311671858/AFFILIATE/CAMPAIGNKEY
+
+
+    + affiliates
+        affiliateA
+        affiliateA@bernhard-lukassen.com
+        affiliate!1$    affiliate!1$
+
+
+    http://localhost:9997/thoregon.html#upayme-application-accountportal/affiliate-login
+    http://localhost:9997/thoregon.html#upayme-application-accountportal/affiliate-signup
+
+- Caddy
+    - set default index.html to thoreogn.html
+    - mapping stripe/paypal webhooks to vendor containers
+    - favicon ?
+
 - RepoLoader
     - introduce versionless caching
 

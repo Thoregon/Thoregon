@@ -15,7 +15,7 @@ export default {
         "epub": "zUn13GfDia6KzAGi_fIDlmFfGcjti9owfZOwi3T2914.cj8nhEDpQ01US-gtVWowPsk9SxkjdznjjzPd_6ymLWw"
     },
     salt: "ZCEZZYFyk5rSZL8N",
-    anchor: "mghvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
-    // anchor: "MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
+    // anchor: "mghvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
+    anchor: "MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ"
 }
 

@@ -8,8 +8,10 @@ import AffiliateStatistics      from "/easypay-service/affiliates/affiliatestati
 import AggregationService       from "/easypay-service/affiliates/aggregationservice.mjs";
 import BroadcastEmailService    from "/easypay-service/broadcastservice/broadcastemailservice.mjs";
 
-import InspectionService        from "/thoregon.truCloud/lib/inspect/inspectionservice.mjs"
+import RemoteEntityService      from "/thoregon.truCloud/lib/remote/remoteentityservice.mjs";
+import RemoteHomeService        from "/thoregon.truCloud/lib/remote/remotehomeservice.mjs";
 
+import InspectionService        from "/thoregon.truCloud/lib/inspect/inspectionservice.mjs"
 
 import { IDENTITY, PORTAL, AFFILIATES, STATISTICS, INSPECT, SETTINGS } from "./agent_sources.mjs";
 
@@ -37,6 +39,24 @@ export default {
 
     services: {
 
+        //
+        // remote services
+        //
+
+        remoteentity: {
+            producer: RemoteEntityService,
+            settings: {}
+        },
+
+        remotehome: {
+            producer: RemoteHomeService,
+            settings: {}
+        },
+
+        //
+        //
+        //
+
         inspect: {
             source  : INSPECT,
             home    : UpaymeNexusHome,
@@ -48,41 +68,41 @@ export default {
             source  : IDENTITY,
             home    : UpaymeNexusHome,
             producer: IdentityService,
-            settings: {}
+            settings: { rest: true }
         },
 
         portal: {
             source  : PORTAL,
             home    : UpaymeNexusHome,
             producer: PortalService,
-            settings: {}
+            settings: { rest: true }
         },
 
         confirm: {
             // source  : CONFIRM,
             home    : UpaymeNexusHome,
             producer: ConfirmService,
-            settings: {}
+            settings: { rest: true }
         },
 
         affiliates: {
             source  : AFFILIATES,
             home    : UpaymeNexusHome,
             producer: AffiliateService,
-            settings: {}
+            settings: { rest: true }
         },
 
         aggregation: {
             home    : UpaymeNexusHome,
             producer: AggregationService,
-            settings: {}
+            settings: { rest: true }
         },
 
         statistics: {
             source  : STATISTICS,
             home    : UpaymeNexusHome,
             producer: AffiliateStatistics,
-            settings: {}
+            settings: { rest: true }
         },
         broadcastemailservice: {
             home    : UpaymeNexusHome,

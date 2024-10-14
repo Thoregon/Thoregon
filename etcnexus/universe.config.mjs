@@ -18,7 +18,7 @@ export { services };
 // inspect & test
 //
 
-export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
+// export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
 
 //
 // test storae adapter
@@ -99,6 +99,7 @@ export const WWW = {
     // cachecontrol: 'public, max-age=120'     // fresh in seconds = 2 minutes
 }
 
+// export const WWWAPI = 'nexusapi/';
 
 //
 // Identity

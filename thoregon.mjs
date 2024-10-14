@@ -13,7 +13,9 @@ import letThereBeLight      from '/evolux.universe';
         thoregon.checkpoint("§§ start delta");
         // universe.addComponents(components);
 
-        await import('./test/spikes.mjs');
+        global.agent?.addHook(async () => {
+            await import('./test/spikes.mjs');
+        })
     } catch (err) {
         console.log(err);
     }

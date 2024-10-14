@@ -19,7 +19,7 @@ export { services };
 // inspect & test
 //
 
-export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
+// export const getInspector = async () => await universe.mq.consumerFor(services.inspector);
 
 //
 // test storae adapter
@@ -36,6 +36,9 @@ export const path = npath;
 import pfs from 'fs/promises';
 export const fs = pfs;
 
+import xfs from 'fs';
+export const afs = xfs;
+
 import * as pspecials from "/evolux.util/lib/specialnode.mjs";
 export const specials = pspecials;
 
@@ -44,12 +47,19 @@ export { default as account } from "./account.mjs";
 // gun
 // export const gunpeers           = ['http://185.11.139.203:8765/gun'/*, 'https://matter.thoregon.io:8765/gun'*/];
 
-export const NEULAND_STORAGE_OPT      = { location: 'dataerika', name: 'neuland' };    // can override: writeCount, writeInterval
-export const NEULANDLOCAL_STORAGE_OPT = { location: 'dataerika', name: 'neulandlocal' };    // can override: writeCount, writeInterval
+const FIVE_MIN            =  5 * 60 * 1000;
+
+export const NEULAND_STORAGE_OPT      = { location: 'dataerika', name: 'neuland', backup: FIVE_MIN };    // can override: writeCount, writeInterval
+export const NEULANDLOCAL_STORAGE_OPT = { location: 'dataerika', name: 'neulandlocal', immed: true, backup: FIVE_MIN };    // can override: writeCount, writeInterval
+
+export const RECREATE_ORDERS = true;
 
 //
 // define agent
 //
+
+export const MAIL_SINK = 'upaymeerika@bernhard-lukassen.com';
+export const MAIL_CHECK = true;
 
 let host = os.hostname();
 let i = host.lastIndexOf('.');
@@ -79,6 +89,8 @@ Object.defineProperties(thoregon, {
 
 export const checkmail = new CheckMail();
 
+export const upamemail = 'bernhard-lukassen.com';
+
 //
 // exposed www interfaces
 //
@@ -87,7 +99,7 @@ export const WWW = {
     // root: 'www/',        --> default
     // common: './',        --> default
     // index: 'index.mjs',  --> default
-    static: '../Puls',
+    static: '../Puls.Dev.Anon',
     rewrite: [{ match: '/etc/*', to: '/etcerika'}],
     port: 30101,
     host: "0.0.0.0",
