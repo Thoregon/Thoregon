@@ -209,11 +209,6 @@ Erika   https://erikawest.upay.me/thoregon.html#easypay-application-checkout/che
 
     https://resource.thoregon.io/I7YdQH+8CJXsR4y2Wo7eu8R48XxDZTgE1Zya0Zt6EUY.png
 
-Stripe Test
-    pub key: pk_test_vm9yYD9Eg7Y9wKSmmo93QwOY
-    sec key: sk_test_abfZqREunvxDT9saSJBEBuUa
-    webhook secret: whsec_dDvyupp67A5Kp7WtYoB7mf9kGvmSFMg7 (whsec_805b90d468f7651aa737de4ed14fdebe2124d3580853713b84fab681083e420c)
-
 
 Heartbeat
    local erikawest     let hb = await universe.mq.consumerFor('SWDQb1yJzVSmLzfC5sV6ICWivmfnp2EJ')
@@ -289,14 +284,6 @@ S4 Identities:
         - stripe/paypal collector (webhooks for payment services)
 
 + nexus
-    + create IdentityCards
-        + erika west    erika@ernaehrenswert.de     erika$!1X
-            await (await app.current.services.portal.consumer()).createCard4SSI({ id: 'erikawest', password: 'erika$!1X', email: 'erika@ernaehrenswert.de', ssispec: { alias: 'ernaehrenswert', pairs :  {"spriv": "bWi3DRz4qKoPegphkUieAmYHP5bvM9Wh8oJSuFRSeSk", "spub": "MBXR7ufZHvIdAGFGZBJPKsus0VcMOWpLrCEN_HhSvnU.GPLFNIvMHrPVzryYSgOqmSd5KXwXo8fzfOt2JTvvVwQ", "epriv": "bT_KIsqyu047BqPCN-ejesaApTuWJr22VS6hG_LPmLQ", "epub": "zUn13GfDia6KzAGi_fIDlmFfGcjti9owfZOwi3T2914.cj8nhEDpQ01US-gtVWowPsk9SxkjdznjjzPd_6ymLWw", }, salt: 'ZCEZZYFyk5rSZL8N', anchor: 'MGHvNeIOKNsAdXJg8EfFniYTi0LO0cGzXQDC1evJz15ZTndZ'} })
-            await (await app.current.services.portal.consumer()).login({ id: 'erikawest', password: 'erika$!1X', email: 'erika@ernaehrenswert.de' })
-            universe.ThoregonDecorator.from(app.current.home.getAllIdentityCards().erikawest.identity.anchor)
-        + upayme        upayme@bernhard-lukassen.com    upayme$!1X
-            await (await app.current.services.portal.consumer()).createCard4SSI({ id: 'upayme', password: 'upayme$!1X', email: 'upayme@bernhard-lukassen.com', ssispec: { alias: 'upayme', pairs :  {"spriv": "6qVy7_nSSpID_l52VTxiIXGM5f2_tFr_0PwLmZNvwKQ", "spub": "9pE55g0wLnYWsO7StqLuU_aMS7B0eyrPZmUJMy30zyA.om3gh6eVdZAOkthFVWOfTRN263oxVxfN-XusHCRq9TA", "epriv": "LR8F3zbKrlXBiXI2-iBqanG7Ly3HqaX2g_G91_Nr9Rc", "epub": "Aw8nkkcW5gWPQ7QUnR15LSL6xvey2cPL3rxTytCV9tk.8i29pajwLhr_Fg3A7xqxp94cqYqC7qedvNHbrxTMm3I", }, salt: '0qmLV1600', anchor: 'eXup3uod43ud0e600DFUyA85IjSkG249'} })
-            universe.ThoregonDecorator.from(app.current.home.getAllIdentityCards().upayme.identity.anchor)
 
     https://erikawest.upay.me/redir/2311671858/AFFILIATE/CAMPAIGNKEY
 
