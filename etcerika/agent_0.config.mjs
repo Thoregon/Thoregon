@@ -28,6 +28,7 @@ import InspectionService       from "/thoregon.truCloud/lib/inspect/inspectionse
 import HeartBeat               from "/thoregon.truCloud/lib/service/heartbeat.mjs"
 import PDFService              from "/easypay-service/pdfservice/pdfservice.mjs";
 
+import ResourceService         from "/thoregon.truCloud/lib/resource/resourceservice.mjs";
 import RemoteEntityService     from "/thoregon.truCloud/lib/remote/remoteentityservice.mjs";
 import RemoteHomeService       from "/thoregon.truCloud/lib/remote/remotehomeservice.mjs";
 
@@ -94,6 +95,11 @@ export default {
 
         remotehome: {
             producer: RemoteHomeService,
+            settings: {}
+        },
+
+        resource: {
+            producer: ResourceService,
             settings: {}
         },
 

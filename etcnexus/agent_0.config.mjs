@@ -8,6 +8,7 @@ import AffiliateStatistics      from "/easypay-service/affiliates/affiliatestati
 import AggregationService       from "/easypay-service/affiliates/aggregationservice.mjs";
 import BroadcastEmailService    from "/easypay-service/broadcastservice/broadcastemailservice.mjs";
 
+import ResourceService          from "/thoregon.truCloud/lib/resource/resourceservice.mjs";
 import RemoteEntityService      from "/thoregon.truCloud/lib/remote/remoteentityservice.mjs";
 import RemoteHomeService        from "/thoregon.truCloud/lib/remote/remotehomeservice.mjs";
 
@@ -50,6 +51,11 @@ export default {
 
         remotehome: {
             producer: RemoteHomeService,
+            settings: {}
+        },
+
+        resource: {
+            producer: ResourceService,
             settings: {}
         },
 
