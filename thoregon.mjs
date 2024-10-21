@@ -5,7 +5,6 @@
  */
 
 import letThereBeLight      from '/evolux.universe';
-// import components           from './@components';
 
 (async () => {
     try {
@@ -20,10 +19,3 @@ import letThereBeLight      from '/evolux.universe';
         console.log(err);
     }
 })();
-
-/*
-setTimeout(() => {
-    const components    = universe.services.components;
-    universe.logger.info(components.list());
-}, 2000);
-*/

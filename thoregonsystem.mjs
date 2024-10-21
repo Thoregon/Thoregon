@@ -62,7 +62,7 @@ setTimeout(async () => {
     // check SSI for agent
     //
 
-    const SSI = universe.DEV?.ssi ?? universe.ssi;
+    const SSI = universe.ssi;
     if (SSI) {
         const confdir = universe.env.etcdir ?? './etc';
         const spec = (await import(`${confdir}/agent_0.config.mjs`)).default;
