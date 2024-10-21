@@ -9,6 +9,8 @@ import ProvisionService        from "/easypay-service/provisions/provisionservic
 import StripeService           from "/paymentprocessors/stripe/stripeservice.mjs";
 import StripeCollector         from "/paymentprocessors/stripe/stripecollector.mjs";
 import PaypalService           from "/paymentprocessors/paypal/paypalservice.mjs";
+import GetResponseConnx        from "/easypay-service/connx/memberssuiteconnx.mjs";
+
 //import PaymentServiceCollector from "/paymentprocessors/paymentservicecollector.mjs";
 import MembersSuiteConnx       from "/easypay-service/connx/memberssuiteconnx.mjs";
 import ActiveCampaignConnx     from "/easypay-service/connx/activecampaignconnx.mjs";
@@ -249,6 +251,12 @@ export default {
             home    : UpaymeExtended,
             producer: ActiveCampaignConnx,
             settings: {}
+        },
+
+        getresponseconnx: {
+            home     : UpaymeExtended,
+            producer: GetResponseConnx,
+            settings : {}
         },
 
         //--- Digistore24
