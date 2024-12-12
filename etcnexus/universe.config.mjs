@@ -101,6 +101,7 @@ export const WWW = {
 
 // export const WWWAPI = 'nexusapi/';
 
+export const RESTAPI = 'nexusrest';
 //
 // Identity
 //
