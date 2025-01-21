@@ -80,7 +80,4 @@ setTimeout(async () => {
 // shutdown
 //
 
-universe.atDusk(async (universe, code) => {
-    universe.neuland?.stop();
-    // universe.neulandlocal?.stop();
-})
+universe.atDusk(async (universe, code) => {})
