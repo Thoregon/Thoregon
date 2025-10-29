@@ -19,6 +19,7 @@
     "dotenv": "^16.3.1",
     "greenlock-express": "^4.0.3",
     "qrcode-terminal": "^0.12.0",
+    "temporal-polyfill": "^0.3.0",
     "yargs": "^15.3.1"
   }
 }

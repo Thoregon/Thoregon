@@ -9,12 +9,25 @@ import ProvisionService        from "/easypay-service/provisions/provisionservic
 import StripeService           from "/paymentprocessors/stripe/stripeservice.mjs";
 import StripeCollector         from "/paymentprocessors/stripe/stripecollector.mjs";
 import PaypalService           from "/paymentprocessors/paypal/paypalservice.mjs";
-import GetResponseConnx        from "/easypay-service/connx/memberssuiteconnx.mjs";
+
+import ProductService          from "/easypay-service/product/productservice.mjs";
+
+import upaymeschedules         from "/easypay-home/upaymeschedules.mjs";
+
+const vendorolap = universe.olapSQLite
+    ? (await import('/easypay-home/vendorsqlite.mjs')).default
+    : (await import('/easypay-home/vendorolap.mjs')).default;
+const OLAPService =  universe.olapSQLite
+    ? (await import('/thoregon.neuland/src/olap/sqlite/olapservice18.mjs')).default
+    : (await import('/thoregon.neuland/src/olap/olapservice.mjs')).default;
 
 //import PaymentServiceCollector from "/paymentprocessors/paymentservicecollector.mjs";
 import MembersSuiteConnx       from "/easypay-service/connx/memberssuiteconnx.mjs";
 import ActiveCampaignConnx     from "/easypay-service/connx/activecampaignconnx.mjs";
 import Digistore24Connx        from "/easypay-service/connx/digistore24connx.mjs";
+import GetResponseConnx        from "/easypay-service/connx/getresponseconnx.mjs";
+import KlickTippConnx           from "/easypay-service/connx/klicktippconnx.mjs";
+import QuentnConnx             from "/easypay-service/connx/quentnconnx.mjs";
 import Digistore24UXService    from "/easypay-service/digistore24service/digistore24uxservice.mjs";
 import Digistore24SAService    from "/easypay-service/digistore24service/digistore24saservice.mjs";
 import ConversionTools         from "/easypay-service/conversiontools/conversiontools.mjs";
@@ -75,6 +88,8 @@ export default {
         // test
         test: { description: 'test channels' }
     },
+
+    schedules: upaymeschedules,
 
     www: ['pub'],
 
@@ -259,6 +274,19 @@ export default {
             settings : {}
         },
 
+        quentnconnx: {
+            home     : UpaymeExtended,
+            producer: QuentnConnx,
+            settings : {}
+        },
+
+        klicktippconnx: {
+            home     : UpaymeExtended,
+            producer: KlickTippConnx,
+            settings : {}
+        },
+
+
         //--- Digistore24
         digistore24connx: {
             home    : UpaymeExtended,
@@ -285,6 +313,17 @@ export default {
             producer: RedirectLinkService,
             settings: {}
         },
+/*
+        product: {
+            producer: ProductService,
+            settings: {}
+        },
+*/
+        olap: {
+            producer: OLAPService,
+            settings: vendorolap
+        },
+
 
         /*
                 businessdocuments: {
@@ -314,4 +353,5 @@ export default {
                 },
         */
     }
+
 }

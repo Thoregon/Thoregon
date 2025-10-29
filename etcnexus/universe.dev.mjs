@@ -25,6 +25,7 @@ export const DEV = {
     thoregon: 'dev'    // 'prod' uses or loads thoregon system into browser cache from repo ; 'dev' loads also thoregon system via the dev server
 }
 
+universe.ssi = TESTIDENTITY;
 /*
 export const WWW = {
     // root: 'www/',        --> default

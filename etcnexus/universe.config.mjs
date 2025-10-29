@@ -93,7 +93,7 @@ export const WWW = {
     // root: 'www/',        --> default
     // common: './',        --> default
     // index: 'index.mjs',  --> default
-    static: '../Puls.Dev.Anon',
+    static: '../Client',
     port: 30000,
     host: "0.0.0.0",
     // cachecontrol: 'public, max-age=120'     // fresh in seconds = 2 minutes
